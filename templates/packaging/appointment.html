@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.cdnfonts.com/css/best-signature-font" rel="stylesheet">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/style.css') }}">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sealer.css') }}">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sigstamp.css') }}">
+<style>
+@import url('https://fonts.cdnfonts.com/css/best-signature-font');
+</style>
+    <style>
+        body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 2em;
+    }
+    .page {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .header {
+        line-height: 1.5em;
+    }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header">
+        <div class="column">
+            <p>In case of reply the number and date on this letter should be quoted</p>
+            <h4>OUR CORE VALUES</h4>
+            <ul>
+                <li type="square">People-Centered  </li>
+                <li type="square">Professionalism</li>
+                <li type="square">Team work</li>
+                <li type="square">Innovation</li>
+                <li type="square">Dicipline</li>
+                <li type="square">Intergrity</li>
+            </ul>
+            <p>My Ref. No. GHS/HRD/GR/{{ourrefemp}}/{{ourrefmon}} <br>
+                Your Ref. No ..........................</p>
+
+        </div>
+        <div class="column" style="align-content: center;">
+            <img src="../..{{ url_for('static', filename='pack/images/korlebu.png') }}" width="160px">
+        </div>
+        <div class="column">
+            <h4 class="col3">GHANA HEALTH SERVICE <br>
+                KORLE BU TEACHING HOSPITAL <br>
+                ACCRA <br> GHANA <br>
+                TEL: 0302 662014 <br>
+                FAX: 0302 666808 <br>
+                E-mail: dg@ghsmail.org <br>
+
+                {{gooddate}}
+            </h4>
+        </div>
+    </div>
+
+    <div class="body">
+        <h2 style="text-decoration: underline; text-align: center;">DOCTORS APPOINTMENT LETTER</h2>
+       <p class="letter">
+
+        <span style="font-weight: bold;">
+        To: {{fathername}} {{fatherlast}} <br>
+        
+        Address: {{myaddress}} <br>
+        </span>
+        
+        Dear {{fathername}} {{fatherlast}}, <br>
+        
+        We are pleased to inform you that an appointment has been scheduled for you at Korle Bu Teaching Hospital. <br>
+        
+        <span style="font-weight: bold;">
+        Appointment Date: {{appointment_date}}<br>
+    
+        Time: 09:00 AM <br>
+        
+        Doctor: Dr. Boakye Yankwa <br>
+        
+        Department: Aged Care <br>
+        </span>
+        
+        Please arrive at least 15 minutes before your scheduled appointment time and bring any necessary medical documents and identification with you. <br>
+        
+        If you need to reschedule or cancel this appointment, please contact our office at least 24 hours in advance at 030 273 9510 or appointments@korlebu.org. <br>
+        
+        We look forward to providing you with the highest quality of medical care. <br>
+        
+        Sincerely, <br>
+        
+        <div class="stamp">
+            <div class="text">
+                <div class="line1">KORLE BU TEACHING HOSPITAL</div>
+                <div class="dotted-line"></div>
+                <div class="line3">AUTHORISED SIGNATORY</div>
+            </div>
+            <div class="signature" style="margin-left: -120px;">/S.Kwao</div>
+        </div>
+        Philip Kwao <br>
+        
+        Appointment Coordinator <br>
+        
+        Korle Bu Teaching Hospital <br>
+        </span>
+       </p>
+      
+    </div>
+
+    
+</div>
+
+</body>
+</html>

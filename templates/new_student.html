@@ -1,0 +1,1165 @@
+{% extends "base.html" %}
+{% block title %}New Student - WAAP{% endblock %}
+{% block content %}
+
+      
+
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+
+        <!-- Content -->
+        
+          <div class="container-xxl flex-grow-1 container-p-y">
+            
+       
+
+
+<!-- Multi Column with Form Separator -->
+
+<div class="card mb-6">
+  <form class="card-body" action="/new_student" method="post" enctype="multipart/form-data">
+    <div class="row g-6">
+      <div class="col-md-4">
+        <input type="file" id="multicol-username" class="form-control" accept="image/*,.pdf" placeholder="john.doe" name="passport" />
+      </div>
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-primary me-4">Upload Passport</button>
+      </div>
+    </div>
+  </form>
+  
+  {% if details %}
+  <form class="card-body"  method="post" action="/create_student" enctype="multipart/form-data" >
+    <b><h4>1. Personal Info</h4></b>
+    <div class="row g-6">
+      <div class="col-md-4">
+        <label class="form-label" for="multicol-username">FIRST NAME</label>
+        <input type="text" id="multicol-username" class="form-control" placeholder="john.doe" name="firstname" value="{{details.firstname}}"/>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label" for="multicol-username">LAST NAME</label>
+        <input type="text" id="multicol-username" class="form-control" placeholder="john.doe" name="surname" value="{{details.surname}}" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label" for="multicol-birthdate">DATE OF BIRTH</label>
+        <input name="dob" class="form-control" placeholder="dd/mm/yyyy" value="{{ details.dob }}" />
+        
+      </div>
+      
+    </div>
+    
+
+      
+
+      <div class="row g-6">
+
+        <div class="col-md-4">
+          <label class="form-label" for="multicol-country">SEX</label>
+          <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="sex" >
+            <option value="">Select</option>
+            <option value="m" {% if details.sex =="M" %} selected {% endif %}>Male</option>
+            <option value="f" {% if details.sex == "F" %} selected {% endif %}>Female</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label" for="multicol-country">NATIONALITY</label>
+          <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="nationality">
+            <option value="GH" {% if details.nationality == "Ghanaian" %} selected {% endif %}>Ghanaian</option>
+            <option value="NG" {% if details.nationality == "Nigerian" %} selected {% endif %}>Nigerian</option>
+          </select>
+        </div>
+      
+
+      <div class="col-md-4">
+        <div class="form-password-toggle">
+          <label class="form-label" for="multicol-confirm-password">PASSPORT NUMBER</label>
+          <div class="input-group input-group-merge">
+            <input type="text" id="multicol-confirm-password" class="form-control" placeholder="" aria-describedby="multicol-confirm-password2" name="passport_number" value="{{details.passport_number}}"/>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="row g-6">
+      
+      <div class="col-md-4">
+        <div class="form-password-toggle">
+          <label class="form-label" for="multicol-password">SSN</label>
+          <div class="input-group input-group-merge">
+            <input type="text." id="multicol-password" class="form-control" placeholder="" aria-describedby="multicol-password2" name="ssn" value="{{ details.ssn }}" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="form-password-toggle">
+          <label class="form-label" for="multicol-password">CITY</label>
+          <div class="input-group input-group-merge">
+            <input type="text" id="multicol-password" class="form-control" placeholder="Accra" aria-describedby="multicol-password2" name="mycity" value="{{details.place_of_birth}}"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label" for="multicol-country">REGION</label>
+        <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="region">
+          <option value="Greater Accra">Greater Accra</option>
+          <option value="Eastern">Eastern</option>
+          <option value="Western">Western</option>
+          <option value="Northern">Northern</option>
+          <option value="Central">Central</option>
+          <option value="Upper East">Upper East</option>
+          <option value="Upper West">Upper West</option>
+          <option value="Ashanti">Ashanti</option>
+          <option value="Volta">Volta</option>
+          <option value="Ahafo">Ahafo</option>
+          <option value="Bono East">Bono East</option>
+          <option value="North East">North East</option>
+          <option value="Brong Ahafo">Brong Ahafo</option>
+          <option value="North East">North East</option>
+          <option value="Oti">Oti</option>
+          <option value="Savannah">Savannah</option>
+          <option value="Western North">Western North</option>
+        </select>
+      </div>
+      
+      </div>
+
+      
+
+      <div class="row g-6">
+        <div class="col-md-4">
+          <label class="form-label" for="multicol-country">BANK</label>
+          <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="bn">
+            <option value="gcb">GCB</option>
+            <option value="stan">Stanbic</option>
+            <option value="om">OmniBsic</option>
+            <option value="ecobank">Ecobank</option>
+            <option value="adb">ADB</option>
+            <option value="cbg">CBG</option>
+            <option value="access">Access Bank</option>
+            <option value="absa">Absa</option>
+            <option value="nib">NIB</option>
+            <option value="sg">Societale Generale</option>
+            <option value="fidelity">Fidelity</option>
+            <option value="prudential">Prudential Bank</option>
+            <option value="umb">UMB</option>
+            <option value="zen">Zenith Bank</option>
+            <option value="firstatlantic">First Atlantic</option>
+            <option value="firstnational">First National</option>
+            <option value="gt">GT Bank</option>
+            <option value="uba">UBA</option>
+            <option value="stanchart">Standard Chartered</option>
+            <option value="cal">Cal Bank</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <div class="form-password-toggle">
+            <label class="form-label" for="multicol-password">CITY</label>
+            <div class="input-group input-group-merge">
+              <input type="text" id="multicol-password" class="form-control" placeholder="Accra" aria-describedby="multicol-password2" name="branch" value="{{details.place_of_birth}}"/>
+            </div>
+          </div>
+        </div>
+       
+        <div class="col-md-4">
+          <div class="form-password-toggle">
+            <label class="form-label" for="multicol-password">ACCOUNT NUMBER</label>
+            <div class="input-group input-group-merge">
+              <input type="text" class="form-control" placeholder="220014572114" value="{{ details.acc }}" name="acc" />
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="row g-6">
+          <div class="col-md-4">
+            <div class="form-password-toggle">
+              <label class="form-label" for="multicol-password">PHONE NUMBER</label>
+              <div class="input-group input-group-merge">
+                <input type="text" class="form-control" placeholder="0242797114" name="phonen" required />
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label" for="multicol-email">EMAIL</label>
+            <div class="input-group input-group-merge">
+              <input type="text" id="multicol-email" class="form-control" placeholder="fosuah@gmail.com" aria-label="john.doe" aria-describedby="multicol-email2" name="email" required />
+              <span class="input-group-text" id="multicol-email2"></span>
+            </div>
+          </div>
+          
+          
+
+          <div class="col-md-4">
+            <label class="form-label" for="multicol-email">ADDRESS</label>
+            <div class="input-group input-group-merge">
+              <input type="text" class="form-control" placeholder="123 High st." name="address" required />
+            </div>
+          </div>
+          
+          </div>
+      
+    <hr class="my-6 mx-n4" />
+    <h4>2. Previous Study/Work</h4>
+    <div class="row g-6">
+      <div class="col-md-4">
+        <label class="form-label" for="multicol-first-name">NAME OF UNIVERSITY</label>
+        <select id="university" class="select2 form-select" data-allow-clear="true" name="university">
+          <option value="ug">University of Ghana (UG) - Legon, Accra</option>
+          <option value="knust">Kwame Nkrumah University of Science and Technology (KNUST) - Kumasi</option>
+          <option value="ucc">University of Cape Coast (UCC) - Cape Coast</option>
+          <option value="uew">University of Education, Winneba (UEW) - Winneba</option>
+          <option value="uds">University for Development Studies (UDS) - Tamale</option>
+          <option value="umat">University of Mines and Technology (UMaT) - Tarkwa</option>
+          <option value="uhas">University of Health and Allied Sciences (UHAS) - Ho</option>
+          <option value="uenr">University of Energy and Natural Resources (UENR) - Sunyani</option>
+          <option value="upsa">University of Professional Studies, Accra (UPSA) - Accra</option>
+          <option value="gimpa">Ghana Institute of Management and Public Administration (GIMPA) - Accra</option>
+          <option value="uesd">University of Environment and Sustainable Development (UESD) - Somanya</option>
+          <option value="aamusted">Akenten Appiah-Menka University of Skills Training and Entrepreneurial Development (AAMUSTED)- Kumasi</option>
+          <option value="ckt_utas">C. K. Tedam University of Technology and Applied Science (CKT-UTAS) - Navrongo, Upper East Region</option>
+          <option value="sdd_ubids">Simon Diedong Dombo University of Business and Integrated Development Studies - Wa, Upper West Region</option>
+
+      
+          <!-- Technical Universities -->
+          <option value="atu">Accra Technical University (ATU) - Accra</option>
+          <option value="ktu">Kumasi Technical University (KTU) - Kumasi</option>
+          <option value="ttu">Takoradi Technical University (TTU) - Takoradi</option>
+          <option value="cctu">Cape Coast Technical University (CCTU) - Cape Coast</option>
+          <option value="tatu">Tamale Technical University (TaTU) - Tamale</option>
+          <option value="koforidua_tech">Koforidua Technical University - Koforidua</option>
+          <option value="stu">Sunyani Technical University (STU) - Sunyani</option>
+          <option value="htu">Ho Technical University (HTU) - Ho</option>
+          <option value="btu">Bolgatanga Technical University (BTU) - Bolgatanga</option>
+          <option value="wa_tech">Wa Technical University - Wa</option>
+      
+          <!-- Private Universities -->
+          <option value="ashesi">Ashesi University - Berekuso, Eastern Region</option>
+          <option value="central">Central University - Miotso, Greater Accra</option>
+          <option value="valley_view">Valley View University - Oyibi, Greater Accra</option>
+          <option value="presbyterian">Presbyterian University College - Abetifi, Eastern Region</option>
+          <option value="pentecost">Pentecost University - Accra</option>
+          <option value="methodist">Methodist University College Ghana - Accra</option>
+          <option value="baptist">Ghana Baptist University College - Kumasi</option>
+          <option value="csuc">Christian Service University College - Kumasi</option>
+          <option value="aucc">African University College of Communications (AUCC) - Accra</option>
+          <option value="wisconsin">Wisconsin International University College - Accra</option>
+          <option value="lancaster">Lancaster University Ghana - Accra</option>
+          <option value="regent">Regent University College of Science and Technology - Accra</option>
+          <option value="all_nations">All Nations University - Koforidua</option>
+          <option value="catholic">Catholic University College of Ghana - Sunyani</option>
+          <option value="islamic">Islamic University College - Accra</option>
+          <option value="kings">Kings University College - Accra</option>
+          <option value="zenith">Zenith University College - Accra</option>
+          <option value="knutsford">Knutsford University College - Accra</option>
+          <option value="dominion">Dominion University College - Accra</option>
+          <option value="bluecrest">BlueCrest University College - Accra</option>
+          <option value="ghana_christian">Ghana Christian University College - Amrahia, Accra</option>
+          <option value="anglican">Anglican University College of Technology - Nkoranza, Brong-Ahafo</option>
+          <option value="regional_maritime">Regional Maritime University - Accra</option>
+          <option value="ghana_telecom">Ghana Communication Technology University- Accra</option>
+          <option value="unimac">University of Media Arts and Communication(UNIMAC)- Accra</option>
+          <option value="kaaf">KAAF University College - Accra</option>
+          <option value="ait">Accra Institute of Technology - Accra</option>
+          <option value="garden_city">Garden City University College - Kumasi</option>
+          <option value="webster">Webster University Ghana- Accra</option>
+          <option value="datalink">Data Link University College - Tema, Greater Accra</option>
+          <option value="radford">Radford University College - Accra</option>
+          <option value="perez">Perez University College - Winneba, Central Region</option>
+          <option value="mountcrest">MountCrest University College - Larteh, Eastern Region</option>
+          <option value="kessben">Kessben University College - Kuntenase, Ashanti Region</option>
+          <option value="christ_apostolic">Christ Apostolic University College - Kumasi, Ashanti Region</option>
+          <option value="cibt">Catholic Institute of Business and Technology - Accra, Greater Accra</option>
+          <option value="epuc">Evangelical Presbyterian University College - Ho, Volta Region</option>
+          <option value="jayee">Jayee University College - Accra, Greater Accra</option>
+          <option value="spiritan">Spiritan University College - Ejisu, Ashanti Region</option>
+          <option value="marshalls">Marshalls University College - Accra, Greater Accra</option>
+          <option value="west_end">West End University College - Accra, Greater Accra</option>
+          <option value="maranatha">Maranatha University College - Accra, Greater Accra</option>
+      </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label" for="multicol-last-name">PROGRAMME OF STUDY</label>
+        <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="course">
+          <option value="Accounting">Accounting</option>
+          <option value="Science">Science</option>
+          <option value="Arts">Arts</option>
+          <option value="Health">Health</option>
+          <option value="Law">Law</option>
+          <option value="IT">IT</option>
+        </select>
+      </div>
+     
+
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-last-name">START DATE</label>
+        <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="startdate" required >
+          
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+          <option value="2006">2006</option>
+          <option value="2005">2005</option>
+          <option value="2004">2004</option>
+          <option value="2003">2003</option>
+          <option value="2002">2002</option>
+          <option value="2001">2001</option>
+          <option value="2000">2000</option>
+          <option value="1999">1999</option>
+          <option value="1998">1998</option>
+          <option value="1997">1997</option>
+          <option value="1996">1996</option>
+          <option value="1995">1995</option>
+          <option value="1994">1994</option>
+          <option value="1993">1993</option>
+          <option value="1992">1992</option>
+          <option value="1991">1991</option>
+      </select>
+      
+      </div>
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-last-name">END DATE</label>
+        <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="grad_year" required>
+          
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+          <option value="2006">2006</option>
+          <option value="2005">2005</option>
+          <option value="2004">2004</option>
+          <option value="2003">2003</option>
+          <option value="2002">2002</option>
+          <option value="2001">2001</option>
+          <option value="2000">2000</option>
+          <option value="1999">1999</option>
+          <option value="1998">1998</option>
+          <option value="1997">1997</option>
+          <option value="1996">1996</option>
+      </select>
+      </div>
+   </div>
+   <div class="row g-6">
+    <div class="col-md-4">
+      <label class="form-label" for="multicol-first-name">NAME OF EMPLOYER</label>
+      <input type="text" id="multicol-first-name" class="form-control" {% if details.sex == "M" %} value="Ghana Education Service" {% else %} value="Ghana Health Service" {% endif %} name="employer" />
+    </div>
+    <div class="col-md-4">
+      <label class="form-label" for="multicol-last-name">Role</label>
+      <input type="text" id="multicol-last-name" class="form-control" name="role" {% if details.sex == "M" %} value="Pharmacist" {% else %} value="Nurse" {% endif %} />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label" for="multicol-last-name">START DATE</label>
+      <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="empstartdate">
+        
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2013">2013</option>
+        <option value="2012">2012</option>
+        <option value="2011">2011</option>
+        <option value="2010">2010</option>
+        <option value="2009">2009</option>
+        <option value="2008">2008</option>
+        <option value="2007">2007</option>
+        <option value="2006">2006</option>
+        <option value="2005">2005</option>
+        <option value="2004">2004</option>
+        <option value="2003">2003</option>
+        <option value="2002">2002</option>
+        <option value="2001">2001</option>
+        <option value="2000">2000</option>
+        <option value="1999">1999</option>
+        <option value="1998">1998</option>
+        <option value="1997">1997</option>
+        <option value="1996">1996</option>
+        <option value="1995">1995</option>
+        <option value="1994">1994</option>
+        <option value="1993">1993</option>
+        <option value="1992">1992</option>
+        <option value="1991">1991</option>
+    </select>
+    </div>
+    </div>
+    <div class="row g-6">
+      <div class="col-md-4">
+        <label class="form-label" for="multicol-first-name">NAME OF SCHOOL</label>
+        <select name="high_schools" id="high_schools" class="select2 form-select" data-allow-clear="true" name="highschool"  >
+          <option value="Accra Academy">Accra Academy</option>
+          <option value="Ghana-Lebanon Islamic School">Ghana-Lebanon Islamic School (GLIS)</option>
+          <option value="Accra Technical Training Center">Accra Technical Training Center (ATTC)</option>
+          <option value="Accra Girls Senior High School">Accra Girls Senior High School</option>
+          <option value="Accra Grammar School">Accra Grammar School</option>
+          <option value="Accra High School">Accra High School</option>
+          <option value="Achimota School">Achimota School</option>
+          <option value="Alpha Beta Christian College">Alpha Beta Christian College</option>
+          <option value="Al-Rayan International School">Al-Rayan International School (ARIS)</option>
+          <option value="American Curriculum International School">American Curriculum International School</option>
+          <option value="Armed Forces Senior High Technical School">Armed Forces Senior High Technical School</option>
+          <option value="St. Thomas Aquinas Senior High School">St. Thomas Aquinas Senior High School</option>
+          <option value="St. Francis Xavier Senior High School">St. Francis Xavier Senior High School</option>
+          <option value="Apostle Safo School of Arts and Sciences">Apostle Safo School of Arts and Sciences</option>
+          <option value="Christ International Senior High Secondary School">Christ International Senior High Secondary School</option>
+          <option value="Christian Methodist Senior High School">Christian Methodist Senior High School</option>
+          <option value="Corpus Christi Senior High School">Corpus Christi Senior High School</option>
+          <option value="Danquah International School">Danquah International School</option>
+          <option value="Dansoman Senior High School">Dansoman Senior High School</option>
+          <option value="Ebenezer Senior High School">Ebenezer Senior High School</option>
+          <option value="Edge Hill Senior High School">Edge Hill Senior High School</option>
+          <option value="Pank Senior High School">Pank Senior High School</option>
+          <option value="Faith Montessori School and International College">Faith Montessori School and International College</option>
+          <option value="Ghana International School">Ghana International School</option>
+          <option value="Galaxy International School">Galaxy International School</option>
+          <option value="Holy Trinity Senior High School">Holy Trinity Senior High School</option>
+          <option value="Kaneshie Senior High School">Kaneshie Senior High School</option>
+          <option value="Kinbu Senior High and Technical School">Kinbu Senior High and Technical School</option>
+          <option value="La Presbyterian Senior High School">La Presbyterian Senior High School</option>
+          <option value="Labone Senior High School">Labone Senior High School</option>
+          <option value="Liberty American School">Liberty American School (LAS)</option>
+          <option value="Lincoln Community School">Lincoln Community School</option>
+          <option value="Madina Senior High School">Madina Senior High School</option>
+          <option value="Ngleshie Amanfro Senior High School">Ngleshie Amanfro Senior High School</option>
+          <option value="Nungua Senior High School">Nungua Senior High School</option>
+          <option value="O'Reilly Senior High School">O'Reilly Senior High School</option>
+          <option value="Odorgonno Senior High School">Odorgonno Senior High School</option>
+          <option value="Osu Presbyterian Senior High School">Osu Presbyterian Senior High School</option>
+          <option value="Presbyterian Boys' Senior High School">Presbyterian Boys' Senior High School</option>
+          <option value="Reverend John Teye Memorial Institute">Reverend John Teye Memorial Institute</option>
+          <option value="St. Margaret Mary Senior High School">St. Margaret Mary Senior High School</option>
+          <option value="Saint Mary's Senior High School">Saint Mary's Senior High School</option>
+          <option value="Teshie Presby Senior High School">Teshie Presby Senior High School</option>
+          <option value="Wesley Grammar School">Wesley Grammar School</option>
+          <option value="Ada Senior High School">Ada Senior High School</option>
+          <option value="Ada Senior High Technical School">Ada Senior High Technical School</option>
+          <option value="Ghanata Senior High School">Ghanata Senior High School</option>
+          <option value="Ningo Senior High School">Ningo Senior High School</option>
+          <option value="Osudoku Secondary">Osudoku Secondary</option>
+          <option value="Zion Methodist Secondary Technical School">Zion Methodist Secondary Technical School</option>
+          <option value="Ashiaman Senior High School">Ashiaman Senior High School</option>
+          <option value="Chemu Senior High School">Chemu Senior High School</option>
+          <option value="Manhean Senior High School">Manhean Senior High School</option>
+          <option value="Our Lady of Mercy Senior High School">Our Lady of Mercy Senior High School</option>
+          <option value="Presbyterian Senior High School Tema">Presbyterian Senior High School</option>
+          <option value="SOS Hermann Gmeiner International College">SOS Hermann Gmeiner International College</option>
+          <option value="Tema International College">Tema International College</option>
+          <option value="Tema Methodist Day Senior High School">Tema Methodist Day Senior High School</option>
+          <option value="Tema Senior High School">Tema Senior High School</option>
+          <option value="Saint Stephen's International School">Saint Stephen's International School</option>
+          <option value="Witsands International Senior High School">Witsands International Senior High School</option>
+          <option value="GIU International Christian Academy">GIU International Christian Academy</option>
+          <option value="Action Senior High Technical School">Action Senior High Technical School</option>
+          <option value="St. Peter's Mission Schools">St. Peter's Mission Schools</option>
+          <option value="West Africa Senior High School">West Africa Senior High School</option>
+          <option value="Amasaman Senior High School">Amasaman Senior High School</option>
+          <option value="Torkuase Senior High School">Torkuase Senior High School</option>
+          <option value="Wadud Senior High School">Wadud Senior High School</option>
+          <option value="Haavad's Senior High School">Haavad's Senior High School</option>
+          <option value="Crystal Heights International School">Crystal Heights International School</option>
+          <option value="Presbyterian Senior High Technical School">Presbyterian Senior High Technical School</option>
+          <option value="Hark Mount Sinai Senior High School">Hark Mount Sinai Senior High School</option>
+          <option value="Presbyterian Senior High School">Presbyterian Senior High School</option>
+          <option value="Okuapeman Senior High School">Okuapeman Senior High School</option>
+          <option value="Nifa Senior High School">Nifa Senior High School</option>
+          <option value="Asuom Senior High School">Asuom Senior High School</option>
+          <option value="Presbyterian Senior High Technical School, Adukrom">Presbyterian Senior High Technical School, Adukrom</option>
+          <option value="Benkum Senior High School">Benkum Senior High School</option>
+          <option value="Nsawam Senior High School">Nsawam Senior High School</option>
+          <option value="Nsawam Business College">Nsawam Business College</option>
+          <option value="Adeiso Senior High School">Adeiso Senior High School</option>
+          <option value="Presbyterian Senior High Technical School">Presbyterian Senior High Technical School</option>
+          <option value="Aburi Girls' Senior High School">Aburi Girls' Senior High School</option>
+          <option value="Adonten Senior High School">Adonten Senior High School</option>
+          <option value="Presby Senior High Technical School">Presby Senior High Technical School</option>
+          <option value="Saint Martin's Senior High School">Saint Martin's Senior High School</option>
+          <option value="Ayirebi Senior High School">Ayirebi Senior High School</option>
+          <option value="Akosombo International School">Akosombo International School</option>
+          <option value="Adjena Senior High Technical School">Adjena Senior High Technical School</option>
+          <option value="Gafad Afonope Senior High School">Gafad Afonope Senior High School</option>
+          <option value="Akwamuman Senior High School">Akwamuman Senior High School</option>
+          <option value="Apegusu Senior High School">Apegusu Senior High School</option>
+          <option value="Anum Presbyterian Senior High School">Anum Presbyterian Senior High School</option>
+          <option value="Boso Senior High Technical School">Boso Senior High Technical School</option>
+          <option value="Kwabeng Anglican Senior High Technical">Kwabeng Anglican Senior High Technical</option>
+          <option value="Akroso Senior High School">Akroso Senior High School</option>
+          <option value="Oda Senior High School">Oda Senior High School</option>
+          <option value="St. Francis Senior High Technical School">St. Francis Senior High Technical School</option>
+          <option value="Akim Swedru Senior High School">Akim Swedru Senior High School</option>
+          <option value="Akim State College">Akim State College</option>
+          <option value="Ofori Panin Senior High School">Ofori Panin Senior High School</option>
+          <option value="Nero Senior High School">Nero Senior High School</option>
+          <option value="Christian Heritage Senior High Technical School">Christian Heritage Senior High Technical School</option>
+          <option value="Saint Paul Technical School">Saint Paul Technical School</option>
+          <option value="Kibi Senior High Technical School">Kibi Senior High Technical School</option>
+          <option value="Abuakwa State College">Abuakwa State College</option>
+          <option value="Suhum Senior High Technical School">Suhum Senior High Technical School</option>
+          <option value="Asafo Akyem Senior High School">Asafo Akyem Senior High School</option>
+          <option value="Saint Stephen's Senior High Technical School">Saint Stephen's Senior High Technical School</option>
+          <option value="Begoro Presbyterian Senior High School">Begoro Presbyterian Senior High School</option>
+          <option value="Osino Presbyterian Senior High Technical School">Osino Presbyterian Senior High Technical School</option>
+          <option value="Dei Technical Institute">Dei Technical Institute</option>
+          <option value="Manchester Senior High School">Manchester Senior High School</option>
+          <option value="New Nsutam Senior High School">New Nsutam Senior High School</option>
+          <option value="Kade Senior High Technical School">Kade Senior High Technical School</option>
+          <option value="St. Roses Senior High School">St. Roses Senior High School</option>
+          <option value="Kwahu Ridge Senior High Technical School">Kwahu Ridge Senior High Technical School</option>
+          <option value="Mpraeso Senior High School">Mpraeso Senior High School</option>
+          <option value="St. Paul's Senior High School">St. Paul's Senior High School</option>
+          <option value="Abetifi Presbyterian Senior High School">Abetifi Presbyterian Senior High School</option>
+          <option value="Abetifi Senior High Technical School">Abetifi Senior High Technical School</option>
+          <option value="St. Dominic's Senior High School">St. Dominic's Senior High School</option>
+          <option value="Nkwatia Senior High School">Nkwatia Senior High School</option>
+          <option value="St. Peter's Boys Senior High School">St. Peter's Boys Senior High School</option>
+          <option value="Nkawkaw Senior High School">Nkawkaw Senior High School</option>
+          <option value="Somanya Senior High Technical School">Somanya Senior High Technical School</option>
+          <option value="Manya Krobo Senior High School">Manya Krobo Senior High School</option>
+          <option value="Krobo Girls' Senior High School">Krobo Girls' Senior High School</option>
+          <option value="Akro Senior High Technical School">Akro Senior High Technical School</option>
+          <option value="Asesewa Day Senior High School">Asesewa Day Senior High School</option>
+          <option value="Asesewa Agriculture Senior High School">Asesewa Agriculture Senior High School</option>
+          <option value="Akuse Senior High School">Akuse Senior High School</option>
+          <option value="Suhum Senior High School">Suhum Senior High School</option>
+          <option value="Koforidua Senior High School">Koforidua Senior High School</option>
+          <option value="Ghana Senior High School">Ghana Senior High School</option>
+          <option value="Koforidua Senior High Technical School">Koforidua Senior High Technical School</option>
+          <option value="New-Juaben Senior High Commercial School">New-Juaben Senior High Commercial School</option>
+          <option value="Pope John Senior High School">Pope John Senior High School</option>
+          <option value="Universal Girls Senior High School">Universal Girls Senior High School</option>
+          <option value="Pentecost Senior High School">Pentecost Senior High School</option>
+          <option value="Oyoko Methodist Senior High School">Oyoko Methodist Senior High School</option>
+          <option value="Peace Hill Senior High School">Peace Hill Senior High School</option>
+          <option value="SDA Senior High School">SDA Senior High School</option>
+          <option value="Asamankese Senior High School">Asamankese Senior High School</option>
+          <option value="St. Thomas Senior High School">St. Thomas Senior High School</option>
+          <option value="Lydia Memorial School">Lydia Memorial School</option>
+          <option value="Yilo Krobo Senior High School">Yilo Krobo Senior High School</option>
+          <option value="Klo Agogo Senior High School">Klo Agogo Senior High School</option>
+          <option value="Koforidua Technical Institute">Koforidua Technical Institute</option>
+          <option value="Asesewa Senior High School">Asesewa Senior High School</option>
+          <option value="Methodist Girls' High School">Methodist Girls' High School</option>
+          <option value="Abakrampa Senior High School">Abakrampa Senior High School</option>
+          <option value="Asuansi Technical Institute">Asuansi Technical Institute</option>
+          <option value="Aburaman Senior High School">Aburaman Senior High School</option>
+          <option value="Andam Senior High & Technical School">Andam Senior High & Technical School</option>
+          <option value="Kwanyako Senior High School">Kwanyako Senior High School</option>
+          <option value="Nsaba Presbyterian Senior High School">Nsaba Presbyterian Senior High School</option>
+          <option value="Nyakrom Day Senior High School">Nyakrom Day Senior High School</option>
+          <option value="Pank Senior High School">Pank Senior High School</option>
+          <option value="Siddiq Senior High School">Siddiq Senior High School</option>
+          <option value="Naana Khadijah Islamic Girls School">Naana Khadijah Islamic Girls School</option>
+          <option value="Swedru School of Business">Swedru School of Business</option>
+          <option value="Swedru Senior High School">Swedru Senior High School</option>
+          <option value="Besease Comm. Senior High School">Besease Comm. Senior High School</option>
+          <option value="Enyan Denkyira Senior High School">Enyan Denkyira Senior High School</option>
+          <option value="Mando Senior High Tech School">Mando Senior High Tech School</option>
+          <option value="Breman Asikuma Senior High School">Breman Asikuma Senior High School</option>
+          <option value="Odoben Senior High School">Odoben Senior High School</option>
+          <option value="Adankwaman Comm. Senior High School">Adankwaman Comm. Senior High School</option>
+          <option value="Assin Manso Senior High School">Assin Manso Senior High School</option>
+          <option value="Assin North Senior High School">Assin North Senior High School</option>
+          <option value="Assin Nsuta Senior High School">Assin Nsuta Senior High School</option>
+          <option value="Nyankumase Ahenkro Senior High School">Nyankumase Ahenkro Senior High School</option>
+          <option value="Obiri Yeboah Senior High School">Obiri Yeboah Senior High School</option>
+          <option value="Awutu-Winton Senior High School">Awutu-Winton Senior High School</option>
+          <option value="Obrakyere Senior High School">Obrakyere Senior High School</option>
+          <option value="Senya Senior High School">Senya Senior High School</option>
+          <option value="Winneba Senior High School">Winneba Senior High School</option>
+          <option value="Aggrey Memorial A.M.E Zion Senior High School">Aggrey Memorial A.M.E Zion Senior High School</option>
+          <option value="Academy of Christ the King">Academy of Christ the King</option>
+          <option value="Adisadel College">Adisadel College</option>
+          <option value="Cape Coast Technical Institute">Cape Coast Technical Institute</option>
+          <option value="Effutu Senior High School">Effutu Senior High School</option>
+          <option value="Ghana National College">Ghana National College</option>
+          <option value="Commercial Service Institute">Commercial Service Institute</option>
+          <option value="Holy Child High School">Holy Child High School</option>
+          <option value="Mfantsipim School">Mfantsipim School</option>
+          <option value="Oguaa Senior High School">Oguaa Senior High School</option>
+          <option value="University Practice Senior High School">University Practice Senior High School</option>
+          <option value="Wesley Girls' High School">Wesley Girls' High School</option>
+          <option value="Saint Augustine's College">Saint Augustine's College</option>
+          <option value="Apam Senior High School">Apam Senior High School</option>
+          <option value="Gomoa Senior High School">Gomoa Senior High School</option>
+          <option value="Mozano Comm. Senior High School">Mozano Comm. Senior High School</option>
+          <option value="Mozano Experimental Senior High School">Mozano Experimental Senior High School</option>
+          <option value="Potsin T.I. Ahmadiya Senior High School">Potsin T.I. Ahmadiya Senior High School</option>
+          <option value="Gomoa Gyaman Senior High School">Gomoa Gyaman Senior High School</option>
+          <option value="Edinaman Day Senior High School">Edinaman Day Senior High School</option>
+          <option value="Eguafo-Abrem Senior High School">Eguafo-Abrem Senior High School</option>
+          <option value="Komenda Senior High School">Komenda Senior High School</option>
+          <option value="Ekumfi T. I. Ahmadiiyya Senior High School">Ekumfi T. I. Ahmadiiyya Senior High School</option>
+          <option value="Kwegyir Aggrey Senior High School">Kwegyir Aggrey Senior High School</option>
+          <option value="Mankesim Senior High School">Mankesim Senior High School</option>
+          <option value="Mfantsiman Girls Senior High School">Mfantsiman Girls Senior High School</option>
+          <option value="Saltpond Methodist High School">Saltpond Methodist High School</option>
+          <option value="Forever Young Senior High School">Forever Young Senior High School</option>
+          <option value="Jukwa Senior High School">Jukwa Senior High School</option>
+          <option value="Twifo Praso Senior High School">Twifo Praso Senior High School</option>
+          <option value="Boa-Amponsem Senior High School">Boa-Amponsem Senior High School</option>
+          <option value="Diaso Senior High School">Diaso Senior High School</option>
+          <option value="Dunkwa Senior High School">Dunkwa Senior High School</option>
+          <option value="Oxford Senior High School">Oxford Senior High School</option>
+          <option value="St. Andrew's College">St. Andrew's College</option>
+          <option value="Akrofuom Senior High School">Akrofuom Senior High School</option>
+          <option value="Asare Bediako Senior High School">Asare Bediako Senior High School</option>
+          <option value="Bodwesango Senior High School">Bodwesango Senior High School</option>
+          <option value="Dompoase Senior High School">Dompoase Senior High School</option>
+          <option value="New Edubiase Senior High School">New Edubiase Senior High School</option>
+          <option value="T.I. Ahmadiyya Senior High School">T.I. Ahmadiyya Senior High School</option>
+          <option value="Christ the King Catholic Senior High School">Christ the King Catholic Senior High School</option>
+          <option value="Father Augustine Murphy Commercial School">Father Augustine Murphy Commercial School</option>
+          <option value="Obuasi Senior High Technical School">Obuasi Senior High Technical School</option>
+          <option value="St. Margaret Senior High School">St. Margaret Senior High School</option>
+          <option value="Just Love Senior High School">Just Love Senior High School</option>
+          <option value="Adansi Technical Institute">Adansi Technical Institute</option>
+          <option value="Adu Gyamfi Senior High School">Adu Gyamfi Senior High School</option>
+          <option value="Agona Senior High School">Agona Senior High School</option>
+          <option value="Konadu Yiadom Senior High School">Konadu Yiadom Senior High School</option>
+          <option value="Okomfo Anokye Senior High School">Okomfo Anokye Senior High School</option>
+          <option value="S.D.A. Senior High School">S.D.A. Senior High School</option>
+          <option value="Osei Tutu II College">Osei Tutu II College</option>
+          <option value="Maabang Senior High School">Maabang Senior High School</option>
+          <option value="Tepa Senior High School">Tepa Senior High School</option>
+          <option value="Mankranso Senior High School">Mankranso Senior High School</option>
+          <option value="Jacobu Senior High School">Jacobu Senior High School</option>
+          <option value="Oppong Memorial Senior High School">Oppong Memorial Senior High School</option>
+          <option value="Saint Joseph Senior High School">Saint Joseph Senior High School</option>
+          <option value="Wesley High School">Wesley High School</option>
+          <option value="SDA Senior High School">SDA Senior High School</option>
+          <option value="Danyaseman Catholic Senior High School">Danyaseman Catholic Senior High School</option>
+          <option value="Esase Bontefufuo Senior High School">Esase Bontefufuo Senior High School</option>
+          <option value="Manso-Adubia Senior High School">Manso-Adubia Senior High School</option>
+          <option value="Mansoman Senior High School">Mansoman Senior High School</option>
+          <option value="Agogo State College">Agogo State College</option>
+          <option value="Konongo Odumase Senior High School">Konongo Odumase Senior High School</option>
+          <option value="Owerriman Senior High School">Owerriman Senior High School</option>
+          <option value="Agogo Collins Senior High School">Agogo Collins Senior High School</option>
+          <option value="Bompata Presby Senior High School">Bompata Presby Senior High School</option>
+          <option value="Juaso Senior High School">Juaso Senior High School</option>
+          <option value="Ofoase Senior High School">Ofoase Senior High School</option>
+          <option value="Jubile Senior High School">Jubile Senior High School</option>
+          <option value="Nkawie Senior High Technical School">Nkawie Senior High Technical School</option>
+          <option value="Mpasatia Senior High School">Mpasatia Senior High School</option>
+          <option value="Nyinahin Catholic Senior High School">Nyinahin Catholic Senior High School</option>
+          <option value="Osei Tutu Senior High School">Osei Tutu Senior High School</option>
+          <option value="Toase Senior High School">Toase Senior High School</option>
+          <option value="Afia Kobi Ampem Girls Senior High School">Afia Kobi Ampem Girls Senior High School</option>
+          <option value="Beposo Senior High School">Beposo Senior High School</option>
+          <option value="Jachie Pramso Senior High School">Jachie Pramso Senior High School</option>
+          <option value="St. Margaret High School">St. Margaret High School</option>
+          <option value="Ejuraman Senior High School">Ejuraman Senior High School</option>
+          <option value="Sekyedumase Senior High School">Sekyedumase Senior High School</option>
+          <option value="Adventist Senior High School">Adventist Senior High School</option>
+          <option value="Ghana Armed Forces Senior High School">Ghana Armed Forces Senior High School</option>
+          <option value="Anglican Senior High School">Anglican Senior High School</option>
+          <option value="Pentecost Senior High School">Pentecost Senior High School</option>
+          <option value="Roman Girls Nursing Training School">Roman Girls Nursing Training School</option>
+          <option value="Asanteman Senior High School">Asanteman Senior High School</option>
+          <option value="Ashanti Kingdom Senior High School">Ashanti Kingdom Senior High School</option>
+          <option value="Kumasi Academy">Kumasi Academy</option>
+          <option value="Kumasi Girls Senior High School">Kumasi Girls Senior High School</option>
+          <option value="Kumasi High School">Kumasi High School</option>
+          <option value="Kumasi Senior High Technical School">Kumasi Senior High Technical School</option>
+          <option value="Mmofraturo Girls Secondary School">Mmofraturo Girls Secondary School</option>
+          <option value="Opoku Ware School">Opoku Ware School</option>
+          <option value="St. Louis Senior High School">St. Louis Senior High School</option>
+          <option value="Osei Kyeretwie Senior High School">Osei Kyeretwie Senior High School</option>
+          <option value="Prempeh College">Prempeh College</option>
+          <option value="Angel Educational Complex">Angel Educational Complex</option>
+          <option value="T.I. Ahmadiyya Senior High School">T.I. Ahmadiyya Senior High School</option>
+          <option value="KNUST Senior High School">KNUST Senior High School</option>
+          <option value="Ideal College">Ideal College</option>
+          <option value="Serwaa Nyarko Senior High School">Serwaa Nyarko Senior High School</option>
+          <option value="Islamic Senior High School">Islamic Senior High School</option>
+          <option value="Adanwomase Senior High School">Adanwomase Senior High School</option>
+          <option value="Aduman Senior High School">Aduman Senior High School</option>
+          <option value="Antoa Senior High School">Antoa Senior High School</option>
+          <option value="Gyeama Penson Senior High School">Gyeama Penson Senior High School</option>
+          <option value="Kofi Adjei Senior High School">Kofi Adjei Senior High School</option>
+          <option value="Simms Senior High School">Simms Senior High School</option>
+          <option value="Namong Senior High School">Namong Senior High School</option>
+          <option value="St. Jerome Senior High School">St. Jerome Senior High School</option>
+          <option value="Dwamena Akenten Senior High School">Dwamena Akenten Senior High School</option>
+          <option value="Akumadan Senior High School">Akumadan Senior High School</option>
+          <option value="Dadease Agriculture Senior High School">Dadease Agriculture Senior High School</option>
+          <option value="Bankoman Senior High School">Bankoman Senior High School</option>
+          <option value="Tweneboa Kodua Senior High School">Tweneboa Kodua Senior High School</option>
+          <option value="Bodomase Senior High School">Bodomase Senior High School</option>
+          <option value="T.I. Ahmadiyya Girls Senior High School">T.I. Ahmadiyya Girls Senior High School</option>
+          <option value="Effiduase Senior High School">Effiduase Senior High School</option>
+          <option value="Krobea Asante Vocational/Technical Institute">Krobea Asante Vocational/Technical Institute</option>
+          <option value="Amaniampong Senior High School">Amaniampong Senior High School</option>
+          <option value="Nsutaman Catholic Senior High School">Nsutaman Catholic Senior High School</option>
+          <option value="St. Monica's Senior High School">St. Monica's Senior High School</option>
+          <option value="Ejisuman Senior High School">Ejisuman Senior High School</option>
+          <option value="Juaben Senior High School">Juaben Senior High School</option>
+          <option value="Ejisu Senior High Technical School">Ejisu Senior High Technical School</option>
+          <option value="Bonwire Senior High Technical School">Bonwire Senior High Technical School</option>
+          <option value="Achinakrom Senior High School">Achinakrom Senior High School</option>
+          <option value="Church of Christ Senior High School">Church of Christ Senior High School</option>
+          <option value="Ahafoman Senior High School">Ahafoman Senior High School</option>
+          <option value="Kukuom Agriculture Senior High School">Kukuom Agriculture Senior High School</option>
+          <option value="Mim Senior High School">Mim Senior High School</option>
+          <option value="Acherensua Senior High School">Acherensua Senior High School</option>
+          <option value="Gyamfi Kumanin Senior High School">Gyamfi Kumanin Senior High School</option>
+          <option value="Hwidiem Senior High School">Hwidiem Senior High School</option>
+          <option value="OLA Girls Senior High School">OLA Girls Senior High School</option>
+          <option value="Atebubu Senior High School">Atebubu Senior High School</option>
+          <option value="Amanten Senior High School">Amanten Senior High School</option>
+          <option value="Prang Senior High School">Prang Senior High School</option>
+          <option value="Yeji Senior High School">Yeji Senior High School</option>
+          <option value="Berekum Senior High School">Berekum Senior High School</option>
+          <option value="Jinjini Senior High School">Jinjini Senior High School</option>
+          <option value="Methodist Senior High School">Methodist Senior High School</option>
+          <option value="Presbyterian Senior High School">Presbyterian Senior High School</option>
+          <option value="Dormaa Senior High School">Dormaa Senior High School</option>
+          <option value="Mansen Comm. Day Senior High School">Mansen Comm. Day Senior High School</option>
+          <option value="Nkrankwanta Comm. Senior High School">Nkrankwanta Comm. Senior High School</option>
+          <option value="Wamanafo Comm. Day Senior High School">Wamanafo Comm. Day Senior High School</option>
+          <option value="Drobo Senior High School">Drobo Senior High School</option>
+          <option value="Goka Senior High School">Goka Senior High School</option>
+          <option value="Nafana Senior High School">Nafana Senior High School</option>
+          <option value="Our Lady of Providence Senior High School">Our Lady of Providence Senior High School</option>
+          <option value="Sumaman Senior High School">Sumaman Senior High School</option>
+          <option value="Jema Senior High School">Jema Senior High School</option>
+          <option value="Kintampo Senior High School">Kintampo Senior High School</option>
+          <option value="Busunya Senior High School">Busunya Senior High School</option>
+          <option value="Nkoranza Senior High School">Nkoranza Senior High School</option>
+          <option value="Yefiriman Senior High School">Yefiriman Senior High School</option>
+          <option value="Kajaji Senior High School">Kajaji Senior High School</option>
+          <option value="Kwame Danso Senior High School">Kwame Danso Senior High School</option>
+          <option value="Lawrence Demonstration Senior High School">Lawrence Demonstration Senior High School</option>
+          <option value="Chiraa Senior High School">Chiraa Senior High School</option>
+          <option value="Notre Dame High School">Notre Dame High School</option>
+          <option value="Odomaseman Day Senior High School">Odomaseman Day Senior High School</option>
+          <option value="Sunyani Senior High School">Sunyani Senior High School</option>
+          <option value="Sacred Heart Senior High School">Sacred Heart Senior High School</option>
+          <option value="St. James Seminary Senior High School">St. James Seminary Senior High School</option>
+          <option value="Twene Amanfo Senior High School">Twene Amanfo Senior High School</option>
+          <option value="Abesim Senior High School">Abesim Senior High School</option>
+          <option value="Sunyani Business Senior High School">Sunyani Business Senior High School</option>
+          <option value="Bechem Presbyterian Senior High School">Bechem Presbyterian Senior High School</option>
+          <option value="Boakye Tromo Senior High School">Boakye Tromo Senior High School</option>
+          <option value="Bomaa Comm. Senior High School">Bomaa Comm. Senior High School</option>
+          <option value="Duayaw Nkwanta Senior High School">Duayaw Nkwanta Senior High School</option>
+          <option value="Techimantia Presbyterian Senior High School">Techimantia Presbyterian Senior High School</option>
+          <option value="Yamfo Anglican Senior High School">Yamfo Anglican Senior High School</option>
+          <option value="Serwaa Kesse Girls' Senior High School">Serwaa Kesse Girls' Senior High School</option>
+          <option value="Asuogyaman Senior High School">Asuogyaman Senior High School</option>
+          <option value="Buoyem Senior High School">Buoyem Senior High School</option>
+          <option value="Guakro Effa Senior High School">Guakro Effa Senior High School</option>
+          <option value="Techiman Senior High School">Techiman Senior High School</option>
+          <option value="Tuobodom Senior High School">Tuobodom Senior High School</option>
+          <option value="Wenchi Methodist Senior High School">Wenchi Methodist Senior High School</option>
+          <option value="Badu Senior High School">Badu Senior High School</option>
+          <option value="Koase Senior High School">Koase Senior High School</option>
+          <option value="Nkoranman Senior High School">Nkoranman Senior High School</option>
+          <option value="Menji Senior High School">Menji Senior High School</option>
+          <option value="Salaga Senior High School">Salaga Senior High School</option>
+          <option value="Salaga T.I Amadiyya Senior High School">Salaga T.I Amadiyya Senior High School</option>
+          <option value="Nalerigu Secondary School">Nalerigu Secondary School</option>
+          <option value="Nalerigu Youth Leadership Vocational Training Centre">Nalerigu Youth Leadership Vocational Training Centre</option>
+          <option value="Gambaga Girls Senior High School">Gambaga Girls Senior High School</option>
+          <option value="Walewale Senior High Technical School (WALSECTEC)">Walewale Senior High Technical School (WALSECTEC)</option>
+          <option value="Walewale Vocational/Technical Institute (WALVOC)">Walewale Vocational/Technical Institute (WALVOC)</option>
+          <option value="Excellence Senior High">Excellence Senior High</option>
+          <option value="Marakaz Islamic Senior High">Marakaz Islamic Senior High</option>
+          <option value="Glorious Step Senior High">Glorious Step Senior High</option>
+          <option value="Saboba E. P Senior High School (EPSEC)">Saboba E. P Senior High School (EPSEC)</option>
+          <option value="St. Joseph's Senior High Technical School (SABTECH)">St. Joseph's Senior High Technical School (SABTECH)</option>
+          <option value="Savelugu Senior High School">Savelugu Senior High School</option>
+          <option value="Pong-Tamale Senior High School">Pong-Tamale Senior High School</option>
+          <option value="Business Senior High School">Business Senior High School</option>
+          <option value="Ghana Senior High School (GHANASCO)">Ghana Senior High School (GHANASCO)</option>
+          <option value="Northern School of Business">Northern School of Business</option>
+          <option value="St. Charles Senior High School">St. Charles Senior High School</option>
+          <option value="Tamale Girls Senior High School">Tamale Girls Senior High School</option>
+          <option value="Tamale Senior High School (Tamasco)">Tamale Senior High School (Tamasco)</option>
+          <option value="Tamale Islamic Science Senior High School">Tamale Islamic Science Senior High School</option>
+          <option value="Anbariya Senior High School (Anbariya)">Anbariya Senior High School (Anbariya)</option>
+          <option value="Kalpohin Senior High School">Kalpohin Senior High School</option>
+          <option value="Vitting Senior High School Technical">Vitting Senior High School Technical</option>
+          <option value="Nuriya Islamic Senior High School">Nuriya Islamic Senior High School</option>
+          <option value="Dabokpa Technical Institute">Dabokpa Technical Institute</option>
+          <option value="Presbyterian Senior High School">Presbyterian Senior High School</option>
+          <option value="Tolon Senior High School">Tolon Senior High School</option>
+          <option value="Kasuliyili Senior High School">Kasuliyili Senior High School</option>
+          <option value="Kumbungu Senior High School">Kumbungu Senior High School</option>
+          <option value="Damongo Senior High School">Damongo Senior High School</option>
+          <option value="Bole Senior High School">Bole Senior High School</option>
+          <option value="Ndewura Jakpa Senior High Technical School">Ndewura Jakpa Senior High Technical School</option>
+          <option value="Yendi Senior High School">Yendi Senior High School</option>
+          <option value="Dagbon State Senior High Technical School">Dagbon State Senior High Technical School</option>
+          <option value="Zabzugu Senior High School">Zabzugu Senior High School</option>
+          <option value="Tatale EP Senior High Technical School">Tatale EP Senior High Technical School</option>
+          <option value="Business College International">Business College International</option>
+          <option value="Baglo Senior High School">Baglo Senior High School</option>
+          <option value="Bueman Senior High School">Bueman Senior High School</option>
+          <option value="Nkonya Senior High School">Nkonya Senior High School</option>
+          <option value="Nattan Senior High School">Nattan Senior High School</option>
+          <option value="Okadjakrom Senior High School">Okadjakrom Senior High School</option>
+          <option value="Worawora Secondary">Worawora Secondary</option>
+          <option value="Ahamansu Islamic Senior High School">Ahamansu Islamic Senior High School</option>
+          <option value="Dodi-Papase Comm. Senior High School">Dodi-Papase Comm. Senior High School</option>
+          <option value="Kadjebi-Asato Senior High School">Kadjebi-Asato Senior High School</option>
+          <option value="Asukawkaw Senior High School">Asukawkaw Senior High School</option>
+          <option value="Kete-Krachi Senior High School">Kete-Krachi Senior High School</option>
+          <option value="Kpassa Senior High School">Kpassa Senior High School</option>
+          <option value="Krachi Senior High School">Krachi Senior High School</option>
+          <option value="Oti Senior High School">Oti Senior High School</option>
+          <option value="Ntruboman Senior High School">Ntruboman Senior High School</option>
+          <option value="Nkwanta Senior High School">Nkwanta Senior High School</option>
+          <option value="Bawku Senior High School">Bawku Senior High School</option>
+          <option value="Bawku Senior High/Technical School">Bawku Senior High/Technical School</option>
+          <option value="Bawku Technical Institute">Bawku Technical Institute</option>
+          <option value="Zebilla Senior High School">Zebilla Senior High School</option>
+          <option value="Bolgatanga Girls Senior High School (BOGISS)">Bolgatanga Girls Senior High School (BOGISS)</option>
+          <option value="Bolgatanga Senior High School">Bolgatanga Senior High School</option>
+          <option value="Gowrie Senior High Technical School">Gowrie Senior High Technical School</option>
+          <option value="Zuarungu Senior High School (ZUSS)">Zuarungu Senior High School (ZUSS)</option>
+          <option value="Zamse Senior High Technical School (ZAMSTECH)">Zamse Senior High Technical School (ZAMSTECH)</option>
+          <option value="Bolgatanga Technical Institute (BOTECH)">Bolgatanga Technical Institute (BOTECH)</option>
+          <option value="Bolgatanga Technical College">Bolgatanga Technical College</option>
+          <option value="Ho School of Business">Ho School of Business</option>
+          <option value="Bongo Senior High School">Bongo Senior High School</option>
+          <option value="Sandema Senior High Technical School">Sandema Senior High Technical School</option>
+          <option value="Sandema Senior High School">Sandema Senior High School</option>
+          <option value="Fumbisi Senior High School">Fumbisi Senior High School</option>
+          <option value="Garu/Tempane Senior High School">Garu/Tempane Senior High School</option>
+          <option value="Navrongo Senior High School">Navrongo Senior High School</option>
+          <option value="Notre Dame Minor Seminary">Notre Dame Minor Seminary</option>
+          <option value="Chiana Senior High School">Chiana Senior High School</option>
+          <option value="Kongo Senior High School">Kongo Senior High School</option>
+          <option value="Tongo Senior High School">Tongo Senior High School</option>
+          <option value="Wa Senior High School">Wa Senior High School</option>
+          <option value="Tumu Senior High Technical School">Tumu Senior High Technical School</option>
+          <option value="Wa Senior High Technical School">Wa Senior High Technical School</option>
+          <option value="St Francis Xavier Senior High School">St Francis Xavier Senior High School</option>
+          <option value="Lassia-Tuolu Senior High School">Lassia-Tuolu Senior High School</option>
+          <option value="Pinna Senior High School">Pinna Senior High School</option>
+          <option value="Wa Islamic Senior High School">Wa Islamic Senior High School</option>
+          <option value="Ahmadiyya Senior High School">Ahmadiyya Senior High School</option>
+          <option value="St. Francis Girls' Senior High School">St. Francis Girls' Senior High School</option>
+          <option value="Ullo Senior High School">Ullo Senior High School</option>
+          <option value="Jirapa Senior High School">Jirapa Senior High School</option>
+          <option value="Kanton Senior High School">Kanton Senior High School</option>
+          <option value="Lawra Senior High School">Lawra Senior High School</option>
+          <option value="Eremon Senior High School">Eremon Senior High School</option>
+          <option value="Nandom Senior High School">Nandom Senior High School</option>
+          <option value="Ko Senior High School">Ko Senior High School</option>
+          <option value="Holy Family Senior High School">Holy Family Senior High School</option>
+          <option value="Brifor Senior High School">Brifor Senior High School</option>
+          <option value="Queen Of Peace Senior High School">Queen Of Peace Senior High School</option>
+          <option value="Adaklu Comm. Senior High School">Adaklu Comm. Senior High School</option>
+          <option value="Adaklu Senior High School">Adaklu Senior High School</option>
+          <option value="Ziope Senior High School">Ziope Senior High School</option>
+          <option value="Ave Senior High School">Ave Senior High School</option>
+          <option value="Akatsi Senior High School">Akatsi Senior High School</option>
+          <option value="Wovenu Senior Senior High School">Wovenu Senior Senior High School</option>
+          <option value="Adidome Senior High School">Adidome Senior High School</option>
+          <option value="Abutia Senior High School">Abutia Senior High School</option>
+          <option value="Agotime Senior High School">Agotime Senior High School</option>
+          <option value="Akome Senior High School">Akome Senior High School</option>
+          <option value="Avatime Senior High School">Avatime Senior High School</option>
+          <option value="Awudome Senior High School (AWUSCO)">Awudome Senior High School (AWUSCO)</option>
+          <option value="Dzolo Senior High School">Dzolo Senior High School</option>
+          <option value="E.P.Church Mawuko Girls Senior High School">E.P.Church Mawuko Girls Senior High School</option>
+          <option value="Ideal College">Ideal College</option>
+          <option value="Kpedze Senior High School">Kpedze Senior High School</option>
+          <option value="Mawuli School">Mawuli School</option>
+          <option value="Baglo Senior High School">Baglo Senior High School</option>
+          <option value="OLA Girls Senior High School">OLA Girls Senior High School</option>
+          <option value="Saint Prosper's College">Saint Prosper's College</option>
+          <option value="Sedzordzi Shaker Anthony's School Complex">Sedzordzi Shaker Anthony's School Complex</option>
+          <option value="Star Senior High School">Star Senior High School</option>
+          <option value="Taviefe Comm. Senior High School">Taviefe Comm. Senior High School</option>
+          <option value="Tsito Senior High School">Tsito Senior High School</option>
+          <option value="Wallahs Academy Senior High School">Wallahs Academy Senior High School</option>
+          <option value="Afadjato Senior High School">Afadjato Senior High School</option>
+          <option value="Agate Comm. Senior High School">Agate Comm. Senior High School</option>
+          <option value="Akpafu Senior High School">Akpafu Senior High School</option>
+          <option value="Alavanyo Senior High School">Alavanyo Senior High School</option>
+          <option value="E. P. Senior High School">E. P. Senior High School</option>
+          <option value="Jim Bourton Memorial Agriculture Senior High School">Jim Bourton Memorial Agriculture Senior High School</option>
+          <option value="Leklebi Senior High School">Leklebi Senior High School</option>
+          <option value="Likpe Senior High School">Likpe Senior High School</option>
+          <option value="St. Mary's Seminary Senior High School">St. Mary's Seminary Senior High School</option>
+          <option value="Ve Comm. Senior High School">Ve Comm. Senior High School</option>
+          <option value="Abor Senior High School">Abor Senior High School</option>
+          <option value="Anyako Senior High School">Anyako Senior High School</option>
+          <option value="Anlo Technical Institute (ANTECH)">Anlo Technical Institute (ANTECH)</option>
+          <option value="Anlo Afiadenyigba Senior High School">Anlo Afiadenyigba Senior High School</option>
+          <option value="Anlo Awomefia Senior Senior High School">Anlo Awomefia Senior Senior High School</option>
+          <option value="Atiavi Senior High School">Atiavi Senior High School</option>
+          <option value="Keta Business College">Keta Business College</option>
+          <option value="Keta Senior High Tech.School">Keta Senior High Tech.School</option>
+          <option value="Zion College (ZICO)">Zion College (ZICO)</option>
+          <option value="Anlo Senior High School (ANSECO)">Anlo Senior High School (ANSECO)</option>
+          <option value="Dzodze Penyi Senior High School">Dzodze Penyi Senior High School</option>
+          <option value="St. Paul's Senior High School">St. Paul's Senior High School</option>
+          <option value="Some Senior High School">Some Senior High School</option>
+          <option value="Klikor Senior High School">Klikor Senior High School</option>
+          <option value="Three Town Senior High School">Three Town Senior High School</option>
+          <option value="Anfoega Senior High School">Anfoega Senior High School</option>
+          <option value="Bishop Herman College">Bishop Herman College</option>
+          <option value="Kpando Senior High School">Kpando Senior High School</option>
+          <option value="Vakpo Senior High School">Vakpo Senior High School</option>
+          <option value="Vakpo Senior High Technical School">Vakpo Senior High Technical School</option>
+          <option value="Have Senior High School">Have Senior High School</option>
+          <option value="Tongor Senior High Technnical School">Tongor Senior High Technnical School</option>
+          <option value="Kpeve Senior High School">Kpeve Senior High School</option>
+          <option value="Peki Senior High School">Peki Senior High School</option>
+          <option value="Peki Senior High Technical School">Peki Senior High Technical School</option>
+          <option value="Aveyime Battor Senior High School">Aveyime Battor Senior High School</option>
+          <option value="Dofor Comm. Agricultural Senior High School">Dofor Comm. Agricultural Senior High School</option>
+          <option value="St. Kizito Senior High School">St. Kizito Senior High School</option>
+          <option value="Mafi Kumase Senior High Technical School">Mafi Kumase Senior High Technical School</option>
+          <option value="Mafi-Kumasi Comm. Senior High School">Mafi-Kumasi Comm. Senior High School</option>
+          <option value="Dabala Senior High School">Dabala Senior High School</option>
+          <option value="Sogakope Senior High School (SOGASCO)">Sogakope Senior High School (SOGASCO)</option>
+          <option value="Comboni Technical School (COMBOTECH)">Comboni Technical School (COMBOTECH)</option>
+          <option value="Tarkwa Senior High School">Tarkwa Senior High School</option>
+          <option value="Fiaseman Senior High School">Fiaseman Senior High School</option>
+          <option value="Asankrangwa Senior High School (ASANC0)">Asankrangwa Senior High School (ASANC0)</option>
+          <option value="Asankrangwa Senior High Technical School (ASECTECH)">Asankrangwa Senior High Technical School (ASECTECH)</option>
+          <option value="St. Augustine's Senior High School">St. Augustine's Senior High School</option>
+          <option value="Amenfiman Senior High School">Amenfiman Senior High School</option>
+          <option value="Huni Valley Senior High School">Huni Valley Senior High School</option>
+          <option value="Genesis Senior High School">Genesis Senior High School</option>
+          <option value="Shama Senior High School">Shama Senior High School</option>
+          <option value="Half Assini Senior High School">Half Assini Senior High School</option>
+          <option value="Ming Daw Senior High School (MINGDAWSCO)">Ming Daw Senior High School (MINGDAWSCO)</option>
+          <option value="Annor Agyei Senior High School">Annor Agyei Senior High School</option>
+          <option value="Esiama Senior High Technical School">Esiama Senior High Technical School</option>
+          <option value="Bonzo Kaku Senior High School">Bonzo Kaku Senior High School</option>
+          <option value="Kikam Technical Institute">Kikam Technical Institute</option>
+          <option value="Nkroful Agricultural Senior High School">Nkroful Agricultural Senior High School</option>
+          <option value="Uthman Bin Affan Islamic Senior High School">Uthman Bin Affan Islamic Senior High School</option>
+          <option value="Axim Girls Senior High School">Axim Girls Senior High School</option>
+          <option value="Nsein Senior High School">Nsein Senior High School</option>
+          <option value="Baidoo Bonsoe Senior High Technical School">Baidoo Bonsoe Senior High Technical School</option>
+          <option value="St. Mary's Boys' School">St. Mary's Boys' School</option>
+          <option value="Mpohor Senior High School">Mpohor Senior High School</option>
+          <option value="Daboase Senior High Technical School">Daboase Senior High Technical School</option>
+          <option value="Ahantaman Senior High School">Ahantaman Senior High School</option>
+          <option value="Adiembra Senior High School">Adiembra Senior High School</option>
+          <option value="Archbishop Porter Girls Senior High School">Archbishop Porter Girls Senior High School</option>
+          <option value="Fijai Senior High School">Fijai Senior High School</option>
+          <option value="Ghana Senior High Technical School">Ghana Senior High Technical School</option>
+          <option value="St John's Senior High School">St John's Senior High School</option>
+          <option value="Sekondi College (SEKCO)">Sekondi College (SEKCO)</option>
+          <option value="Takoradi Senior High School (TADISCO)">Takoradi Senior High School (TADISCO)</option>
+          <option value="Bompeh Senior High Technical School">Bompeh Senior High Technical School</option>
+          <option value="Methodist Senior High School">Methodist Senior High School</option>
+          <option value="Diabene Senior High Technical School">Diabene Senior High Technical School</option>
+          <option value="Takoradi Technical Institute">Takoradi Technical Institute</option>
+          <option value="Bibiani Senior High Technical">Bibiani Senior High Technical</option>
+          <option value="Sefwi Bekwai Senior High School (SEBES)">Sefwi Bekwai Senior High School (SEBES)</option>
+          <option value="Wadud Senior High School (WASEC)">Wadud Senior High School (WASEC)</option>
+          <option value="Sefwi Wiawso Senior High School (SEWASS)">Sefwi Wiawso Senior High School (SEWASS)</option>
+          <option value="Adjoafua Community Senior High (ADSEC)">Adjoafua Community Senior High (ADSEC)</option>
+
+      </select>
+      
+      </div>
+      <div class="col-md-4">
+        <label class="form-label" for="multicol-last-name">COURSE OF STUDY</label>
+        <input type="text" id="multicol-last-name" class="form-control" name="ss_course" value="English" />
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-last-name">English Grade</label>
+        <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="englishgrade">
+          <option value="c6">C6</option>
+          <option value="a1">A1</option>
+          <option value="b2">B2</option>
+          <option value="b3">B3</option>
+          <option value="c4">C4</option>
+          <option value="c5">C5</option>
+          <option value="d7">D7</option>
+          <option value="e8">E8</option>
+          <option value="">None</option>
+      </select>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-last-name">END DATE</label>
+        <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="ssenddate">
+          
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+          <option value="2006">2006</option>
+          <option value="2005">2005</option>
+          <option value="2004">2004</option>
+          <option value="2003">2003</option>
+          <option value="2002">2002</option>
+          <option value="2001">2001</option>
+          <option value="2000">2000</option>
+          <option value="1999">1999</option>
+          <option value="1998">1998</option>
+          <option value="1997">1997</option>
+          <option value="1996">1996</option>
+          <option value="1995">1995</option>
+          <option value="1994">1994</option>
+          <option value="1993">1993</option>
+          <option value="1992">1992</option>
+          <option value="1991">1991</option>
+      </select>
+      </div>
+      </div>
+    
+      
+
+     
+        
+        <div class="row g-6">
+        <div class="col-md-4">
+          <label class="form-label" for="multicol-first-name">CLASS</label>
+          <select id="multicol-country" class="select2 form-select" name="myclass" data-allow-clear="true">
+            <option value="Second Class Upper Division">Second Class (Upper)</option>
+            <option value="Second Class Lower Division">Second Class (Lower)</option>
+            <option value="First Class">First Class</option>
+            <option value="Third Class">Third Class</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="multicol-last-name">COUNTRY</label>
+          <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="fromcountry">
+            <option value="Ghanaian">Ghana</option>
+            <option value="Nigerian">Nigerian</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label" for="multicol-last-name">DESTINATION</label>
+          <select id="multicol-country" class="select2 form-select" data-allow-clear="true" name="destination">
+            <option value="uk">UK</option>
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="australia">Australia</option>
+          </select>
+        </div>
+        </div>
+     
+        
+        <hr class="my-6 mx-n4" />
+        <b><h4>3. Documents </h4></b>
+    <div class="row g-6">
+      <div class="col-md-3">
+        <label class="form-label" for="multicol-username">Passport * </label>
+        <input type="file" name="passport"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" required >
+      </div>
+      <div class="col-md-3">
+        <label class="form-label" for="multicol-username">Degree * </label>
+        <input type="file" name="degree"  id="file2" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" required>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-username">Transcript * </label>
+        <input type="file" name="transcript"  id="file3" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" required>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-username">WASSCE * </label>
+        <input type="file" name="wassce"  id="file4" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" required>
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-username">CV</label>
+        <input type="file" name="cv"  id="file5" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" >
+      </div>
+      
+      
+    </div>
+    
+    <hr class="my-6 mx-n4" />
+    
+    <div class="row g-6">
+      
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-username">Diploma Cert </label>
+        <input type="file" name="diploma"  id="file6" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-username">Diploma Transcript </label>
+        <input type="file" name="diplomatranscript"  id="file7" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-username">Masters </label>
+        <input type="file" name="masters"  id="file8" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-username">Masters Transcript</label>
+        <input type="file" name="masterstranscript"  id="file9" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" >
+      </div>
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-username">Birth Cert</label>
+        <input type="file" name="birthcert"  id="file10" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" >
+      </div>
+      <div class="col-md-2">
+        <label class="form-label" for="multicol-username">Ghana Card</label>
+        <input type="file" name="ghanacard"  id="file11" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" >
+      </div>
+    </div>
+       
+      
+     
+    <hr class="my-6 mx-n4" />
+    <div class="pt-6">
+      <button type="submit" class="btn btn-primary me-4">Submit</button>
+      <button type="reset" class="btn btn-label-secondary">Cancel</button>
+    </div>
+  </form>
+</div>
+  {% endif %}
+</div>
+
+
+{% endblock %}

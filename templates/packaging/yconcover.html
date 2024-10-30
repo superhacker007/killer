@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cover Letter for Canada Tourist Visa Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.8em;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section p {
+            margin: 5px 0;
+        }
+        .section h4 {
+            margin: 10px 0 5px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <p>To</p>
+            <p>The Visa Officer<br>
+            Canada High Commission<br>
+            Accra, Ghana</p><br>
+            <h2 style="text-align: center;">COVER LETTER FOR CANADA VISIT VISA APPLICATION</h2>
+            <p>Dear Sir/Madam,</p><br>
+            <p>I am {{firstname}} {{lastname}} (Passport No {{passportn}}) and I am writing this letter to support my visa application for Canada Tourist Visa. I plan to visit the country from {{date1}} to {{date7}}. My purpose of the visit is for the conference ({{conferenced[0]}}) and the nature of the visit is hence business.</p>
+        </div>
+        
+        <div class="section">
+            <h4>Travel Plan for 1 week</h4>
+            <p>I plan to stay in Canada for a period of 1 week. This includes the day that I arrive at VANCOUVER, BC (INTERNATIONAL), TERMINAL M, till the day I board my flight back to Accra. I have prepared a clear cut travel itinerary for myself to explore the natural and popular tourist attractions boasted by Canada.</p>
+            <ul>
+                <li>Day 1 ({{date1}}) – Arrival at VANCOUVER, BC (INTERNATIONAL), on FLIGHT KL 681 - KLM ROYAL DUTCH AIRLINES, 15:55. I plan to head directly to hotel {{thehotel}}</li>
+                
+                {% for ite in ites %}
+                <li>Day {{loop.index+1}} – Visit {{ite[0]}} <p>{{ite[1]}}</p></li>
+                {% endfor %}
+                <li>Day 5 ({{date5}}) – {{conferenced[0]}} <p>{{conferenced[5]}}</p> </li>
+                <li>Day 6 ({{date6}}) – {{conferenced[0]}} <p>{{conferenced[5]}}</p> </li>
+                <li>Day 7 ({{date7}}) – Go to VANCOUVER, BC (INTERNATIONAL) and board the flight (FLIGHT KL 682) to Accra scheduled at 17:50</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h4>Personal Information</h4>
+            <p>I was born on {{dob}} in {{mycity}}, Ghana. I hold an Ghanaian passport ({{passportn}}) and I am a proud citizen of Ghana. I was raised by {{fathername}} {{fatherlast}}, who is a {{role}} and my mother, {{nameoffmother}} who is a {{motherwork}}. I am the last born in my loving and supporting family.</p>
+            <p>With their blessings and inspiration, I am pursuing my Bachelor’s degree in Arts at the University of Ghana. </p>
+        </div>
+        
+        <div class="section">
+            <h4>Details of close friends or family in Canada</h4>
+            <p>I do not have any relatives or distant family members living in Canada. </p>
+        </div>
+        
+        <div class="section">
+            <h4>Incentive to return home</h4>
+            <p>I am not planning to extend my stay beyond the above mentioned timeline of 1 week. This is because I have various commitments to attend to back in Ghana. As stated earlier, I am currently studying Arts at the University of Ghana in my 3rd year with a CGPA of 3.61, I also help my parents manage the farm. I am only traveling now because we just ended a huge harvest and I am also on break from school at the moment so I want to take the holidays and visit some of the amazing places in Canada I see online. I plan to return by {{joinback}}. Apart from that, I have arranged for a helper to ease my parents of the household chores for one week. However, it is only a temporary solution and I am needed back on time.</p>
+            <p>My pet dog baily is so attached to me and I will be leaving him back home with my parents.</p>
+            <p>Additionally I have an appointment scheduled for my father on {{appointment_date}} at the Korlebu Teaching Hospital. I am the only one that takes him to the appointments since my older siblings have families of their own now.</p>
+        </div>
+        
+        <div class="section">
+            <h4>Explanation of Financial Sufficiency</h4>
+            <p>I am humbled to say that my father is sponsoring my visit to Canada. My family owns a {{acres}} acres cocoa farm {{farmcity}}, my father is also a {{role}} with {{employer}}.</p>
+            <p>I hereby promise that I have no intentions in prolonging my stay more than a week in Canada. I am well aware and cognizant of the immigration regulations set for international tourists and I intend to abide by them.</p>
+        </div>
+        
+        <div class="section">
+            <p>I have attached my father's statements and all other supporting documents to my application</p>
+            <p>I have also attached his payslip, my reference letter from my school, hotel and flight reservations for this trip.</p>
+            <p>I hope that I have been able to furnish all the details pertaining to my tourist visa application. I am looking forward to hearing a positive response and being able to visit Canada.</p>
+            <p>Yours Sincerely,</p><br>
+            <p>{{firstname}} {{lastname}}</p>
+        </div>
+    </div>
+</body>
+</html>

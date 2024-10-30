@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=210mm, height=297mm, initial-scale=1.0">
+<title>Letterhead</title>
+<link href="https://fonts.cdnfonts.com/css/best-signature-font" rel="stylesheet">
+<style>
+@import url('https://fonts.cdnfonts.com/css/best-signature-font');
+</style>
+<style>
+  body {
+    margin: 0 auto;
+    padding: 0;
+    width: 210mm;
+    height: 297mm;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+  }
+  .header {
+    text-align: center;
+    height: 200px;
+    line-height: 1em;
+  }
+  .date {
+    float: right;
+  }
+  .content {
+    padding: 20px;
+  }
+  .footer {
+    padding: 20px;
+  }
+
+  .fleft {
+    float: left;
+    padding-top: 20px;
+  }
+  .fright {
+    float: right;
+  }
+
+  .heading {
+    text-decoration: underline;
+    text-align: center;
+  }
+  .hleft {
+    float: left;
+  }
+  .hright {
+    float: right;
+    text-align: right;
+    line-height: 1.2em;
+    text-transform: uppercase;
+  }
+  .ref {
+    line-height: 2em;
+  }
+
+  .sign {
+    color: blue;
+    font-style: italic;
+    font-family: 'Best Signature Font', sans-serif;
+                                                  }
+
+  .profmail {
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+
+  /* Watermark */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 25%;
+    left: 22%;
+    width: 600px;
+    height: 600px;
+    background-image: url("../..{{ url_for('static', filename='pack/images/ugwater.jpg') }}");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.1;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Ensure the watermark doesn't interfere with content */
+  }
+  .capitalize {
+    text-transform: capitalize;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="hleft"><img src="../..{{ url_for('static', filename='pack/images/ugwater.jpg')}}" alt="Letterhead Image" width="200px"></div><div class="hright"><h3 style="color: #00335A;">School of Arts<br>College of Languages</h3>
+    <h3 style="color: #C0A062; border-top: #C0A062 1px solid; padding-top: 7px;">Linguistics <Br></h3></div>
+  </div>
+  <div class="content">
+    <div class="date">{{gooddate}}</div><br><br>
+    <p>To</p>
+    <p>The Visa Officer</p>
+    <p>Canadaian High Commission</p>
+    <p>Accra, Ghana</p>
+    <p>Dear Sir/Madam,</p>
+    <h2 class="heading">INTRODUCTORY LETTER FOR - {{firstname}} {{lastname}}</h2>
+    <p class="ref">
+      {{mr}} {{firstname}} {{lastname}} entered the University of Ghana as an undergraduate student in August, 2022 currently studying with a CGPA of 3.61 which sets him on course to graduate with a Second Class Upper in Linguistics . I teach {{him}} two courses in {{his}} undergraduate studies at the school. These courses are in Linguistics.
+      {{he}} is creative and capable of organizing and expressing {{his}} ideas. <span class="capitalize">{{he}}</span> portrays maturity and creativity in both academic and non-academic issues<span class="capitalize">{{he}}</span> is full of drive, emotionally stable,has a pleasant disposition and gets on well with both {{his}} peers and those in authority. One can rely on {{him}} to get things done at the right time<span class="capitalize">{{he}}</span> is capable of handling himself on campus.
+      {{he}} is endowed with academic potential and has great enthusiasm for academic work and is capable of undertaking and completing the program. {{his}} level of oral and written English is good.
+      Based on the above assessment, I recommend {{him}} to be granted a visa to visit your great country.
+      </p>
+    <p>Yours faithfully,<br><br>
+    <span class="sign">{{proflast}} {{profirst}}</span><br><br>
+    Prof. {{profirst}} {{promid}} {{proflast}}<br><br>
+    Email: <span class="profmail">{{profemail}}@ug.edu.gh </span>
+    </p>
+  </div>
+  <div class="footer">
+    <div class="fleft"><p>P. O. Box LG 59, Legon, Accra, Ghana | Tel: +233 (0) 302 500 394 | 500 393 <br>
+       | Email: geograf@ug.edu.gh | www.ug.edu.gh </p></div>
+      <div class="fright"><img src="../..{{ url_for('static', filename='pack/images/ugfooter.jpg') }}" alt="" width="150px"></div>
+  </div>
+</body>
+</html>

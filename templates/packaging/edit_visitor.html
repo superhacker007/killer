@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Form</title>
+</head>
+<body>
+    <form action="/visitors/edit/{{ visitor.id }}" method="post" enctype="multipart/form-data">
+        <input type="text" name="firstname" value="{{ visitor.firstname }}">
+        <input type="text" name="lastname" value="{{ visitor.lastname }}">
+        M<input type="radio" name="sex" id="1" value="Mr" {% if visitor.sex == 'Mr' %} checked {% endif %}>
+        <input type="radio" name="sex" id="1" value="Ms" {% if visitor.sex == 'Ms' %} checked {% endif %}> F
+        <input type="text" name="destination" value="{{ visitor.destination }}">
+        <input type="text" name="city" value="{{ visitor.city }}">
+        
+        <input type="text" name="employer" value="{{ visitor.employer }}">
+        <input type="text" name="role" value="{{ visitor.role }}">
+        <input type="text" name="rol" value="{{ visitor.rol }}">
+        <input type="text" name="ssn" value="{{ visitor.ssn }}">
+        <input type="text" name="passportn" value="{{ visitor.passportn }}">
+        Birth Day<input type="date" id="birthday" name="dob" value="{{ visitor.dob }}" >
+        <input type="text" name="addresss" value="{{ visitor.addresss }}">
+        <input type="text" name="phonen" value="{{ visitor.phonen }}">
+        <input type="file" name="passport">
+        <input type="submit" value="Create Visitor">
+    </form>
+</body>
+</html>

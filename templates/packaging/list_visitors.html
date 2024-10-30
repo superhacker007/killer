@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Form</title>
+</head>
+<body>
+    {% for visitor in visitors %}
+        {{ visitor.firstname }} {{ visitor.lastname }} {{ visitor.destination }}  <a href="/visitors/edit/{{ visitor.id }}">Edit</a> <br>
+    {% endfor %}
+</body>
+</html>

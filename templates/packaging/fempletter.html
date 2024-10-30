@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.cdnfonts.com/css/best-signature-font" rel="stylesheet">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/style.css') }}">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sealer.css') }}">
+<style>
+@import url('https://fonts.cdnfonts.com/css/best-signature-font');
+</style>
+    <style>
+        @font-face {
+            font-family: signa;
+            src: url(sign.ttf);
+        }
+
+        body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.dirty-paper-background {
+    background-color: #f5f0e5;
+    background-image: url('https://www.transparenttextures.com/patterns/subtle-stripes.png'); /* Replace this with your desired dirty paper texture image */
+    background-size: cover; /* Ensure the background image covers the entire element */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
+    background-position: center; /* Center the background image */
+    height: 89.6%; /* Full viewport height */
+    width: 100%; /* Full viewport width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Ensure the overlay and content are positioned correctly */
+    padding: 0;
+    margin: 0;
+    opacity: 0.5;
+}
+
+.overlay {
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white overlay to enhance the dirty paper effect */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+    opacity: 0.5;
+}
+
+.content {
+    position: absolute;
+    z-index: 2; /* Ensure content is above the overlay */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for content */
+    border-radius: 8px;
+    padding-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a slight shadow to give depth */
+    max-width: 100%; /* Ensure content doesn't overflow */
+    max-height: 100%; /* Ensure content doesn't overflow */
+    overflow: auto; /* Add scroll if content overflows */
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+    <div class="dirty-paper-background">
+        <div class="overlay"></div>
+        <div class="content">
+       
+  
+    <div class="header">
+        <div class="column">
+            <p>In cae of reply the number and date on this letter should be quoted</p>
+            <h4>OUR CORE VALUES</h4>
+            <ul>
+                <li type="square">People-Centered  </li>
+                <li type="square">Professionalism</li>
+                <li type="square">Team work</li>
+                <li type="square">Innovation</li>
+                <li type="square">Dicipline</li>
+                <li type="square">Intergrity</li>
+            </ul>
+            <p>My Ref. No. GHS/HRD/GR/{{ourrefemp}}/{{ourrefmon}} <br>
+                Your Ref. No ..........................</p>
+
+        </div>
+        <div class="column">
+            <img src="../..{{ url_for('static', filename='pack/images/ghsbg.png') }}">
+        </div>
+        <div class="column">
+            <h4 class="col3">GHANA HEALTH SERVICE <br>
+                PRIVATE MAIL BAG <br>
+                MINISTRIES <br>
+                ACCRA <br> GHANA <br><br>
+                TEL: 0302 662014 <br>
+                FAX: 0302 666808 <br>
+                E-mail: dg@ghsmail.org <br><br>
+
+                {{emp_start_date}}
+            </h4>
+        </div>
+    </div>
+
+    <div class="body">
+        <h4 class="salute">{{mr}}. {{ firstname }} {{ lastname }} <br>
+             {{role}} <br><br>
+            THRO' &nbsp;&nbsp;&nbsp; THE REG. DIR. OF HEALTH SERVICE <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GREATER ACCRA REGION
+        </h4>
+        Dear {{mr}}. {{ lastname }}
+        <h3 style="text-transform: uppercase;">APPOINTMENT AS {{ role }}</h3>
+        <p class="letter">The Director-General has authorized your appointment in the Ghana Heath Service as a {{role}} with effect from
+            <br> <b>{{emp_start_date}}.</b> <br><br>
+            The salary scale attached to this post is <b>Single Spine Salary Structure</b> Pay level 22L (1 - 6) i.e, GH&#8373, 6,003.95 - GH&#8373 7,296.97 per month. You will enter the scale at the 1st step and receive monthly gross salary of GH&#8373 6,003.95. In addition, you are entited to market premium applicable at the time. <br> <br>
+            Your duties and responsibilities are as provided in your job description, which will be made available to you by your head of facility. <br><br>
+            You shall be on probation for a period of six (6) months from the effective date of this appointment to confirm your suitabilty for the assigned job. The probation period may however be extended in writing for a period not exceeding three (3) manths for stated reasons upon performance appraisal, Il your performance and/or conduct does not meet the expected requirement by the end of the period of probation your appointment may be terminated in writing by gwing you one (1) month notice or one (1) month salary In lieu of notice. Unless informed in writing to the contrary, your appointment shall be deemed to have been confirmed after completing the probationary period. <br><br>
+            Upon confirmation after probation the Director-General still reserves the right to terminate your appointment anytime your performance and/or conduct on the job is adjudged to be below expected standards by giving you three months notice in writing or three months' salary in lleu of notice. However, notice shall not be given in situations of proven misconduct or where you make it. impossible to give notice. You may also terminate your appointment in writing anytime by giving the Service three months' notice or three months' salary in lieu of notice. <br><br>
+            
+            Your terms and conditions of employment will be subject to the provisions of the Ghana Health Service and Teaching Hospitals Act 1996 (Act 525), Legislative Instruments (LI), existing Human Resource Management Policies, the code of Conduct and Disciplinary Procedures, conditions of service and other relevant Administrative Instructions. <br><br>
+            You will be required under the National Pensions Act, 2008 (Act 766) to contribute (5.5%) of your salary towards your retirement benefit. <br><br>
+            In view of the fact that your service is classified as an essential service under Section 175 of the Labour Act 2003 (Ast 651), you are prohibited from resorting to a lockout or strike in connection with or in furtherance of any industrial dispute in line with Section 163 of Act 651. <br><br>
+            Note that in view of the bond agreement signed you are underobligation to serve the Government of Ghana for Four (4) years. <br> <br>
+            You will be required to indicate in writing if you accept the terms of the appointment as provided to the Regional Director of Health Service, Central Region for documentation and assignment within one (1) month from the date of this letter otherwise the offer will lapse. <br> <br>
+            Congratulations on your appointment.
+        </p>
+        <div>
+            <span class="sleft">
+                CC: The Cont & Acct General <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Auditor General P. P. S
+            </span>
+            <span class="sign">
+                Yours faithfully <br>
+                <p class="signature">P. Obiri</p>
+    PETER OBIRI-YEBOAH <br>
+    DEP. DIRECTOR, HR-MANAGEMENT
+            </span>
+        </div>
+    </div>
+
+    <div class="sealer">
+
+        {% if pobx > 40 %}
+        <div class="notary-seal" style="margin-top: 70px;">
+            <!-- <div class="notary-header">
+              Notary Republic of Ghana
+            </div> -->
+            <div class="notary-name">
+              {{named}}
+            </div>
+            <div class="notary-commission">
+              Commissioner For Oaths
+            </div>
+            <div class="notary-number">
+              P.O.Box AR {{pobx}}. ACCRA-GH
+            </div>
+          </div>
+        {% else %}
+        <div class="notary-seal" style="margin-top: 150px;">
+            <!-- <div class="notary-header">
+              Notary Republic of Ghana
+            </div> -->
+            <div class="notary-name">
+              {{named}}
+            </div>
+            <div class="notary-commission">
+              Commissioner For Oaths
+            </div>
+            <div class="notary-number">
+              P.O.Box AR {{pobx}}. ACCRA-GH
+            </div>
+          </div>
+        {% endif %}
+    </div>
+</div>
+</div>
+</body>
+</html>

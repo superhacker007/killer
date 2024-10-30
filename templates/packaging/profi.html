@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=210mm, height=297mm, initial-scale=1.0">
+<title>Letterhead</title>
+<style>
+
+@font-face {
+            font-family: 'signature';
+            src: url("../..{{ url_for('static', filename='pack/fonts/Allison_Script.otf')}}") format('truetype');
+            font-weight: 100;
+        }
+
+  body {
+    margin: 0 auto;
+    padding: 0;
+    width: 210mm;
+    height: 297mm;
+    font-family: calibri;
+    font-size: 16px;
+  }
+  .header {
+    text-align: center;
+    height: 130px;
+    line-height: 1em;
+  }
+  .date {
+    float: right;
+  }
+  .content {
+    padding: 20px;
+  }
+  .footer {
+    padding: 20px;
+  }
+
+  .fleft {
+    float: left;
+    padding-top: 20px;
+  }
+  .fright {
+    float: right;
+  }
+
+  .heading {
+    text-decoration: underline;
+    text-align: center;
+  }
+  .title {
+    text-align: center;
+    line-height: 0.6em;
+  }
+  .hleft {
+    float: left;
+  }
+  .hright {
+    float: right;
+    text-align: right;
+    line-height: 1.2em;
+    text-transform: uppercase;
+  }
+  .ref {
+    line-height: 2em;
+    text-align: justify;
+  }
+
+  .stamping {
+    text-align:right;
+  }
+
+  .sign {
+    color: blue;
+    font-style: italic;
+    font-family: 'signature';
+  }
+
+  .profmail {
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+
+  /* Watermark */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background-image: url('ugwater.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.1;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Ensure the watermark doesn't interfere with content */
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="hleft"><img src="../../{{ url_for('static', filename='pack/images/' + prev['logo']) }}" alt="Letterhead Image" width="200px"></div>
+    <div class="hright">
+      <h3 style="color: {{prev['color1']}};">LANGUAGE CENTRE<br></h3>
+      <h3 style=" border-top: color: {{prev['color2']}}; 1px solid; padding-top: 7px; color: {{prev['color2']}};"> COLLEGE OF HUMANITIES</h3>
+    </div>
+  </div>
+  <div class="content">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
+    <b>Ref No:</b> LC-PFL/{{ current_year }} <br>
+    <div class="date">{{ today }}</div><br><br>
+
+    <div class="title">
+      <h4>TO WHOM IT MAY CONCERN</h4>
+      <h4>PROFICIENCY IN ENGLISH</h4>
+      <h4>{{ title }} {{ lastname }} {{ firstname }}</h4>
+    </div>
+
+    <p class="ref">
+      This letter is written at the request of {{ title }} {{ lastname }} {{ firstname }} to attest {{ his }} proficiency in English.
+
+      {{ title }} {{ lastname }} obtained {{ his }} undergraduate education from the {{prev['school_name']}}. <br> The courses for all degrees and academic programmes in the University are fully taught and examined in English. <br><br>
+
+      Indeed {{ title }} {{ lastname }} has had all {{ his }} formal education in English, which is the official language of Ghana and the medium of instruction throughout the educational system. The university-level admission requirements include a pass with Credit in English language in the General Certificate of Education (GCE) Ordinary Level examination, in the Senior Secondary School Certificate Examination (SSSCE) or in the West African Senior School Certificate Examination (WASSCE). <br><br>
+
+      We therefore certify that {{ title }} {{ lastname }} {{ firstname }} has proven oral and written communication skills in English (Equivalent to CEFR, C1) and can pursue a course in {{ his }} field with English as the medium of instruction without difficulty. <br><br>
+    </p>
+    <div class="stamping">
+      <br><br>
+      LANGUAGE CENTRE<br>
+      {{prev['school_name']}}, {{prev['location']}} <br>
+      <span class="sign">Amuzu</span><br>
+      ----------------------- <br>
+      <b>DIRECTOR</b> <br> <br>
+      PROF. EVERSHED KWASI AMUZU<br>
+      DIRECTOR
+    </div>
+  </div>
+  <div class="footer">
+    <div class="fleft">
+      <p>P. O. Box LG 59, {{prev['location']}}, Ghana | Tel: {{prev['telephone']}} <br>
+       | Email: langcentre@{{prev['website']}} | www.{{prev['website']}} </p>
+    </div>
+    <div class="fright">
+      <img src="../../{{ url_for('static', filename='pack/images/' + prev['logowithname']) }}" alt="" width="150px">
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        h1 {
+            font-size: 28px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .subsection {
+            margin-bottom: 15px;
+        }
+        .list-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Personal Information -->
+    <div class="section">
+        <h1>{{mr}} {{firstname}} {{lastname}}</h1>
+        <p>
+            <strong>Address:</strong> {{addresss}}<br>
+            <strong>Email:</strong> {{email2all}}<br>
+            <strong>Phone:</strong> {{phonen}}<br>
+        </p>
+    </div>
+
+    <!-- Personal Statement -->
+    <div class="section">
+        <h2 class="section-title">Personal Statement</h2>
+        <p>
+            A dedicated and ambitious student with a strong academic background in {{course}}, from {{prev['school_name']}} a {{nationality}} university. Passionate about {{specific_interest}}, I aim to leverage my skills. Eager to enhance my knowledge and gain international exposure to achieve my long-term career goals in {{desired_field}}.
+        </p>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="subsection">
+            <h3>BSc in {{course}}</h3>
+            <p>{{prev['school_name']}}, {{city}}</p>
+            <p><em>Graduation Year: {{gradyear}}</em></p>
+        </div>
+        <!-- Add more education sections as needed -->
+    </div>
+
+    <!-- Work Experience -->
+    <div class="section">
+        <h2 class="section-title">Work Experience</h2>
+        
+
+        <div class="subsection">
+            <h3>{{employer}}</h3>
+            <p>{{role}}, {{fromcountry}}</p>
+            <p><em>{{gradyear}} - Now</em></p>
+            <ul>
+                <li class="list-item"><strong>Responsibilities:</strong> {{role}}</li>
+                
+            </ul>
+        </div>
+        <!-- Add more work experience sections as needed -->
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+        <h2 class="section-title">Skills</h2>
+        <ul>
+                <li class="list-item"><strong>Languages:</strong> English</li>
+                
+        </ul>
+    </div>
+
+    <!-- References -->
+    <div class="section">
+        <h2 class="section-title">References</h2>
+        <div class="subsection">
+            <p>Available on request</p>
+        </div>
+        
+    </div>
+</div>
+
+</body>
+</html>

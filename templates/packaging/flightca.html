@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Itinerary</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Typewriter font */
+            font-size: 15px;
+            margin: 0 auto;
+            padding: 0;
+            width: 210mm;
+            height: 297mm;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .page {
+            width: 200mm;
+            padding: 5mm;
+            box-sizing: border-box;
+        }
+        .section {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .header-left,
+        .header-right {
+            width: 45%;
+        }
+        .header-left p,
+        .header-right p {
+            margin: 4px 0;
+        }
+        .content {
+            text-align: left;
+        }
+        .flight-details {
+            margin-top: 20px;
+        }
+        .flight-details p {
+            margin: 4px 0;
+        }
+        .baggage-meal {
+            margin-top: 10px;
+        }
+        .baggage-meal p {
+            margin: 4px 0;
+        }
+        .footer {
+            margin-top: 20px;
+        }
+        .footer p {
+            margin: 4px 0;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="section header">
+            <div class="header-left">
+                <p>WAKANOW.COM GHANA LTD.</p>
+                <p>GROUND FLOOR MILLENIUM HEIGHT BLDG 14</p>
+                <p>CASEL HAYFORD ROAD</p>
+                <p>AIRPORT COMMERCIAL AREA, ACCRA</p>
+                <p>GHANA</p>
+                <p>TELEPHONE: +233242435515</p>
+                <p>EMAIL: GHANANINFO@WAKANOW.COM</p>
+            </div>
+            <div class="header-right">
+                <p>BOOKING REF: {{flightcode}} </p>
+                <p>DATE: {{issued}} </p>
+                <p>{{lastname}}/{{firstname}} MR</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="flight-details">
+                <p>FLIGHT KL 590 - KLM ROYAL DUTCH AIRLINES {{takeoff_date}}</p>
+                <hr>
+                <p>DEPARTURE: ACCRA, GH (KOTOKA INTL), TERMINAL 3 {{takeoff_day}} 22:05</p>
+                <p>ARRIVAL: AMSTERDAM, NL (SCHIPHOL AIRPORT) {{trans}} 06:40</p>
+                <p>FLIGHT BOOKING REF: KL/{{flightcode}} </p>
+                <p>RESERVATION CONFIRMED, ECONOMY (K) DURATION: 06:35</p>
+                <div class="baggage-meal">
+                    <p>BAGGAGE ALLOWANCE: 1PC</p>
+                    <p>MEAL: MEAL</p>
+                </div>
+                <p>NON STOP ACCRA TO AMSTERDAM</p>
+                <p>EQUIPMENT: BOEING 777-300ER</p>
+            </div>
+            <div class="flight-details">
+                <p>FLIGHT KL 681 - KLM ROYAL DUTCH AIRLINES {{transdate1}} </p>
+                <hr>
+                <p>DEPARTURE: AMSTERDAM, NL (SCHIPHOL AIRPORT) {{trans}} 15:20</p>
+                <p>ARRIVAL: VANCOUVER, BC (INTERNATIONAL), TERMINAL M - {{trans}} 15:55</p>
+                <p>FLIGHT BOOKING REF: KL/{{flightcode}} </p>
+                <p>RESERVATION CONFIRMED, ECONOMY (K) DURATION: 09:35</p>
+                <div class="baggage-meal">
+                    <p>BAGGAGE ALLOWANCE: 1PC</p>
+                    <p>MEAL: MEAL</p>
+                </div>
+                <p>NON STOP AMSTERDAM TO VANCOUVER, BC</p>
+                <p>EQUIPMENT: BOEING 777-300ER</p>
+            </div>
+            <div class="flight-details">
+                <p>FLIGHT KL 682 - KLM ROYAL DUTCH AIRLINES {{comback_takeoff}} </p>
+                <hr>
+                <p>DEPARTURE: VANCOUVER, BC (INTERNATIONAL), TERMINAL M - {{comback1}}  17:50</p>
+                <p>ARRIVAL: AMSTERDAM, NL (SCHIPHOL AIRPORT) {{combackplus1day}} 12:05</p>
+                <p>FLIGHT BOOKING REF: KL/{{flightcode}} </p>
+                <p>RESERVATION CONFIRMED, ECONOMY (E) DURATION: 09:15</p>
+                <div class="baggage-meal">
+                    <p>BAGGAGE ALLOWANCE: 1PC</p>
+                    <p>MEAL: MEAL</p>
+                </div>
+                <p>NON STOP VANCOUVER, BC TO AMSTERDAM</p>
+                <p>EQUIPMENT: BOEING 777-300ER</p>
+            </div>
+            <div class="flight-details">
+                <p>FLIGHT KL 589 - KLM ROYAL DUTCH AIRLINES {{comebacktrans}} </p>
+                <hr>
+                <p>DEPARTURE: AMSTERDAM, NL (SCHIPHOL AIRPORT) {{combackplus1day}} 15:20</p>
+                <p>ARRIVAL: ACCRA, GH (KOTOKA INTL), TERMINAL 3 {{combackplus1day}} 19:50</p>
+                <p>FLIGHT BOOKING REF: KL/{{flightcode}} </p>
+                <p>RESERVATION CONFIRMED, ECONOMY (E) DURATION: 06:30</p>
+                <div class="baggage-meal">
+                    <p>BAGGAGE ALLOWANCE: 1PC</p>
+                    <p>MEAL: MEAL</p>
+                </div>
+                <p>NON STOP AMSTERDAM TO ACCRA</p>
+                <p>EQUIPMENT: BOEING 777-300ER</p>
+            </div>
+            <div class="footer">
+                <p>FLIGHT(S) CALCULATED AVERAGE CO2 EMISSIONS IS 1471.42 KG/PERSON</p>
+                <p>SOURCE: ICAO CARBON EMISSIONS CALCULATOR</p>
+                <p>HTTP://WWW.ICAO.INT/ENVIRONMENTAL-PROTECTION/CARBONOFFSET/PAGES/DEFAULT.ASPX</p>
+                <p><a href="https://bags.amadeus.com?R={{flightcode}} &N={{lastname}}">https://bags.amadeus.com?R={{flightcode}} &N={{lastname}}</a></p>
+                <p>BAGGAGE POLICY - FOR TRAVEL TO/FROM, WITHIN THE CANADA, PLEASE VISIT:</p>
+                <p><a href="https://bags.amadeus.com?R={{flightcode}} &N={{lastname}}">https://bags.amadeus.com?R={{flightcode}} &N={{lastname}}</a></p>
+                <p>IF YOU ARE DENIED BOARDING OR YOUR BAGGAGE IS LOST OR DAMAGED, YOU MAY BE ENTITLED TO CERTAIN STANDARDS OF TREATMENT AND COMPENSATION UNDER THE AIR PASSENGER PROTECTION REGULATIONS. FOR MORE INFORMATION ABOUT YOUR PASSENGER RIGHTS PLEASE CONTACT YOUR AIR CARRIER OR VISIT THE CANADIAN TRANSPORTATION AGENCY WEBSITE.</p>
+                <p>CHECK YOUR TRIP ONLINE</p>
+                <p><a href="https://example.com">CLICK HERE {{lastname}}_{{firstname}}</a></p>
+                <p>Data Protection Notice: Your personal data will be processed in accordance with the applicable carrier's privacy policy and, if your booking is made via a reservation system provider ("GDS"), with its privacy policy. These are available at or from the carrier or GDS directly. You should read this documentation, which applies to your booking and specifies, for example, how your personal data is collected, stored, used, disclosed and transferred. (applicable for interline carriage)</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

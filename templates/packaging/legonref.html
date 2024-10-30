@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=210mm, height=297mm, initial-scale=1.0">
+<title>Letterhead</title>
+<style>
+
+@font-face {
+            font-family: 'signature';
+            src: url("../..{{ url_for('static', filename='pack/fonts/Allison_Script.otf')}}") format('truetype');
+            font-weight: 100;
+        }
+
+  body {
+    margin: 0 auto;
+    padding: 0;
+    width: 210mm;
+    height: 297mm;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+  }
+  .header {
+    text-align: center;
+    height: 200px;
+    line-height: 1em;
+  }
+  .date {
+    float: right;
+  }
+  .content {
+    padding: 20px;
+  }
+  .footer {
+    padding: 20px;
+  }
+
+  .fleft {
+    float: left;
+    padding-top: 20px;
+  }
+  .fright {
+    float: right;
+  }
+
+  .heading {
+    text-decoration: underline;
+    text-align: center;
+  }
+  .hleft {
+    float: left;
+  }
+  .hright {
+    float: right;
+    text-align: right;
+    line-height: 1.2em;
+    text-transform: uppercase;
+  }
+  .ref {
+    line-height: 2em;
+  }
+
+  .sign {
+    color: blue;
+    font-style: italic;
+    font-family: 'signature';
+  }
+
+  .profmail {
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="hleft"><img src="../../{{ url_for('static', filename='pack/images/' + prev['logo']) }}" alt="Letterhead Image" width="200px"></div>
+    <div class="hright">
+      <h3 style="color: {{prev['color1']}}">{{school}}<br>{{college}}</h3>
+      <h3 style="color: {{prev['color2']}} border-top: {{prev['color2']}} 1px solid; padding-top: 7px;">{{department1}} <br> {{department2}}</h3>
+    </div>
+  </div>
+  <div class="content">
+    <div class="date">{{last_transaction_date}}</div><br><br>
+    <h2>To whom it may concern</h2>
+    <p>Dear Sir/Madam,</p>
+    <h2 class="heading">Recommendation for Graduate Studies - {{lastname}}, {{firstname}}</h2>
+    <p class="ref">
+      {{title}} {{lastname}}, {{firstname}} entered the {{prev['school_name']}} as an undergraduate student in August, {{startyear}} and graduated in May, {{gradyear}} with a {{myclass}} in {{course}}. I taught {{him}} two courses during {{his}} undergraduate studies at the school. These courses were in {{course}}.
+      <span style="text-transform: capitalize;">{{he}}</span> is creative and capable of organizing and expressing {{his}} ideas. <span style="text-transform: capitalize;"> {{he}} </span> portrays maturity and creativity in both academic and non-academic issues. {{he}} is full of drive, emotionally stable, has a pleasant disposition, and gets on well with both {{his}} peers and those in authority. One can rely on {{him}} to get things done at the right time. {{he}} is capable of undertaking academic research and graduate work in a congenial atmosphere.
+      {{he}} is endowed with academic potential and has great enthusiasm for academic work and is capable of undertaking and completing the program. {{his}} level of oral and written English is good.
+      Based on the above assessment, I recommend {{him}} for graduate studies in your institution.
+    </p>
+    <p>Yours faithfully,<br><br>
+      <span class="sign">{{prosig}}</span><br><br>
+      Prof. {{proname}} <br><br>
+      Email: <span class="profmail">{{proemail}}@{{prev['website']}}</span>
+    </p>
+  </div>
+  <div class="footer">
+    <div class="fleft">
+      <p>P. O. Box LG 59, {{prev['loccation']}}, Ghana | Tel: {{prev['telephone']}} <br>
+      | Email: {{prev['email']}} | www.{{prev['website']}} </p>
+    </div>
+    <div class="fright"><img src="../../{{ url_for('static', filename='pack/images/' + prev['logowithname']) }}"  alt="" width="150px"></div>
+  </div>
+</body>
+</html>

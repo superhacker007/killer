@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement</title>
+    <style>
+
+@font-face {
+            font-family: 'signature';
+            src: url("../..{{ url_for('static', filename='/pack/fonts/Allison_Script.otf')}}") format('truetype');
+            font-weight: 100;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 7pt;
+            margin: 0;
+            padding: 0;
+            line-height: 1em;
+        }
+
+        .sign {
+            font-family: 'signature';
+            font-size: 20pt;
+            font-weight: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 5%;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+
+        .statement-title {
+            text-align: center;
+            font-size: 20px;
+            width: 50px;
+            line-height: 1.3em;
+            margin-left: -40px;
+        }
+
+        .statement-date {
+            text-align: right;
+            font-size: 9pt;
+        }
+
+        .customer-details, .account-details {
+            padding: 0 5%;
+            margin-top: -10px;
+        }
+
+        .customer-details p, .account-details p {
+            margin: 5px 0;
+        }
+
+        .details-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .details-row p {
+            margin: 5px 0;
+        }
+
+        .account-details .details-row {
+            justify-content: space-around;
+        }
+
+        .customer-details .details-row {
+            justify-content: space-between;
+        }
+
+        .three-column {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .three-column div {
+            width: 30%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        th {
+            background-color: #065097;
+            color: #fff;
+            font-style: italic;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 10pt;
+        }
+
+        .summary-table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 70px auto;
+            border: 1px solid black;;
+        }
+
+        .summary-table th, .summary-table td {
+            padding: 5px;
+            text-align: center
+        }
+
+        .summary-table .blue-bg {
+            background-color: #065097;
+            color: white;
+        }
+
+        .summary-table .white-bg {
+            background-color: white;
+            color: black;
+        }
+        .summary-table td {
+            border:none;
+        }
+    </style>
+</head>
+{% for page in chunks %}
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="../..{{ url_for('static', filename='pack/images/adb.png')}}" alt="ADB Logo">
+            </div>
+            <div class="statement-title">
+                <p>STATEMENT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OF &nbsp;&nbsp;ACCOUNT</p>
+            </div>
+            <div class="statement-date">
+                <p>{{top_date}}</p>
+            </div>
+        </div>
+        {% if loop.first %}
+        
+        <img src="../..{{ url_for('static', filename='pack/images/adbstamp1.png')}}" alt="" width="200px" style="margin-top: -25px; margin-left: 100px; position: absolute;">
+        <p class="sign" style="color: red; margin-top: 20px; margin-left: 100px; position: absolute; font-size: 60px;">Owusu.S</p>
+        <div class="customer-details">
+            <div class="three-column">
+                <div style="margin-top: 130px; width: 50%;">
+                    <p>Customer ID: 00040221</p>
+                    <p>Customer Name: {{firstname}} {{lastname}}</p>
+                    <p>Customer Address: {{myaddress}}</p>
+                    <p>{{mycity}}</p>
+                    <p>{{region}}</p>
+                    <p>Account Title: {{firstname}} {{lastname}}</p>
+                </div>
+                <div style="width: 20%;">
+                    <p>Period From:</p>
+                    <p>To:</p>
+                    <p>Account No: </p>
+                    <p>Product Name: </p>
+                    <p>Currency Name: </p>
+                    <p>Branch Code: </p>
+                    <p>Branch Name: </p>
+                    <p>Customer Short Name: </p>
+                </div>
+                <div style="text-align: right;">
+                    <p>{{summary.first_transaction_date}}</p>
+                    <p>{{summary.last_transaction_date}}</p>
+                    <p>{{acc}}</p>
+                    <p>200</p>
+                    <p>GHS</p>
+                    <p>501</p>
+                    <p>{{branch}}</p>
+                    <p>{{firstname}} {{lastname}}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Branch</th>
+                    <th>Description</th>
+                    <th>Reference</th>
+                    <th>Value Date</th>
+                    <th>Debits</th>
+                    <th>Credits</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Rows - You will replace these with actual transaction data -->
+                {% for transaction in page %}
+                <tr>
+                    <td>{{ transaction.transaction_date }}</td>
+                    <td>501</td>
+                    <td>{{ transaction.description }}</td>
+                    <td>{{ transaction.transaction_id }}</td>
+                    <td>{{ transaction.value_date }}</td>
+                    <td>{{ transaction.debit }}</td>
+                    <td>{{ transaction.credit }}</td>
+                    <td>{{ transaction.balance }}</td>
+                </tr>
+                {% endfor %}
+                <!-- Add more rows as per your data -->
+            </tbody>
+        </table>
+
+        {% if loop.last %}
+        <img src="../..{{ url_for('static', filename='pack/images/adbstamp1.png')}}" alt="" width="200px" style="margin-top: -25px; margin-left: 400px; position: absolute;">
+        <p class="sign" style="color: red; margin-top: 20px; margin-left: 415px; position: absolute; font-size: 60px;">Owusu.S</p>
+
+        <table class="summary-table">
+            <tr class="blue-bg">
+                <td style="font-style: italic; width: 80%;">Opening Balance:</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align: center; width: 20%;">{{summary.opening_balance}}</td>
+            </tr>
+            <tr class="white-bg">
+                <td style="border-right: 1px solid black;">Total Debit Amt:</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align: center;">{{summary.total_debits}}</td>
+            </tr>
+            <tr class="white-bg">
+                <td style="border-right: 1px solid black;">Total Credit Amt:</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align: center;">{{summary.total_credits}}</td>
+            </tr>
+            <tr class="blue-bg">
+                <td style="font-style: italic;">Closing Balance:</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align: center;">{{summary.closing_balance}}</td>
+            </tr>
+        </table>
+        {% endif %}
+        <div class="footer">
+            <p>Page {{ loop.index }} of {{ chunks|length+1 }}</p>
+        </div>
+
+        
+    </div>
+</body>
+{% endfor %}
+</html>

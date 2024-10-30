@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Statement</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 8pt;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 210mm; 
+            margin: 0 auto;
+        }
+
+        .nibtop {
+            display: flex;
+            background-repeat: no-repeat;
+            margin-bottom: 20px;
+        }
+
+        .div1 {
+            width: 17%;
+            padding-top:5%;
+            padding-left: 3%;
+        }
+
+        .div1 img {
+            width: 130px;
+        }
+
+        .div2 {
+            width: 48%;
+            padding: 5%;
+            text-align: center;
+        }
+
+        .div2 img {
+            margin: 0 auto;
+            width: 66px;
+            height: 67px;
+        }
+
+
+        .div3 {
+            width: 26%;
+            font-weight: bold;
+            padding: 5% 1%;
+            font-size: 8pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-top: 2%;
+        }
+
+        .div4 {
+            width: 12%;
+            padding: 1%;
+            margin: 6%;
+            margin-left: -5%;
+        }
+
+        table {
+            font-family: 'Times New Roman', Times, serif;
+            border-collapse: collapse;
+            width: 87%;
+            margin: 0 auto;
+        }
+
+        
+
+        th, td {
+            padding: 0;
+            text-align: left;
+        }
+
+        th {
+            background-color: #E8E8E8;
+            color: black;
+        }
+
+        tr {
+            height: 25px; /* Set the desired height for each row */
+        }
+
+        tbody tr:nth-child(odd) {
+            height: 30pt;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #E8E8E8;
+        }
+
+        .background {
+            z-index: -100;
+            position: absolute;
+            margin: 45% 18%;
+            opacity: 0.1;
+        }
+
+        .background img {
+            width: 400px;
+        }
+
+        .footer {
+            width: 87%;
+            margin: 0 auto;
+            font-weight: bold;
+            font-size: 7.5pt;
+        }
+        .date {
+            margin-left: 600px;
+            margin-top: 110px;
+            position: absolute;
+            font-weight: bold;
+            font-size: 10px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .owner {
+            width: 350px;
+            position: absolute;
+            margin: 185px 450px;
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .details {
+            position: absolute;
+            margin: 110px 80px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+        .details p {
+            line-height: 1.5em;
+        }
+        .letter {
+            width: 80%;
+            margin: 0 auto;
+            line-height: 1.9em;
+            font-size: 11pt;
+            font-family: Arial, Helvetica, sans-serif
+        }
+        .header {
+            text-align: right;
+            margin-bottom: 40px;
+        }
+        .subject {
+            text-align: center;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 20px 0;
+        }
+        .signature {
+            margin-top: 60px;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="background">
+            <img src="https://veesupportservices.co.uk/b/niblogobg.png" alt="">
+        </div>
+    <div class="nibtop">
+        <div class="div1">
+            <img src="https://veesupportservices.co.uk/b/niblogo.png" alt="" width="80%">
+        </div>
+        <div class="div2">
+            <h1>STATEMENT OF ACCOUNT</h1>
+            <img src="https://veesupportservices.co.uk/b/nibseal.png" alt="">
+        </div>
+        <div class="div3">
+            <p>
+                National Investment Bank Ltd. <br>
+                37 Kwame Nkrumah Avenue <br>
+                Tel:+233 302 661701 - 10 <br>
+                Tel:+233 302 673124 <br>
+                www.nib-ghana.net <br>
+                info@nib-ghana.net <br>
+            </p>
+        </div>
+        
+    </div>
+
+    <div class="letter">
+        <div class="header">
+            {{stamp_date}}<br>
+        </div>
+        
+        <p>
+            THE CONSULAR<br>
+            <span style="text-transform:uppercase;">{{lian}}</span> HIGH COMMISSION<br>
+            ACCRA-GHANA
+        </p>
+
+        <p>Dear Sir/Madam,</p>
+
+        <p class="subject">
+            RE: STATEMENT CONFIRMATION<br>
+            <span style="text-transform: uppercase;">{{firstname}} {{lastname}}</span>
+        </p>
+
+        <p>
+            We draft this letter to verify that the client aforementioned {{firstname}} {{lastname}} is a client of NATIONAL INVESTMENT BANK LTD. <span style="text-transform: capitalize;">{{his}}</span> account number is <span class="bold">({{acc}})</span>.
+        </p>
+
+        <p>
+            As at {{summary.last_transaction_date}}, it has a balance of <span class="bold">{{towords}} only.</span>
+            <span class="bold">(GHS{{summary.closing_balance}})</span> <br><br>
+            This account was opened on {{openedon}} at our {{branch}} branch.
+        </p>
+
+        <p>
+            For further clarification contact us on +233 302 661701 - 10 or info@nib-ghana.net. We would be grateful to be of help to you.
+        </p>
+
+        <p class="signature">
+            Yours faithfully,<br><br>
+            <span class="bold">NATIONAL INVESTMENT BANK LTD.</span><br><br>
+            <img src="https://veesupportservices.co.uk/b/nibstamp.png" alt="" style="position:absolute; width:150px; margin-left: 50px; margin-top: -50px;">
+               
+            Caltamo Joseph<br>
+            (Branch Manager)
+        </p>
+    </div>
+    </div>
+        
+
+            
+        
+    </div>
+</body>
+{% for page in chunks %}
+<body>
+    <div class="content">
+        <div class="background">
+            <img src="https://veesupportservices.co.uk/b/niblogobg.png" alt="">
+        </div>
+    <div class="nibtop">
+        <div class="div1">
+            <img src="https://veesupportservices.co.uk/b/niblogo.png" alt="" width="80%">
+        </div>
+        <div class="div2">
+            <h1>STATEMENT OF ACCOUNT</h1>
+            <img src="https://veesupportservices.co.uk/b/nibseal.png" alt="">
+        </div>
+        <div class="div3">
+            <p>
+                National Investment Bank Ltd. <br>
+                37 Kwame Nkrumah Avenue <br>
+                Tel:+233 302 661701 - 10 <br>
+                Tel:+233 302 673124 <br>
+                www.nib-ghana.net <br>
+                info@nib-ghana.net <br>
+            </p>
+        </div>
+        {% if loop.first %}
+        <div class="details">
+            
+            <p>
+                Account Statement <br>
+                Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{branch}} <br>
+                Account: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{acc}} <br>
+                Customer: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{staffid}} <br>
+                Currency: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GHS <br>
+                Period: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{summary.first_transaction_date}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{summary.last_transaction_date}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><br>
+            </p>
+        </div>
+        {% endif %}
+        <div class="date">
+            {{date_printed}} <br>
+            <span style="float: right;">12:48:19</span>
+        </div>
+        <div class="div4">
+            <img src="https://veesupportservices.co.uk/b/logos.png" alt="" width="100%">
+        </div>
+        {% if loop.first %}
+        <h2 class="owner">{{firstname}} {{lastname}}</h2>
+        {% endif %}
+    </div>
+        
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>Book Date</th>
+                        <th>Reference</th>
+                        <th style="width: 25%;">Description</th>
+                        <th>Value Date</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Closing Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #FFF; height: 14.7pt;">
+                        <td>{% if loop.first %} {{summary.first_transaction_date}} {% endif %}</td>
+                        <td>{% if loop.first %} Balance at Period Start {% endif %}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td id="amount">{% if loop.first %} {{summary.opening_balance}} {% endif %}</td>
+                    </tr>
+                    {% for transaction in page %}
+                    <tr>
+                        <td>{{ transaction.transaction_date }}</td>
+                        <td>{{ transaction.transaction_id }}</td>
+                        <td>{{ transaction.description }}</td>
+                        <td>{{ transaction.value_date }}</td>
+                        <td>{{ transaction.debit }}</td>
+                        <td>{{ transaction.credit }}</td>
+                        <td>{{ transaction.balance }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>{{ transaction.details }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                    
+                    {% endfor %}
+
+                    {% if loop.last %}
+                    
+                    <tr style="background-color: #FFF;">
+                        <td></td>
+                        <td></td>
+                        <td>Balance at Period <br> End</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ summary.closing_balance }}</td>
+                    </tr>
+                    {% endif %}
+                    
+                </tbody>
+            </table>
+
+            <div class="footer">
+                {% if loop.last %}
+                <img src="https://veesupportservices.co.uk/b/nibstamp.png" alt="" style="position:absolute; width:150px; margin-left: 350px; margin-top: -50px;">
+                {% endif %}
+                <p>Please examine this statement carefully. Any error, discrepancy or change of address should be communicated to the Head, Retail Banking on +233 302 661701 - 10</p>
+                <p style="float: right;">Page {{loop.index}} of {{loop.length}}</p>
+            </div>
+
+            
+        
+    </div>
+</body>
+{% endfor %}
+</html>

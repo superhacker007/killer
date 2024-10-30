@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Letter</title>
+    <style>
+        @font-face {
+            font-family: 'typewriter';
+            src: url("../..{{ url_for('static', filename='pack/fonts/type.ttf') }}");
+        }
+
+        @font-face {
+            font-family: 'handwrite';
+            src: url("../..{{ url_for('static', filename='pack/fonts/write.ttf') }}");
+        }
+
+
+        @font-face {
+            font-family: 'signature';
+            src: url("../..{{ url_for('static', filename='pack/fonts/Allison_Script.otf')}}") format('truetype');
+            font-weight: 100;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 40px;
+            font-size: 12pt;
+            line-height: 1.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .letterhead {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .letterhead img {
+            max-width: 100px;
+        }
+
+        .letterhead .text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .letterhead .text h1 {
+            margin: 0;
+            font-size: 18pt;
+        }
+
+        .letterhead .text p {
+            margin: 0;
+            font-size: 12pt;
+        }
+
+        .content {
+            margin-top: 20px;
+            line-height: 2em;
+        }
+
+        .signature {
+            margin-top: 40px;
+        }
+
+        .cc {
+            margin-top: 20px;
+            line-height: 1em;
+        }
+
+        .cc div {
+            display: inline-block;
+            width: 48%;
+            justify-content: space-between;
+        }
+
+
+        .signature-image {
+            width: 100px;
+            opacity: 0.5;
+        }
+        .downer {
+            display: flex;
+            justify-content: space-between;
+        }
+        .reference div {
+            display: inline-block;
+            width: 49%;
+            margin-top: 15px;
+        }
+        .typed {
+            font-family: 'typewriter';
+            text-decoration: underline;
+            padding: 0 150px 0 10px;
+            min-width: 200px;
+            width: 200px;
+        }
+        .signature {
+            font-family: 'signature';
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="letterhead">
+                <div class="left">
+                    <p style="text-align: left;">
+                        {{schooladd}}] <br>
+{{mycity}} {{region}}<br>
+{{schoolphone}} <br>
+</p>
+                </div>
+                <div class="text">
+                    <h1>GHANA EDUCATION SERVICE</h1>
+                    <img src="path_to_coat_of_arms_image.png" alt="Coat of Arms">
+                    <p>Republic of Ghana</p>
+                </div>
+                <div class="right">
+                    <p>District Education Office<br>P. O. Box 61,<br>{{mycity}} District, {{mycity}}.</p>
+                    
+                </div>
+            </div>
+            
+                    </header>
+        <div class="content">
+           
+            <p>
+
+Canadian Consulate General <br>
+Visa Section <br>
+Canadian High Commission, Accra Ghana <br>
+
+Dear Sir/Madam, <br><br>
+
+<h3 style="text-decoration: underline; text-align: center;">INTRODUCTION OF {{firstname}} {{lastname}} FOR VISA APPLICATION</h3>
+
+I am writing to introduce {{firstname}} {{lastname}}, a dedicated and highly esteemed teacher at {{postedto}}, who is applying for a visa to travel to Canada.
+
+{{firstname}} {{lastname}} has been a valuable member of our teaching staff since {{emp_year}}. During {{his}} tenure, {{he}} has demonstrated exceptional dedication to {{his}} profession, consistently providing high-quality education and fostering a positive learning environment for {{his}} students.
+
+{{firstname}} {{lastname}} is known for {{his}} innovative teaching methods, strong work ethic, and commitment to professional development. {{he}} actively participate(s) in various school activities and has contributed significantly to the academic and extracurricular programs at our school.
+
+We believe that {{firstname}} {{lastname}}'s visit to Canada will be of immense benefit to {{him}} professional growth and will further enhance {{his}} ability to contribute to our educational community upon {{his}} return. {{he}} is planning to [briefly describe the purpose of your visit, e.g., attend a professional development course, participate in a conference, etc.], which we fully support.
+
+As the headmaster of {{postedto}}, I highly recommend {{firstname}} {{lastname}} for this visa. {{he}} is a trustworthy and responsible individual who will represent our institution and country with honor and integrity.
+
+Please find enclosed the necessary documents supporting {{firstname}} {{lastname}}'s visa application, including {{his}} employment records and a copy of the invitation/acceptance letter from [Canadian Institution/Organization Name].
+
+Should you require any further information or have any questions, please feel free to contact me at {{headmasterphone}} or {{headmasteremail}}.
+
+Thank you for your time and consideration. <br> <br>
+
+Yours sincerely, <br><br>
+<span class="signature" style="text-decoration: underline;">sfhs</span><br>
+{{headmaster}} <br>
+{{postedto}} <br>
+{{schooladd}} <br>
+{{schoolphone}} <br>
+{{schoolemail}} <br>
+
+            </p>
+            
+        </div>
+        
+    </div>
+
+</body>
+</html>

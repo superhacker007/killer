@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cover Letter for <span style="text-transform:capitalize">{{destination}}</span> Tourist Visa Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.8em;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section p {
+            margin: 5px 0;
+        }
+        .section h4 {
+            margin: 10px 0 5px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <p>To</p>
+            <p>The Visa Officer<br>
+            <span style="text-transform:capitalize">{{destination}}</span> High Commission<br>
+            Accra, Ghana</p><br>
+            <h2 style="text-align: center; text-transform: uppercase;">COVER LETTER FOR {{destination}} VISIT VISA APPLICATION</h2>
+            <p>Dear Sir/Madam,</p><br>
+            <p>I am {{firstname}} {{lastname}} (Passport No. {{passportn}}) and I am writing this letter to support my visa application for a <span style="text-transform:capitalize">{{destination}}</span> Tourist Visa. I plan to visit the country from {{date1}} to {{date7}}. My purpose for the visit is to explore <span style="text-transform:capitalize">{{destination}}</span>, and the nature of the visit is therefore personal.</p>
+        </div>
+        
+        <div class="section">
+            <h4>Travel Plan for 1 Week</h4>
+            <p>I plan to stay in <span style="text-transform:capitalize">{{destination}}</span> for a period of 1 week. This includes the day that I arrive at {{city}}, {{reg}} (International), Terminal M, until the day I board my flight back to Accra. I have prepared a clear-cut travel itinerary to explore the natural and popular tourist attractions in <span style="text-transform:capitalize">{{destination}}</span>.</p>
+            <ul>
+                <li>Day 1 ({{date1}}) – Arrival at {{city}}, {{reg}} (International) on {{flighton}}. I plan to head directly to {{thehotel}}.</li>
+                
+                {% for ite in ites %}
+                <li>Day {{loop.index+1}} – Visit {{ite[0]}}<br><p>{{ite[1]}}</p></li>
+                {% endfor %}
+                
+                <li>Day 7 ({{date7}}) – Return to {{city}}, {{reg}} (International) and board the flight {{flightnum}} back to Accra.</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h4>Personal Information</h4>
+            <p>I was born on {{dob}} in {{mycity}}, Ghana. I hold a Ghanaian passport ({{passportn}}) and I am a proud citizen of Ghana. I was raised by {{fathername}} {{fatherlast}}, who is a {{fatherwork}}, and my mother, {{mothername}}, who is a {{motherwork}}. I am the youngest in my loving and supportive family.</p>
+            <p>With their blessings and inspiration, I work as a {{role}} with {{employer}}.</p>
+        </div>
+
+        <div class="section">
+            <h4>Travel History</h4>
+            <p>{{visited}}.</p>
+        
+        <div class="section">
+            <h4>Details of Close Friends or Family in <span style="text-transform:capitalize">{{destination}}</span></h4>
+            <p>I do not have any relatives or distant family members living in  <span style="text-transform:capitalize">{{destination}}</span>.</p>
+        </div>
+        
+        <div class="section">
+            <h4>Incentive to Return Home</h4>
+            <p>I do not plan to extend my stay beyond the aforementioned timeline of 1 week, as I have various commitments to attend to back in Ghana. As stated earlier, I am currently employed as a {{role}} with {{employer}}. I plan to return by {{joinback}}. Additionally, I have arranged for a temporary helper to assist my parents with household chores during my absence, but I am needed back on time.</p>
+            <p>My family {{spouse_name}} {{spouse_last}}, is also a significant reason for my prompt return.</p>
+            <p>Furthermore, I have an appointment scheduled for my father on {{appointment_date}} at the Korle Bu Teaching Hospital. I am the only one who takes him to his appointments, as my older siblings are occupied with their own families.</p>
+        </div>
+        
+        <div class="section">
+            <h4>Explanation of Financial Sufficiency</h4>
+            <p>I am sponsoring my visit to  <span style="text-transform:capitalize">{{destination}}</span>. I own an {{acres}}-acre cocoa farm at {{farmcity}}, and I also work as a {{role}} with {{employer}}.</p>
+            <p>I hereby assure you that I have no intention of extending my stay beyond one week in <span style="text-transform:capitalize">{{destination}}</span>. I am fully aware of and committed to adhering to the immigration regulations set for international tourists.</p>
+        </div>
+        
+        <div class="section">
+            <p>I have attached my bank statements and all other supporting documents to my application.</p>
+            <p>I have also attached my payslip, an introductory letter from my workplace, a letter from my church, and hotel and flight reservations for this trip.</p>
+            <p>I hope that I have provided all the necessary details related to my tourist visa application. I look forward to a positive response and the opportunity to visit <span style="text-transform:capitalize">{{destination}}</span>.</p>
+            <p>Yours Sincerely,</p><br>
+            <p>{{firstname}} {{lastname}}</p>
+        </div>
+    </div>
+</body>
+</html>

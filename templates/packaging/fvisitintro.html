@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.cdnfonts.com/css/best-signature-font" rel="stylesheet">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/style.css') }}">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sealer.css') }}">
+<style>
+@import url('https://fonts.cdnfonts.com/css/best-signature-font');
+</style>
+    <style>
+        @font-face {
+            font-family: signa;
+            src: url(sign.ttf);
+        }
+
+        body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.body {
+    line-height: 2em;
+}
+
+    </style>
+</head>
+<body>
+    <div class="dirty-paper-background">
+        <div class="overlay"></div>
+        <div class="content">
+       
+  
+    <div class="header">
+        <div class="column">
+            <p>In cae of reply the number and date on this letter should be quoted</p>
+            <h4>OUR CORE VALUES</h4>
+            <ul>
+                <li type="square">People-Centered  </li>
+                <li type="square">Professionalism</li>
+                <li type="square">Team work</li>
+                <li type="square">Innovation</li>
+                <li type="square">Dicipline</li>
+                <li type="square">Intergrity</li>
+            </ul>
+            <p>My Ref. No. GHS/HRD/GR/{{ourrefemp}}/{{ourrefmon}} <br>
+                Your Ref. No ..........................</p>
+
+        </div>
+        <div class="column">
+            <img src="../..{{ url_for('static', filename='pack/images/ghsbg.png') }}">
+        </div>
+        <div class="column">
+            <h4 class="col3">GHANA HEALTH SERVICE <br>
+                KORLEBU TEACHING HOSPITAL <br>
+                MINISTRIES <br>
+                ACCRA <br> GHANA <br><br>
+                TEL: 0302 662014 <br>
+                FAX: 0302 666808 <br>
+                E-mail: dg@ghsmail.org <br><br>
+
+                {{stamp_date}}
+            </h4>
+        </div>
+    </div>
+
+    <div class="body">
+        <span style="text-transform: capitalize;">{{lian}}</span> Consulate General <br>
+Visa Section <br>
+<span style="text-transform: capitalize;">{{lian}}</span> High Commission, Accra Ghana <br>
+
+Dear Sir/Madam, <br><br>
+
+<h3 style="text-decoration: underline; text-align: center;">INTRODUCTION OF {{firstname}} {{lastname}} FOR VISA APPLICATION</h3>
+
+I am writing to introduce {{firstname}} {{lastname}}, a dedicated and highly esteemed {{role}} at {{employer}}, who is applying for a visa to travel to <span style="text-transform: capitalize;">{{destination}}</span>.
+
+{{firstname}} {{lastname}} has been a valuable member of our nursing staff since {{emp_year}}. During {{his}} tenure, {{he}} has demonstrated exceptional dedication to {{his}} profession, consistently providing high-quality education and fostering a positive learning environment for {{his}} patients.
+
+{{firstname}} {{lastname}} is known for {{his}} innovative nursing methods, strong work ethic, and commitment to professional development.<span style="text-transform: capitalize"> {{he}}</span> actively participate(s) in various hospital activities and has contributed significantly to the academic and extracurricular programs at our hospital.
+
+We believe that {{firstname}} {{lastname}}'s visit to <span style="text-transform: capitalize;">{{destination}}</span> will be of immense benefit to {{him}} professional growth and will further enhance {{his}} ability to contribute to our educational community upon {{his}} return.<span style="text-transform: capitalize"> {{he}}</span> is planning to participate in {{conferenced[0]}}, which we fully support.
+
+As the {{role}} of {{employer}}, I highly recommend {{firstname}} {{lastname}} for this visa.<span style="text-transform: capitalize"> {{he}}</span> is a trustworthy and responsible individual who will represent our institution and country with honor and integrity.
+
+Please find enclosed the necessary documents supporting {{firstname}} {{lastname}}'s visa application, including {{his}} employment records {% if conference == 'yes' and invitation_letter %}
+and a copy of the invitation/acceptance letter from Global Conference Alliance
+{% endif %}.
+
+Should you require any further information or have any questions, please feel free to contact me at {{headmasterphone}}.
+
+Thank you for your time and consideration. <br> <br>
+
+Yours sincerely, <br><br>
+<span class="signature" style="text-decoration: underline; font-size: 60px; color: #284283;">sfhs</span><br>
+{{headmaster}} <br>
+
+    </div>
+</div>
+</div>
+</body>
+</html>

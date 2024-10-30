@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Letter</title>
+    <link rel="stylesheet" href="../../{{ url_for('static', filename='pack/css/style.css')}}">
+    <style>
+        @font-face {
+            font-family: 'typewriter';
+            src: url("../..{{ url_for('static', filename='pack/fonts/type.ttf') }}");
+        }
+
+        @font-face {
+            font-family: 'handwrite';
+            src: url("../..{{ url_for('static', filename='pack/fonts/write.ttf') }}");
+        }
+
+
+        @font-face {
+            font-family: 'signature';
+            src: url("../..{{ url_for('static', filename='pack/fonts/Allison_Script.otf')}}") format('truetype');
+            font-weight: 100;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 40px;
+            font-size: 12pt;
+            line-height: 1.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .letterhead {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .letterhead img {
+            max-width: 100px;
+        }
+
+        .letterhead .text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .letterhead .text h1 {
+            margin: 0;
+            font-size: 18pt;
+        }
+
+        .letterhead .text p {
+            margin: 0;
+            font-size: 12pt;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .signature {
+            margin-top: 40px;
+        }
+
+        .cc {
+            margin-top: 20px;
+            line-height: 1em;
+        }
+
+        .cc div {
+            display: inline-block;
+            width: 48%;
+            justify-content: space-between;
+        }
+
+
+        .signature-image {
+            width: 100px;
+            opacity: 0.5;
+        }
+        .downer {
+            display: flex;
+            justify-content: space-between;
+        }
+        .reference div {
+            display: inline-block;
+            width: 49%;
+            margin-top: 15px;
+        }
+        .typed {
+            font-family: 'typewriter';
+            text-decoration: underline;
+            padding: 0 150px 0 10px;
+            min-width: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="letterhead">
+                <div class="left">
+                    <p style="text-align: left; font-style: italic;">In case of reply the <br> number and date of this <br> letter should be quoted</p>
+                </div>
+                <div class="text">
+                    <h1>GHANA EDUCATION SERVICE</h1>
+                    <img src="../..{{ url_for('static', filename='pack/images/coat.png')}}" alt="Coat of Arms">
+                    <p>Republic of Ghana</p>
+                </div>
+                <div class="right">
+                    <p>District Education Office<br>P. O. Box 61,<br>{{mycity}} District, {{mycity}}.</p>
+                    
+                </div>
+            </div>
+            <div class="reference">
+                <div style="text-align: left;">My Ref. No...GES/ CR/ADO.123/Vol.6/17<br>Your Ref. No..............................</div>
+                <div style="text-align: right;">{{leaveletterdate}}</div>
+            </div>
+        </header>
+        <div class="body">
+          <h4 class="salute">{{mr}}. {{ firstname }} {{ lastname }} <br>
+               {{role}} <br><br>
+              THRO' &nbsp;&nbsp;&nbsp; THE REG. DIR. OF EDUCATION SERVICE <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GREATER ACCRA REGION
+          </h4>
+          Dear {{mr}}. {{ lastname }}
+          <h3 style="text-decoration: underline; text-align: center;">APPROVAL OF ANNUAL LEAVE WITH PAY:2023/2024 FISCAL YEAR</h3>
+          <p class="letter">This is to inform you that the Ghana Education Service has granted you annual leave with pay with effect from {{start_date}}<br><br>
+              In line with the Annual Leave Policy salaries are paid by the Regional Director of Education in the regions where the institutions are situated. You are therefore, <br><br>
+              advised to liaise with the Regional Director of Education, Greater Accra Region to enable you complete IPPD Forms to facilitate your salary transfer. <br><br>
+  
+              You are also expected to fill the monitoring and bond forms and forward them to the above address. <br><br>
+  
+              By a copy of this letter, the Regional Director of Education, Greater Accra Region should please take note of the duration and pay the salary for the specified period <br>
+              only.
+  
+              <table>
+                  <tr>
+                      <th>NO.</th>
+                      <th>NAME</th>
+                      <th>REGD. <br>No.</th>
+                      <th>STAFF. <br>No.</th>
+                      <th>RANK</th>
+                      <th>SEX</th>
+                      <th>AGE</th>
+                      <th>YRS OF <br>SERVICE</th>
+                      <th>DISTRICT</th>
+                      <th>YR.OF <br>C'TION</th>
+                  </tr>
+                  <tr>
+                      <td>{{staffrand}}</td>
+                      <td>{{lastname}} <br>{{firstname}}</td>
+                      <td>{{staffrand}}/{{staffrandyear}}</td>
+                      <td>{{staffid}}</td>
+                      <td>{{role}}</td>
+                      <td>{{se}}</td>
+                      <td>{{age}}</td>
+                      <td>{{syear}}</td>
+                      <td>ELH</td>
+                      <td>{{current_year}}</td>
+                  </tr>
+              </table>
+          </p>
+          <div>
+              <span class="sleft">
+                  CC: The Director HRMD GES HQ. M12, Accra <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Regional Director of Education, GA/R <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The District Director.
+              </span>
+              <span class="sign">
+                  Yours faithfully <br>
+                  <p class="signature">Siaw</p>
+      YAW SIAW-MENSAH <br>
+      REGIONAL DIRECTOR(GA)
+              </span>
+          </div>  
+        </div>
+        
+    </div>
+</body>
+</html>

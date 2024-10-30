@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Letter</title>
+    <style>
+        @font-face {
+            font-family: 'typewriter';
+            src: url("../..{{ url_for('static', filename='pack/fonts/type.ttf') }}");
+        }
+
+        @font-face {
+            font-family: 'handwrite';
+            src: url("../..{{ url_for('static', filename='pack/fonts/write.ttf') }}");
+        }
+
+
+        @font-face {
+            font-family: 'signature';
+            src: url("../..{{ url_for('static', filename='pack/fonts/Allison_Script.otf')}}") format('truetype');
+            font-weight: 100;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 40px;
+            font-size: 12pt;
+            line-height: 1.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .letterhead {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .letterhead img {
+            max-width: 100px;
+        }
+
+        .letterhead .text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .letterhead .text h1 {
+            margin: 0;
+            font-size: 18pt;
+        }
+
+        .letterhead .text p {
+            margin: 0;
+            font-size: 12pt;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .signature {
+            margin-top: 40px;
+        }
+
+        .cc {
+            margin-top: 20px;
+            line-height: 1em;
+        }
+
+        .cc div {
+            display: inline-block;
+            width: 48%;
+            justify-content: space-between;
+        }
+
+
+        .signature-image {
+            width: 100px;
+            opacity: 0.5;
+        }
+        .downer {
+            display: flex;
+            justify-content: space-between;
+        }
+        .reference div {
+            display: inline-block;
+            width: 49%;
+            margin-top: 15px;
+        }
+        .typed {
+            font-family: 'typewriter';
+            text-decoration: underline;
+            padding: 0 150px 0 10px;
+            min-width: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="letterhead">
+                <div class="left">
+                    <p style="text-align: left; font-style: italic;">In case of reply the <br> number and date of this <br> letter should be quoted</p>
+                </div>
+                <div class="text">
+                    <h1>GHANA EDUCATION SERVICE</h1>
+                    <img src="path_to_coat_of_arms_image.png" alt="Coat of Arms">
+                    <p>Republic of Ghana</p>
+                </div>
+                <div class="right">
+                    <p>District Education Office<br>P. O. Box 61,<br>{{mycity}} District, {{mycity}}.</p>
+                    
+                </div>
+            </div>
+            <div class="reference">
+                <div style="text-align: left;">My Ref. No...GES/ CR/ADO.123/Vol.6/17<br>Your Ref. No..............................</div>
+                <div style="text-align: right;">26<sup>TH</sup> August, 2008</div>
+            </div>
+            <h3 style="text-decoration: underline;">APPOINTMENT/POSTING OF NEWLY TRAINED 4-YEAR DEGREE IN BASIC EDUCATION TEACHERS ({{emp_start_year}}) : {{mycity}} DISTRICT</h3>
+
+        </header>
+        <div class="content">
+            <p>
+                MR/MRS/MISS <span class=" typed">{{firstname}} {{lastname}}</span>
+            </p>
+            <p>
+                I am pleased to inform you that the Director-General, Ghana Education Service, has given approval for your employment/appointment as a teacher in Gomoa West District.
+            </p>
+            <p>
+                1. You are, accordingly, posted to <span class=" typed">{{postedto}}</span> with effect from {{emp_start_date}}<br>
+                2. You will teach <span class=" typed">Maths, English, Science, ICT</span> in the above school.<br>
+                3. Your salary meanwhile will be GH¢{{anualsal}} per annum, GUSS Level 5.5 subject to revision on passing the Diploma in Basic Education Final Examinations.<br>
+                4. Your annual incremental date is {{emp_start_date}}. Incremental Award is to be earned through satisfactory performance.<br>
+                5. You will be governed by the Conditions and Terms of Service, Rules and Code of Professional Conduct in the Ghana Education Service.<br>
+                6. Your transport expenses from your home town to your station will be refunded to you at existing government rate after your assumption of duty.<br>
+                7. By a copy of this letter, your Headmaster/Mistress/Headteacher is requested to report in writing the exact date of assumption of duty.<br>
+                8. Please acknowledge receipt.
+            </p>
+            <div class="downer">
+                <div class="signature">
+                    <p>
+                        MR/MRS/MISS <span class="">{{firstname}} {{lastname}}</span><br>
+                        <span class="typed">P.O. BOX {{mypobox}}</span><br>
+                        <span class="typed">{{mycity}}</span>
+                    </p>
+                    
+                </div>
+                <div>
+                    <p>
+                        {{director}} <br>
+                        DISTRICT DIRECTOR OF EDUCATION<br>
+                        {{city}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <footer class="cc">
+            <p>CC:</p>
+            <div>
+                <p>
+                    The Director-General<br>
+                    GES, Headquarters,<br>
+                    P. O. Box M 45, Accra.
+                </p>
+                <p>
+                    The Director (HRMD)<br>
+                    Ghana Education Service<br>
+                    P. O. Box M 45, Accra.
+                </p>
+                <p>
+                    The Regional Director<br>
+                    Ghana Education Service<br>
+                    P. O. Box 111, {{region}}
+                </p>
+                <p>
+                    The IPPD Co-ordinator GES,<br>
+                    P. O. Box M 45, Accra.
+                </p>
+            </div>
+            <div style="margin-top: -30px; padding-top: 0;">
+                <p>
+                    The Regional Manager<br>
+                    {{church}} Education Unit<br>
+                    Cape Coast
+                </p>
+                <p>
+                    The Controller & Accountant General<br>
+                    Salaries Department, Headquarters,<br>
+                    Accra.
+                </p>
+                <p>
+                    The Headteacher/Headmaster<br>
+                    {{mycity}} {{church}} Secondary School,<br>
+                    {{mycity}}
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    font-size: 9pt;
+}
+
+.container {
+    width: 210mm;
+    height: 297mm;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header img {
+    width: 150px; /* Adjust the width as needed */
+}
+
+.inner {
+    border: 1px solid #ddd;
+}
+
+.header-text {
+    background-color: #f5f5f5;
+    padding: 10px;
+    padding-bottom: 0px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.reference-section {
+    width: 100%;
+    margin: 0;
+    display: table;
+    background-color: #f27935;
+}
+
+.reference-section .left {
+    display: table-cell;
+    width: 30%;
+    background-color: #f27935;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.reference-section .right {
+    display: table-cell;
+    width: 70%;
+    background-color: #fde9d0;
+    color: black;
+    padding: 20px;
+    vertical-align: middle;
+}
+
+.reference-section .left .reference-number {
+    color: black;
+    padding: 0;
+    margin: 5px;
+    font-size: 25px;
+}
+
+.reference-section .left .valid-hotel {
+    color: black;
+}
+
+.reference-section .right h2 {
+    margin: 0;
+}
+
+.passenger-info {
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+.passenger-info .label {
+    font-weight: bold;
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.passenger-info .value {
+    float: right;
+    width: 50%;
+    text-align: left;
+}
+
+.details-section {
+    padding: 10px 5px;
+}
+
+.from-to {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.from-to .label {
+    font-weight: bold;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.table th, .table td {
+    border-top: 2px solid #f27935;
+    border-bottom: 2px solid #f27935;
+    padding: 10px;
+    text-align: left;
+}
+
+.remarks {
+    font-size: 10pt;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.remarks h4 {
+    padding: 0;
+    margin: 0;
+}
+
+.extra-section {
+    margin: 20px 0;
+    padding: 20px 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.extra-section .hoten {
+    display: inline;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.extra-section .stars {
+    display: inline;
+    float: right;
+    border: 2px solid #fde9d0;
+    padding: 5px;
+    font-size: 10pt;
+}
+
+.reference-section .stars {
+    float: right;
+    color: #f27935;
+    border: 1px solid #f27935;
+    font-size: 10pt;
+    margin-top: -29px;
+}
+
+.extra-section .info {
+    margin-bottom: 10px;
+}
+
+.highlight {
+    background-color: #d4e11c;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer a {
+    color: blue;
+    text-decoration: none;
+}
+
+.footer h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.generated {
+    text-align: right;
+    font-size: 12px;
+    background-color: #fde9d0;
+    padding: 5px;
+    margin-top: 20px;
+    width: fit-content;
+    float: right;
+    width: 200px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <img src="../..{{ url_for('static', filename='pack/images/hote.png') }}" alt="hotelbeds" width="200px" style="margin: 20px;">
+    <div class="inner">
+        <div class="header">
+            <div class="header-text">
+                Voucher / Accommodation<br>
+                Booking confirmed and guaranteed - Voucher - Hotel
+            </div>
+        </div>
+    
+        <div class="reference-section">
+            <div class="left">
+                <div class="reference-label">Reference number:</div>
+                <h2 class="reference-number">{{hoteref}}</h2>
+                <div class="valid-hotel">Valid for the hotel</div>
+            </div>
+            <div class="right">
+                <div>
+                    <h2>{{hotelname}} / {{hotelname}}</h2>
+                    <div class="stars">Includes {{stars}} hotels, standard, mini hotels, re</div>
+                </div>
+                <div class="passenger-info">
+                    <div class="label">Passenger name:</div>
+                    <div class="value">{{firstname}} {{lastname}}</div>
+                </div>
+                <div class="passenger-info">
+                    <div class="label">File TO:</div>
+                    <div class="value">WAKANOWPRE</div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="details-section">
+            <div class="from-to">
+                <span class="label">From:</span> {{startdate}} <span class="label">To:</span> {{enddfhoteate}}
+            </div>
+        </div>
+    
+        <table class="table">
+            <tr>
+                <th>Units</th>
+                <th>Room type</th>
+                <th>Adults</th>
+                <th>Children</th>
+                <th>Children Ages</th>
+                <th>Board</th>
+            </tr>
+            <tr>
+                <td>1x</td>
+                <td>Economy Double Room, <br>1 Double Bed (double <br> Room With Shared Toilet)</td>
+                <td>1</td>
+                <td>0</td>
+                <td></td>
+                <td>Room Only</td>
+            </tr>
+        </table>
+    
+        <div class="remarks">
+            <h4>Remarks</h4><br>
+            <b>Rate Information: Please note that these rates don't allow modifications, therefore you would need to cancel and create a new booking. Cancellation charges apply as per cancellation policy.</b><br>
+            This property doesn't offer after-hours check-in. To make arrangements for check-in please contact the property at least 48 hours before arrival using the information on the booking confirmation. (26/02/2021-31/12/2049).<br>
+            Car park NO.<br>
+            Included: Free WiFi.
+        </div>
+    </div>
+
+    <div class="extra-section">
+        <div>
+            <h2 class="hoten">{{hotelname}}</h2>
+            <div class="stars">Includes {{stars}} hotels, standard, mini hotels, re</div>
+        </div>
+        <div class="info"><b>{{hoteladd}} - {{destination}}-<span style="text-transform: uppercase;">{{reg}}</span> / {{destination}}-<span style="text-transform: uppercase;">{{reg}}</span>, <br> {{hotelsub}}</b></div>
+        <div class="info"><b>Fax:</b> {{hotell}} <b>Telephone:</b> <br> {{hotelfax}}</div>
+        <div class="info"><b>Confirmation reference from hotel:</b> Service is confirmed but reference may be available from {{available}}T00: <br>00</div>
+        <div class="info"><b>GMS:</b> {{geoloc}}° {{ (geoloc / 10) | round | int }}' {{ (geoloc / 2) | round | int }}.{{geoloc*3}}" N - {{geoloc*4}}° {{ (geoloc / 9) | round | int }}' {{ (geoloc / 7) | round | int }}.00{{ (geoloc / 10) | round | int }}" <br> W</div>
+        
+    </div>
+
+    <div class="highlight">Telephone</div>
+    <div class="footer"><b>Booked and payable by</b> Selected partners</div>
+
+    <div class="generated">Voucher generated on <b>{{generated_on}}</b></div>
+
+</div>
+
+</body>
+</html>

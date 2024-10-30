@@ -1,0 +1,448 @@
+{% extends "base.html" %}
+{% block title %}New Visitor - WAAP{% endblock %}
+{% block content %}
+
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Client Documents</h4>
+              <p class="card-description">Upload Documents </p>
+              <form class="forms-sample" action="/new_visitor" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label>Passport</label>
+                  <input type="file" name="img[]" class="file-upload-default">
+                  <div class="input-group col-xs-12">
+                    <input type="file" name="passport" accept="image/*,.pdf" required class="form-control file-upload-info" placeholder="Upload Image">
+                    <span class="input-group-append">
+                      <button class="file-upload-browse btn btn-primary" type="submit">Upload</button>
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% if details %}
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Visit Details</h4>
+              <form class="form-sample" method="post" action="/create_visitor" enctype="multipart/form-data">
+                <p class="card-description"> Destination </p>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group row">
+                      <div class="col-sm-9">
+                        <select class="form-select" name="country">
+                          <option value="canada">Canada</option>
+                          <option value="australia">Australia</option>
+                          <option value="europe">Europe</option>
+                          <option value="usa">USA</option>
+                          <option value="uk">UK</option>
+                          <option value="malta">Malta</option>
+                          <option value="japan">Japan</option>
+                          <option value="albania">Albania</option>
+                          <option value="portugal">Portugal</option>
+                          <option value="china">China</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group row">
+                    
+                      <div class="col-sm-9">
+                        <input name="city" type="text" class="form-control" placeholder="Vancouver" value="Vancouver" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group row">
+                      
+                      <div class="col-sm-9">
+                        <input name="start_date" type="date" class="form-control" required value="03/09/2024" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group row">
+                      
+                      <div class="col-sm-9">
+                        <input name="end_date" type="date" class="form-control"/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group row">
+                      <label for="">Is Conference</label>
+                      <div class="col-sm-9">
+                        <select name="conference" class="form-select">
+                          <option value="no">No</option>
+                          <option value="yes">Yes</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="card-description"> Personal info </p>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">First:</label>
+                      <div class="col-sm-9">
+                        <input name="firstname" type="text" class="form-control" value="{{ details.firstname }}" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Last:</label>
+                      <div class="col-sm-9">
+                        <input name="surname" type="text" class="form-control" value="{{ details.surname }}"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Sex:</label>
+                      <div class="col-sm-9">
+                        <select name="sex" class="form-select">
+                          <option {% if details.sex == "M"%} selected {% endif %} value="m" >Male</option>
+                          <option {% if details.sex == "F"%} selected {% endif %} value="f" >Female</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                  
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">PassNo</label>
+                      <div class="col-sm-9">
+                        <input name="passport_number" type="text" class="form-control" value="{{ details.passport_number }}" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">DOB:</label>
+                      <div class="col-sm-9">
+                        <input name="dob" class="form-control" placeholder="dd/mm/yyyy" value="{{ details.dob }}" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Nat.</label>
+                      <div class="col-sm-9">
+                        <input type="text" name="nationality" class="form-control" value="{{ details.nationality }}"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Add.</label>
+                      <div class="col-sm-9">
+                        <input name="address" type="text" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">City</label>
+                      <div class="col-sm-9">
+                        <input name="mycity" type="text" class="form-control" value="{{ details.place_of_birth }}" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Region</label>
+                      <div class="col-sm-9">
+                        <select name="region" class="form-select">
+                          <option value="Greater Accra">Greater Accra</option>
+                          <option value="Eastern Region">Eastern Region</option>
+                          <option value="Central Region">Central Region</option>
+                          <option value="Brong Ahafo">Brong Ahafo</option>
+                          <option value="Ashanti Region">Ashanti Region</option>
+                          <option value="Western Region">Western Region</option>
+                          <option>Northern Region</option>
+                          <option>Upper East</option>
+                          <option>Upper West</option>
+                          <option>Volta Region</option>
+                        </select>
+                      </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Phone</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="phonen" placeholder="024XXXXXXX" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Email</label>
+                      <div class="col-sm-9">
+                        <input type="email" class="form-control" name="email" placeholder="info@waaptravel.com" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Social</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="ssn" placeholder="CSXXXXXXXXK" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Bank</label>
+                      <div class="col-sm-9">
+                        <select name="bn" class="form-select">
+                          <option value="om">OmniBsic</option>
+                          <option value="stan">Stanbic</option>
+                          <option value="nib">NIB</option>
+                          <option value="gt">GT Bank</option>
+                          <option value="gcb">GCB</option>
+                          <option value="adb">ADB</option>
+                          <option value="fid">Fidelity</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Branch</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="branch" placeholder="Accra" value="{{ details.place_of_birth }}" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">AccNo</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="acc" placeholder="0001119993746" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Bank</label>
+                      <div class="col-sm-9">
+                        <select name="bn2" class="form-select">
+                          <option value="om">OmniBsic</option>
+                          <option value="stan">Stanbic</option>
+                          <option value="nib">NIB</option>
+                          <option value="gt">GT Bank</option>
+                          <option value="gcb">GCB</option>
+                          <option value="adb">ADB</option>
+                          <option value="fid">Fidelity</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Branch</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="branch" placeholder="Accra" value="{{ details.place_of_birth }}" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">AccNo2</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="acc2" placeholder="0001119993746" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Passport</label>
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="passport"  id="file1" accept="image/*,.pdf" required class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">Description:</label>
+                      <input type="text" id="description1" name="visited" placeholder="e.g., USA, South Africa" ><br><br>
+
+                    </div>
+                    
+                  </div>
+
+                  <div class="form-group">
+                    <label>Signature</label>
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="mysig" accept="image/*,.pdf" required class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>My Birth Cert</label>
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="birthcert"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">fathername</label>
+                      <input type="text" id="description1" name="fathername" placeholder="e.g., " >
+                      <label for="description1">fatherlast</label>
+                      <input type="text" id="description1" name="fatherlast" placeholder="e.g., " >
+                      <label for="description1">mothername</label>
+                      <input type="text" id="description1" name="mothername" placeholder="e.g., " >
+                      <label for="description1">fatherwork</label>
+                      <input type="text" id="description1" name="fatherwork" placeholder="e.g., seller" >
+                      <label for="description1">motherwork</label>
+                      <input type="text" id="description1" name="motherwork" placeholder="e.g., teacher" >
+                      
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>Marriage Cert</label>
+                    <input type="file" name="files" id="file1" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="marriagecert"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">Spouse:</label>
+                      <input type="text" id="description1" name="spouse" placeholder="e.g., Marriage Certificate" value="" > <input type="text" id="description1" name="spouselast" placeholder="e.g., Marriage Certificate" value="" ><br><br>
+
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>Child Cert1</label>
+                    <input type="file" name="files" id="file1" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="child1_cert"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">Description:</label>
+                      <input type="text" id="description1" placeholder="e.g., Child 1 Cert" name="child1name"  ><br><br>
+
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>Child Cert2</label>
+                    
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="child2_cert"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">Description:</label>
+                      <input type="text" id="description1" placeholder="e.g., Child 2 Cert" name="child2name"  ><br><br>
+
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>Pictures</label>
+                    
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="picture1"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">Picture Description:</label>
+                      <input type="text" id="description1" placeholder="e.g., Child 2 Cert" name="picturestory1"  ><br><br>
+
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>Pictures</label>
+                    
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="picture2"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">Picture Description:</label>
+                      <input type="text" id="description1" placeholder="e.g., Child 2 Cert" name="picturestory2"  ><br><br>
+
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>Pictures</label>
+                    
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="picture3"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">Picture Description:</label>
+                      <input type="text" id="description1" placeholder="e.g., Child 2 Cert" name="picturestory3"  ><br><br>
+
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>Pictures</label>
+                    
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="picture4"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">Picture Description:</label>
+                      <input type="text" id="description1" placeholder="e.g., Child 2 Cert" name="picturestory4"  ><br><br>
+
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>Pictures</label>
+                    
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="picture5"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">Picture Description:</label>
+                      <input type="text" id="description1" placeholder="e.g., Child 2 Cert" name="picturestory5"  ><br><br>
+
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>Pictures</label>
+                    
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="picture6"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info" placeholder="Upload Image">
+                      <label for="description1">Picture Description:</label>
+                      <input type="text" id="description1" placeholder="e.g., Child 2 Cert" name="picturestory6"  ><br><br>
+
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>Bank Statement</label>
+                    
+                    <div class="input-group col-xs-12">
+                      <input type="file" name="bankstatement"  id="file1" accept="image/*,.pdf" class="col-sm-6 form-control file-upload-info">
+                      <label for="description1">Picture Description:</label>
+                      <input type="text" id="description1" placeholder="Salary on Statement" name="salary"  ><br><br>
+
+                    </div>
+
+                    <label>
+                      <input type="radio" name="hassal" value="0"> Self Employed
+                  </label>
+                  <label>
+                      <input type="radio" name="hassal" value="1" checked> Staff
+                  </label>
+
+                    
+                    
+                  </div>
+                </div>
+                <button class="btn btn-light">Cancel</button>
+                <button type="submit" class="btn btn-primary me-2">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    {% endblock %}

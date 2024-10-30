@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Statement</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 8pt;
+            background-color: #fff;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 210mm; 
+            margin: 0 auto;
+        }
+
+        .background {
+            z-index: -100;
+            position: absolute;
+            margin: 45% 18%;
+            opacity: 0.1;
+        }
+
+        .background img {
+            width: 400px;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .header-table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        .header-table td {
+            padding: 8px;
+            vertical-align: top;
+        }
+
+        .header-table .left, .header-table .right {
+            width: 17%;
+        }
+
+        .header-table .center {
+            width: 48%;
+            text-align: center;
+        }
+
+        .header-table img {
+            width: 100%;
+        }
+
+        .header-table .left img, .header-table .right img {
+            width: 130px;
+        }
+
+        .header-table .center img {
+            width: 66px;
+            height: 67px;
+            margin: 0 auto;
+        }
+
+        .header-table .right {
+            font-weight: bold;
+            font-size: 8pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        table.content-table {
+            font-family: 'Times New Roman', Times, serif;
+            border-collapse: collapse;
+            width: 87%;
+            margin: 0 auto;
+        }
+
+        table.content-table thead {
+            background-color: #f2f2f2;
+        }
+
+        table.content-table th, table.content-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table.content-table th {
+            background-color: #f2f2f2;
+            color: black;
+        }
+
+        table.content-table tr {
+            height: 25px;
+        }
+
+        table.content-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="background">
+            <img src="../templates/packaging/images/niblogobg.png" alt="">
+        </div>
+        <table class="header-table">
+            <tr>
+                <td class="left">
+                    <img src="../templates/packaging/images/niblogo.png" alt="">
+                </td>
+                <td class="center">
+                    <h1>STATEMENT OF ACCOUNT</h1>
+                    <img src="../templates/packaging/images/nibseal.png" alt="">
+                </td>
+                <td class="right">
+                    <p>
+                        National Investment Bank Ltd. <br>
+                        37 Kwame Nkrumah Avenue <br>
+                        Tel:+233 302 661701 - 10 <br>
+                        Tel:+233 302 673124 <br>
+                        www.nibghana.net <br>
+                        info@nibghana.com <br>
+                    </p>
+                </td>
+                <td class="right">
+                    <img src="../templates/packaging/images/logos.png" alt="">
+                </td>
+            </tr>
+        </table>
+        {% for page in transactions|batch(13, '') %}
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>Book Date</th>
+                        <th>Reference</th>
+                        <th>Description</th>
+                        <th>Value Date</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in page %}
+                    <tr>
+                        <td>{{ transaction.date }}</td>
+                        <td>{{ transaction.reference }}</td>
+                        <td>{{ transaction.description }}</td>
+                        <td>{{ transaction.valueDate }}</td>
+                        <td>{{ transaction.debit }}</td>
+                        <td>{{ transaction.credit }}</td>
+                        <td>{{ transaction.closingBalance }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% if not loop.last %}
+                <div class="page-break"></div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>

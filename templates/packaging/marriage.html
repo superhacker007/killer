@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioned Text on Background</title>
+    <style>
+        @font-face {
+            font-family: 'handwrite';
+            src: url("../../{{ url_for('static', filename='pack/fonts/write.ttf') }}");
+            src: url("../../static/pack/fonts/write.ttf");
+        }
+
+        @font-face {
+            font-family: 'signature';
+            src: url("../../{{ url_for('static', filename='pack/fonts/Allison_Script.otf') }}") format('truetype');
+            src: url("../../static/pack/fonts/Allison_Script.otf") format('truetype');
+            font-weight: 100;
+        }
+
+        body {
+            font-family: 'handwrite';
+            color: #284283;
+            margin: 0;
+            padding: 0;
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url("../../{{ url_for('static', filename='pack/images/mcert.jpg') }}") no-repeat center center;
+            background: url("../../static/pack/images/mcert.jpg") no-repeat center center;
+            background-size: cover;
+        }
+
+        .text-box {
+            position: absolute;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <div class="text-box" style="top: 30px; left: 150px;">GHA/{{ marryme.licenceno }}</div>
+        <div class="text-box" style="top: 30px; left: 1180px;">{{ marryme.certno }}</div>
+        <div class="text-box" style="top: 60px; left: 1130px;">{{ daymar }} {{ monthmar }}</div>
+        <div class="text-box" style="top: 63px; left: 1350px;">{{ yearmar }}</div>
+        <div class="text-box" style="top: 160px; left: 650px;">{{ postedto }}</div>
+        <div class="text-box" style="top: 165px; left: 1200px;">{{ marryme.marriagecity }}</div>
+        <div class="text-box" style="top: 265px; left: 80px;">{{ marryme.marriageno }}</div>
+        <div class="text-box" style="top: 265px; left: 200px;">{{ monthmar }} {{yearmar}}</div>
+        <div class="text-box" style="top: 265px; left: 550px;">Full Age</div>
+        <div class="text-box" style="top: 265px; left: 300px;">{{ spouse_name }} {{spouse_last}}</div>
+        <div class="text-box" style="top: 265px; left: 650px;">Bachelor</div>
+        <div class="text-box" style="top: 265px; left: 750px;">{{ marryme.spousework }}</div>
+        <div class="text-box" style="top: 265px; left: 865px;">{{ myaddress }}</div>
+        <div class="text-box" style="top: 265px; left: 1020px;">{{ marryme.spousefather }} {{spouse_last}}</div>
+        <div class="text-box" style="top: 265px; left: 1280px;">{{ marryme.inlawwork }}</div>
+        <div class="text-box" style="top: 355px; left: 300px;">{{ firstname }} {{ lastname }}</div>
+        <div class="text-box" style="top: 365px; left: 650px;">Bachelor</div>
+        <div class="text-box" style="top: 365px; left: 750px;">{{ role }}</div>
+        <div class="text-box" style="top: 365px; left: 865px;">{{ myaddress }}</div>
+        <div class="text-box" style="top: 365px; left: 1020px;">{{ fathername }} {{fatherlast}}</div>
+        <div class="text-box" style="top: 365px; left: 1280px;">{{ fatherwork }}</div>
+        <div class="text-box" style="top: 480px; left: 885px;">{{ postedto }}</div>
+        <div class="text-box" style="top: 550px; left: 460px; font-family: 'signature'; font-weight: bold; text-transform: lowercase; font-size: 40px;">{{ marryme.witness1sig }}</div>
+        <div class="text-box" style="top: 565px; left: 80px;">{{ marryme.witness1 }}</div>
+        <div class="text-box" style="top: 610px; left: 80px;">{{ marryme.witness2 }}</div>
+        <div class="text-box" style="top: 610px; left: 450px; font-family: 'signature'; font-weight: bold; text-transform: lowercase; font-size: 40px;">{{ marryme.witness2sig }}</div>
+        <div class="text-box" style="top: 570px; left: 1200px; font-family: 'signature'; text-transform: lowercase; font-size: 40px;">{{ mysig }}</div>
+        <div class="text-box" style="top: 635px; left: 1200px; font-family: 'signature'; text-transform: lowercase; font-size: 40px;">{{ wifesig }}</div>
+    </div>
+</body>
+</html>

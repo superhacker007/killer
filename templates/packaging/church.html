@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.cdnfonts.com/css/best-signature-font" rel="stylesheet">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/style.css') }}">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sealer.css') }}">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sigstamp.css') }}">
+<style>
+@import url('https://fonts.cdnfonts.com/css/best-signature-font');
+</style>
+    <style>
+        body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 2em;
+    }
+    .page {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .header {
+        line-height: 1.5em;
+    }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header">
+        <div class="column">
+            <p>In case of reply the number and date on this letter should be quoted</p>
+            <h4>OUR CORE VALUES</h4>
+            <ul>
+                <li type="round">Christ-Centered  </li>
+                <li type="round">Soul Winning</li>
+                <li type="round">Hard work</li>
+                <li type="round">The Word</li>
+                <li type="round">Dicipline</li>
+                <li type="round">Intergrity</li>
+            </ul>
+
+        </div>
+        <div class="column" style="align-content: center;">
+            <img src="../..{{ url_for('static', filename='pack/images/pentac.png') }}" width="160px">
+        </div>
+        <div class="column">
+            <h4 class="col3">CHURCH OF PENTECOST <br>
+                GENERAL HEADQUARTERS  <br>
+                Gbeshigon Street, La, Accra <br> GHANA <br>
+                TEL: +233(0) 571 124 180  <br>
+                E-mail: info@thecophq.org<br>
+
+                {{dateprinted}}
+            </h4>
+        </div>
+    </div>
+
+    <div class="body">
+        <h2 style="text-decoration: underline; text-align: center;">IMMIGRATION LETTER FOR A CHURCH MEMBER</h2>
+       <p class="letter">
+
+        {{firstname}} {{lastname}} <br>
+        {{myaddress}} <br>
+        {{mycity}}, {{region}}, 00233 <br>
+        {{email}} <br>
+        {{phonen}} <br>
+        Dear {{mr}}. {{lastname}}, <br><br>
+
+        I am writing this letter to vouch for your membership and active participation in our Church community, where you serve as a Sunday School teacher and Youth Leader. This Immigration Letter for the Church Member serves as evidence of your substantial role in our community. Since joining us in {{emp_year}}, you have demonstrated nothing short of exemplary behavior, commitment, and dedication.
+        
+        Your involvement in our church programs and events speaks volumes of your character and your deep faith, which is admirable. Your ongoing efforts and contributions have greatly benefited our community, and your influence as a Youth Leader has been impactful to our youth members. Your ability to assist them in their personal and spiritual growth is a testament to your leadership and nurturing nature.
+        
+        As a community, we recognize and greatly appreciate your hard work and dedication. Therefore, I strongly support your immigration process and look forward to seeing your continued growth and impact on our church community If further details are required, feel free to contact me.
+        
+        Best regards, <br><br>
+        
+        <div class="stamp">
+            <div class="text">
+                <div class="line1" style="text-transform: uppercase;">PIWC {{mycity}} GHANA</div>
+                <div class="line2">{{stamp_date}}</div>
+                <div class="dotted-line"></div>
+                <div class="line3">BRANCH HEAD PASTOR</div>
+            </div>
+            <div class="signature" style="margin-left: -120px;">/B.Saah</div>
+        </div>
+        Isaac B. Saah <br>
+        </span>
+       </p>
+      
+    </div>
+
+    
+</div>
+
+</body>
+</html>

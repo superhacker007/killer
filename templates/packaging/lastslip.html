@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Slip</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 20mm;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: white;
+        }
+
+        .page {
+            width: 297mm;
+            height: 210mm;
+            padding: 10mm;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        table.payslip {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10mm;
+        }
+
+        table.payslip th, table.payslip td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+
+        table.payslip thead th {
+            background-color: #f2f2f2;
+        }
+
+        .department-header {
+            font-weight: bold;
+        }
+
+        .bold-text {
+            font-weight: bold;
+        }
+
+        .right-align {
+            text-align: right;
+        }
+
+        .center-align {
+            text-align: center;
+        }
+
+        .no-border {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- First Section -->
+        <table class="payslip">
+            <thead>
+                <tr>
+                    <td rowspan="3" colspan="2">
+                        <img src="path_to_logo_image" alt="Logo" width="100"><br>
+                        <span class="department-header">CONTROLLER AND ACCOUNTANT GENERAL'S DEPARTMENT</span>
+                    </td>
+                    <td>DATE</td>
+                    <td>FEBRUARY 2024</td>
+                    <td>REGION</td>
+                    <td>Bono</td>
+                </tr>
+                <tr>
+                    <td>PERIOD</td>
+                    <td colspan="3">FROM 01-FEB-24 TO 29-FEB-24</td>
+                </tr>
+                <tr>
+                    <td>NAME</td>
+                    <td>Asare Bismark</td>
+                    <td>DISTRICT</td>
+                    <td>Sunyani Municipal Assembly</td>
+                </tr>
+                <tr>
+                    <td>STAFF ID</td>
+                    <td>1188759</td>
+                    <td>S.S.F. No</td>
+                    <td>G068706090034</td>
+                    <td>AGENCY</td>
+                    <td>Min Of Education</td>
+                </tr>
+                <tr>
+                    <td>GRADE</td>
+                    <td colspan="3">Principal.Supt Professional..GES</td>
+                    <td>DEPT.</td>
+                    <td>GES</td>
+                </tr>
+                <tr>
+                    <td>LEVEL</td>
+                    <td>SS.PSH16</td>
+                    <td>POINT</td>
+                    <td>3</td>
+                    <td>SCALE TYPE</td>
+                    <td>SS</td>
+                </tr>
+                <tr>
+                    <td>UNIT</td>
+                    <td colspan="5">0712 Twene Amanfo Snr High Sch COST CENTRE</td>
+                </tr>
+            </thead>
+        </table>
+
+        <!-- Second Section -->
+        <table class="payslip">
+            <thead>
+                <tr>
+                    <td>MONTH/YEAR</td>
+                    <td>NATURE</td>
+                    <td>ITEM CODE</td>
+                    <td>DESCRIPTION</td>
+                    <td>HRS/ORIGINAL AMOUNT</td>
+                    <td>RATE(%) BALANCE</td>
+                    <td>PAYMENTS</td>
+                    <td>DEDUCTIONS</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>29-Feb-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Single Spine Monthly Salary</td>
+                    <td></td>
+                    <td></td>
+                    <td>3,826.67</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>29-Feb-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>SS <span style="text-transform:capitalize;">{{retention}}</span> Retention Premium</td>
+                    <td></td>
+                    <td></td>
+                    <td>574.00</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>29-Feb-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Social Security Contribution Employee</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>210.47</td>
+                </tr>
+                <tr>
+                    <td>29-Feb-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Income Tax</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>680.55</td>
+                </tr>
+                <tr>
+                    <td>29-Feb-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Coalition of Concerned Teachers Gh Dues</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>40.00</td>
+                </tr>
+                <tr>
+                    <td>29-Feb-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Coalition of Concerned Teachers Fund Dues</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>150.00</td>
+                </tr>
+                <tr>
+                    <td>29-Feb-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>S I C Life Policy Ded</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>50.00</td>
+                </tr>
+                <tr>
+                    <td>29-Feb-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>S I C Life Policy Ded</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>50.00</td>
+                </tr>
+                <tr>
+                    <td>29-Feb-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Coalition of Concerned Teachers Fund Loan Ded.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>586.67</td>
+                </tr>
+                <tr>
+                    <td colspan="8">** CAGD is not liable for any financial loss resulting from disclosing your employee details including password to Third Parties **</td>
+                </tr>
+                <tr>
+                    <td colspan="8">*** TIER 2 CONTRIBUTION 191.34 AND YTD CONTRIBUTION 382.6800 ***</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Third Section -->
+        <table class="payslip">
+            <tbody>
+                <tr>
+                    <td>ANNUAL SALARY</td>
+                    <td>45,920.00</td>
+                    <td>YTD SSF (WORKER)</td>
+                    <td>420.94</td>
+                    <td>EMPLOYER S.S.F.</td>
+                    <td>497.47</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>YTD GROSS PAY</td>
+                    <td>8,801.34</td>
+                    <td>YTD INCOME TAX</td>
+                    <td>1,361.10</td>
+                    <td>MONTHLY</td>
+                    <td>497.47</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>MONTHLY GROSS PAY</td>
+                    <td>4,400.67</td>
+                    <td>YTD</td>
+                    <td>994.94</td>
+                    <td>PAYMENT MODE</td>
+                    <td>2,632.98</td>
+                    <td colspan="2"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

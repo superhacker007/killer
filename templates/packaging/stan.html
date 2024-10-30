@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sigstamp.css') }}">
+    <title>Bank Statement</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logo {
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: -20px;
+}
+
+.header, .customer-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    line-height: 1.2em;
+}
+
+.left-section, .right-section {
+    width: 45%;
+}
+
+.left-section p, .right-section p {
+    margin: 4px 0;
+}
+
+.suppress {
+    margin-top: 100px;
+    float: right;
+}
+
+.left-section p {
+    text-transform: uppercase;
+}
+
+.bordered-section {
+    border: 2px solid black;
+    padding: 10px;
+    margin-bottom: 20px;
+    line-height: 1.5em;
+}
+
+.bordered-section .row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.bordered-section .row p {
+    margin: 4px 0;
+    line-height: 2em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 2px solid black;
+    padding: 0;
+}
+
+
+th, td {
+    padding: 5px;
+}
+
+th {
+    text-align: center;
+}
+
+.no-inner-borders td {
+    border-bottom: none;
+    border-top: none;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    padding: 4px;
+    line-height: 1.5em;
+    text-transform: uppercase;
+}
+
+.close {
+    line-height: 1em;
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    height: 2em;
+    max-height: 2em;
+    overflow: hidden;
+}
+
+.close td{
+    padding: 1px 5px;
+    margin: 0;
+    line-height: 1.2em;
+}
+
+.footer {
+    text-align: center;
+}
+
+.account-number {
+    float: right;
+    font-size: 8px;
+    margin-bottom: 0;
+}
+
+.tax {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.page-break {
+            page-break-before: always;
+        }
+
+.suppress2 {
+    float: right;
+    margin-left: 430px;
+}
+
+
+.down {
+    margin: 10% -5%;
+    position: relative;
+}
+    </style>
+</head>
+{% for page in chunks %}
+<body>
+    <div class="container">
+        {% if loop.first %}
+        <div class="logo">
+            <img src="../..{{ url_for('static', filename='pack/images/stanlogo.png')}}" alt="Stanbic Bank Logo" width="300">
+        </div>
+        <div class="header">
+            <div class="left-section">
+                <p>Branch name : {{branch}} BRANCH</p>
+                <p>Branch address : PLOT 34, COMMERCIAL STREET, P.O. BOX 25 {{branch}}, ACCRA, GHANA</p>
+            </div>
+            <div class="right-section">
+                <p>Branch telephone number : 233 3123 22084</p>
+                <p>Print : Print</p>
+                <p>Date : {{top_date}}</p>
+            </div>
+        </div>
+        <div class="customer-details">
+            <div class="left-section">
+                <p>Name of account : {{mr}} {{firstname}} {{lastname}}</p>
+                <p>{{myaddress}}</p>
+                <p></p>
+                <p></p>
+                <p>{{mycity}}</p>
+                <p>{{region}}</p>
+                <p>GHANA</p>
+            </div>
+
+            <div class="stamp">
+                <div class="text">
+                    <div class="line1">STANBIC BANK GHANA LTD.</div>
+                    <div class="line2">{{stamp_date}}</div>
+                    <div class="dotted-line"></div>
+                    <div class="line3">AUTHORISED SIGNATORY</div>
+                </div>
+                <div class="signature">/S.</div>
+            </div>
+            
+            <div class="right-section suppress">
+                <p>Registration No. : {{ssn}}</p>
+                <p>VAT Registration No. : {{ssn}}</p>
+                <br>
+                <p>Statement frequency : Yearly-SEND BY POST AND EMAIL</p>
+                <p>Statement from : {{summary.first_transaction_date}} to {{summary.last_transaction_date}}</p>
+                <p>Page {{ loop.index }} of {{ chunks|length+1 }}</p>
+            </div>
+        </div>
+        <div class="bordered-section">
+            <div class="row">
+                <p class="tax">BANK STATEMENT / TAX INVOICE</p>
+            </div>
+            <div class="row">
+                <p>Account Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : SAVINGS ACCOUNT</p>
+                <p>Account Number &nbsp;&nbsp;: {{acc}}</p>
+            </div>
+            <div class="row">
+                <p>Account Currency&nbsp;&nbsp;: GHS</p>
+                <p>Previous Account Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            </div>
+            
+        </div>
+        {% else %}
+        <div class="logo">
+            <img src="../..{{ url_for('static', filename='pack/images/stanlogo.png')}}" alt="Stanbic Bank Logo" width="300">
+        </div>
+        <div class="header">
+            <div class="right-section suppress2">
+                <p>Statement frequency : Yearly-SEND BY POST AND EMAIL</p>
+                <p>Statement from : {{summary.first_transaction_date}} to {{summary.last_transaction_date}}</p>
+                <p>Page {{ loop.index }} of {{ chunks|length+1 }}</p>
+            </div>
+        </div>
+        
+        <div class="bordered-section">
+            <div class="row">
+                <p class="tax">BANK STATEMENT / TAX INVOICE</p>
+            </div>
+            <div class="row">
+                <p>Account Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : SAVINGS ACCOUNT</p>
+                <p>Account Number &nbsp;&nbsp;: {{acc}}</p>
+            </div>
+            <div class="row">
+                <p>Account Currency&nbsp;&nbsp;: GHS</p>
+                <p>Previous Account Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            </div>
+            
+        </div>
+        
+        {% endif %}
+        {% if loop.first %}
+        <div><h3>Transaction details &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Transaction details</h3></div>
+        {% endif %}
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Transaction Date</th>
+                    <th  style="width: 10%;">Value Date</th>
+                    <th style="width: 38%;">Transaction Description</th>
+                    <th>Fee</th>
+                    <th>Debits</th>
+                    <th>Credits</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in page %}
+                <tr class="no-inner-borders close">
+                    <td>{{ transaction.transaction_date }}</td>
+                    <td>{{ transaction.value_date }}</td>
+                    <td>{{ transaction.description }}</td>
+                    <td></td>
+                    <td style="text-align: right;">{{ transaction.debit }}</td>
+                    <td style="text-align: right;">{{ transaction.credit }}</td>
+                    <td style="text-align: right;">{{ transaction.balance }}</td>
+                </tr>
+                {% endfor %}
+                <!-- Continue with other rows as needed -->
+            </tbody>
+        </table>
+        <div class="account-number">
+            {{acc}}
+        </div>
+        <div style="clear: both;"></div>
+        <div class="page-break"></div>
+        
+    </div>
+</body>
+{% endfor %}
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="../..{{ url_for('static', filename='pack/images/stanlogo.png')}}" alt="Stanbic Bank Logo" width="300">
+        </div>
+        <div class="header">
+            <div class="right-section suppress2">
+                <p>Statement frequency : Yearly-SEND BY POST AND EMAIL</p>
+                <p>Statement from : {{summary.first_transaction_date}} to {{summary.last_transaction_date}}</p>
+                <p>Page {{ chunks|length+1 }} of {{ chunks|length+1 }}</p>
+            </div>
+        </div>
+        <div class="bordered-section">
+            <div class="row">
+                <p class="tax">BANK STATEMENT / TAX INVOICE</p>
+            </div>
+            <div class="row">
+                <p>Account Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : SAVINGS ACCOUNT</p>
+                <p>Account Number &nbsp;&nbsp;: {{acc}}</p>
+            </div>
+            <div class="row">
+                <p>Account Currency&nbsp;&nbsp;: GHS</p>
+                <p>Previous Account Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            </div>
+            
+        </div>
+        <table>
+            <thead>
+                <tr class="no-inner-borders">
+                    <th style="width: 11%;">Transaction Date</th>
+                    <th style="width: 11%;">Value Date</th>
+                    <th style="width: 40%;">Transaction Description</th>
+                    <th>Fee</th>
+                    <th>Debits</th>
+                    <th>Credits</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="no-inner-borders">
+                    <td></td>
+                    <td></td>
+                    <td>BALANCE BROUGHT FORWARD</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="border-bottom: 2px solid black;">{{summary.closing_balance}}</td>
+                </tr>
+                <tr class="no-inner-borders">
+                    <td></td>
+                    <td></td>
+                    <td>BALANCE AS AT {{ summary.last_transaction_date }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ summary.closing_balance }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="border-top: none; margin-top: -20px;">
+            <tr style="border-top: none;">
+                <td style="border-top: none;"><p style="text-align: left;"># These fees are zero rated
+                    Please verify all transactions reflected on this statement and notify any discrepancies to the Bank as soon as possible. The balance reflected could change if there are any transactions that still need to be processed.
+                    Please note that today's cheques and debit orders are provisional and have not yet been paid.</p>
+            </td>
+            </tr>
+        </table>
+        
+        <div class="footer">
+            <div style="width: 60%; float: left;">
+               <h3 style="text-align: left;"> Overdraft details :</h3>
+                <table>
+                    
+                    <tr>
+                        <td style="text-align: left;">Overdraft limit</td>
+                        <td style="text-align: right;">0</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Overdraft review date</td>
+                        <td style="text-align: right;">31-12-2099</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Interest rate from 0 to 999999999999999.99</td>
+                        <td style="text-align: right;">29.35 %</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">*Overdraft facilities are subject to the bank's terms and conditions. For details please contact your nearest branch or visit www.stanbicbank.com.gh</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">Unauthorised overdraft will attract a penalty interest.</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width: 30%; float: right;">
+                <h3 style="text-align: left;">Summary of transactions</h3>
+                <table>
+                    
+                    <tr>
+                        <td style="text-align: left;">Credits</td>
+                        <td style="text-align: right;">{{ summary.total_credits }}</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Debits</td>
+                        <td style="text-align: right;">{{ summary.total_debits }}-</td>
+                    </tr>
+                </table>
+                <h3 style="text-align: left;">Fee summary</h3>
+                <table>
+                    
+                    <tr>
+                        <td style="text-align: left;">Service Fee</td>
+                        <td style="text-align: right;">0.00</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Duty</td>
+                        <td style="text-align: right;">0.00</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">VAT</td>
+                        <td style="text-align: right;">0.00</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Cash Deposit Fee</td>
+                        <td style="text-align: right;">0.00</td>
+                    </tr>
+                </table>
+                <div class="stamp down">
+                    <div class="text">
+                        <div class="line1">STANBIC BANK GHANA LTD.</div>
+                        <div class="line2">{{stamp_date}}</div>
+                        <div class="dotted-line"></div>
+                        <div class="line3">AUTHORISED SIGNATORY</div>
+                    </div>
+                    <div class="signature">/S.</div>
+                </div>
+                <div class="account-number">
+                    {{acc}}
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</body>
+
+</html>

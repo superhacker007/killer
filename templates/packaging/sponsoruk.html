@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Offer Letter</title>
+    <style>
+        @font-face {
+            font-family: 'signature';
+            src: url("../..{{ url_for('static', filename='pack/fonts/Allison_Script.otf')}}") format('truetype');
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        .header {
+            text-align: center;
+        }
+        .header img {
+            width: 100px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .date, .address {
+            margin-bottom: 20px;
+        }
+        .content {
+            margin-bottom: 20px;
+            line-height: 2em;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .footer {
+            margin-top: 20px;
+        }
+        .signature {
+            margin-top: 40px;
+            overflow: hidden;
+        }
+        .signature div {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 20px;
+        }
+        .signature .left {
+            float: left;
+            text-align: center;
+        }
+        .signature .right {
+            float: right;
+            text-align: center;
+        }
+        .signature img {
+            width: 150px;
+        }
+        .contact-info {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../..{{ url_for('static', filename='pack/images/' + poststudy[3]) }}" alt="Company Logo">
+        <h1>{{poststudy[0]}}</h1>
+        </div>
+        <div>
+            UK Visa and Immigration <br>
+            Home Office <br><br>
+        </div>
+        <div class="date">
+            Date: {{last_transaction_date}}
+        </div>
+        <div class="address">
+            <p>Dear Sir or Madam, <br>            </p>
+            <p>Name: {{firstname}} {{lastname}}<br>
+               Date of birth: {{dob}}<br>
+               Nationality: {{nationality}}<br>
+               Passport no: {{passportn}}<br></p>
+        </div>
+        <div class="content">
+        
+            I am writing to confirm that {{firstname}} {{lastname}} has been awarded financial sponsorship by <br>
+            {{poststudy[0]}} to study MSc Global Human Resource Management (Ext Masters 1 Sem) at Roehampton University, United Kingdom. <br>
+            This Sponsorship is from 23rd September, 2024 to 22nd January, 2026 and will cover £25,000 for tuition fees and £12,006 for {{firstname}}{{lastname}}’s living expenses in the UK.
+            
+            Please do not hesitate to contact us if any further information is required. <br>
+            
+            Yours Faithfully,
+        </div>
+        <div class="signature">
+            <div class="left">
+                <p style="font-family: 'signature'; font-size: 40px; color: #0039a6;">Boakye</p>
+                <p>Alfred Boakye</p>
+                <p>Head of HR<br>
+                {{poststudy[0]}}</p>
+            </div>
+        </div>
+        <div class="contact-info">
+            <p>{{poststudy[0]}} | +233 {{poststudy[1]}} | {{poststudy[2]}}</p>
+        </div>
+    </div>
+</body>
+</html>

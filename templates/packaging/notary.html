@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notary Seal</title>
+<style>
+  .border-outer {
+    color: blue;
+    border: 2px solid blue;
+    padding: 3px;
+    display: inline-block;
+    margin: 10px;
+  }
+  .border-middle {
+    border: 2px dotted blue;
+    padding: 3px;
+  }
+  .notary-seal {
+    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    border: 2px solid blue;
+    padding: 3px 20px;
+  }
+  .notary-header {
+    border-bottom: 1px solid blue;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
+  .notary-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 3px 0;
+  }
+  .notary-commission {
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+  .notary-number {
+    font-size: 9px;
+    border-top: 1px solid blue;
+    padding-top: 2px;
+    margin-top: 2px;
+  }
+
+  .red-sun {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 50% 50%, 
+                                 red 95%, 
+                                 white 95%, 
+                                 white 100%);
+    border-radius: 50%;
+    background-size: 10% 10%;
+  }
+
+  .stamp {
+    font-family: 'Arial', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: red;
+    text-transform: uppercase;
+    transform: rotate(-12deg);
+    border: 5px solid red;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 50px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    user-select: none;
+  }
+  .stamp::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 2px solid red;
+    pointer-events: none;
+    /* Implementing the distressed border would need a custom SVG or image */
+  }
+
+  .commissioner-stamp {
+    font-family: 'Arial', sans-serif;
+    color: #444484 ;
+    font-size: 14px; /* Adjust the font size as needed */
+    line-height: 1.4; /* Adjust line spacing as needed */
+    white-space: nowrap; /* Keeps the text in a single line */
+    font-weight: bold; /* Makes the text bold */
+    text-align: center;
+  }
+  /* Additional styling could be added here to match the exact look */
+
+  .certi {
+    width: 250px;
+  }
+</style>
+</head>
+<body>
+
+<div class="border-outer">
+  <div class="border-middle">
+    <div class="notary-seal">
+      <!-- <div class="notary-header">
+        Notary Republic of Ghana
+      </div> -->
+      <div class="notary-name">
+        SAMUEL SEMENYO
+      </div>
+      <div class="notary-commission">
+        Commissioner For Oaths
+      </div>
+      <div class="notary-number">
+        P.O.Box AR 764. ACCRA-GH
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="red-sun">
+</div>
+
+<img src="images/certi.png" class="certi">
+
+<div class="commissioner-stamp">
+    JOHN AHETOH<br>
+    COMMISSIONER FOR OATHS<br>
+    P O. BOX MP 1896<br>
+    ACCRA
+  </div>
+
+</body>
+</html>

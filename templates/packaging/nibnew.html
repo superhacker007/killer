@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Formatting</title>
+    <script>
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const amountElement = document.getElementById('amount');
+            let amount = amountElement.textContent;
+            // Remove commas from the string
+            amount = amount.replace(/,/g, '');
+            // Convert the cleaned string to a float
+            amount = parseFloat(amount);
+            amountElement.textContent = formatCurrency(amount);
+        });
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Statement</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 8pt;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 210mm; 
+            margin: 0 auto;
+        }
+
+        .nibtop {
+            display: flex;
+            background-repeat: no-repeat;
+            margin-bottom: 20px;
+        }
+
+        .div1 {
+            width: 17%;
+            padding-top:5%;
+            padding-left: 3%;
+        }
+
+        .div1 img {
+            width: 130px;
+        }
+
+        .div2 {
+            width: 48%;
+            padding: 5%;
+            text-align: center;
+        }
+
+        .div2 img {
+            margin: 0 auto;
+            width: 66px;
+            height: 67px;
+        }
+
+
+        .div3 {
+            width: 26%;
+            font-weight: bold;
+            padding: 5% 1%;
+            font-size: 8pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-top: 2%;
+        }
+
+        .div4 {
+            width: 12%;
+            padding: 1%;
+            margin: 6%;
+            margin-left: -5%;
+        }
+
+        table {
+            font-family: 'Times New Roman', Times, serif;
+            border-collapse: collapse;
+            width: 87%;
+            margin: 0 auto;
+        }
+
+        
+
+        th, td {
+            padding: 0;
+            text-align: left;
+        }
+
+        th {
+            background-color: #E8E8E8;
+            color: black;
+        }
+
+        tr {
+            height: 25px; /* Set the desired height for each row */
+        }
+
+        tbody tr:nth-child(odd) {
+            height: 30pt;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #E8E8E8;
+        }
+
+        .background {
+            z-index: -100;
+            position: absolute;
+            margin: 45% 18%;
+            opacity: 0.1;
+        }
+
+        .background img {
+            width: 400px;
+        }
+
+        .footer {
+            width: 87%;
+            margin: 0 auto;
+            font-weight: bold;
+            font-size: 7.5pt;
+        }
+        .date {
+            margin-left: 600px;
+            margin-top: 110px;
+            position: absolute;
+            font-weight: bold;
+            font-size: 10px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .owner {
+            width: 350px;
+            position: absolute;
+            margin: 185px 450px;
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .details {
+            position: absolute;
+            margin: 125px 50px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+        .details p {
+            line-height: 1.5em;
+        }
+    </style>
+</head>
+{% for page in transactions|batch(12, '') %}
+<body>
+    <div class="content">
+        <div class="background">
+            <img src="https://veesupportservices.co.uk/b/niblogobg.png" alt="">
+        </div>
+    <div class="nibtop">
+        <div class="div1">
+            <img src="https://veesupportservices.co.uk/b/niblogo.png" alt="" width="80%">
+        </div>
+        <div class="div2">
+            <h1>STATEMENT OF ACCOUNT</h1>
+            <img src="https://veesupportservices.co.uk/b/nibseal.png" alt="">
+        </div>
+        <div class="div3">
+            <p>
+                National Investment Bank Ltd. <br>
+                37 Kwame Nkrumah Avenue <br>
+                Tel:+233 302 661701 - 10 <br>
+                Tel:+233 302 673124 <br>
+                www.nibghana.net <br>
+                info@nibghana.com <br>
+            </p>
+        </div>
+        <div class="details">
+            <p>
+                Account Statement <br>
+                Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{branch}} <br>
+                Account: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{acc}} <br>
+                Customer: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{staffid}} <br>
+                Currency: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GHS <br>
+            </p>
+        </div>
+        <div class="date">
+            {{date_printed}} <br>
+            <span style="float: right;">12:48:19</span>
+        </div>
+        <div class="div4">
+            <img src="https://veesupportservices.co.uk/b/logos.png" alt="" width="100%">
+        </div>
+        <h2 class="owner">{{firstname}} {{lastname}}</h2>
+    </div>
+        
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>Book Date</th>
+                        <th>Reference</th>
+                        <th>Description</th>
+                        <th>Value Date</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Closing Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #FFF; height: 14.7pt;">
+                        <td>{% if loop.first %} {{first_transaction_date}} {% endif %}</td>
+                        <td>{% if loop.first %} Balance at Period Start {% endif %}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td id="amount">{% if loop.first %} {{start_balance}} {% endif %}</td>
+                    </tr>
+                    {% for transaction in page %}
+                    <tr>
+                        <td>{{ transaction.date }}</td>
+                        <td>{{ transaction.reference }}</td>
+                        <td>{{ transaction.description }}</td>
+                        <td>{{ transaction.valueDate }}</td>
+                        <td>{{ transaction.debit }}</td>
+                        <td>{{ transaction.credit }}</td>
+                        <td>{{ transaction.closingBalance }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>{{ transaction.detailedDescription }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {% if loop.last %}
+                    
+                    <tr style="background-color: #FFF;">
+                        <td></td>
+                        <td></td>
+                        <td>Balance at Period <br> End</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ transaction.closingBalance }}</td>
+                    </tr>
+                    {% endif %}
+                    
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+
+            <div class="footer">
+                <img src="https://veesupportservices.co.uk/b/nibstamp.png" alt="" style="position:absolute; width:150px; margin-left: 350px; margin-top: -50px;">
+                <p>Please examine this statement carefully. Any error, discrepancy or change of address should be communicated to the Head, Retail Banking on +233 302 661701 - 10</p>
+            </div>
+            
+        
+    </div>
+</body>
+{% endfor %}
+</html>

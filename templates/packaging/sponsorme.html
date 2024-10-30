@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Letterhead</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sigstamp.css') }}">
+    <link rel="stylesheet" href="../../static/pack/css/sigstamp.css">
+    <style>
+        @font-face {
+            font-family: 'signature';
+            src: url("../..{{ url_for('static', filename='pack/fonts/Allison_Script.otf')}}") format('truetype');
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .letterhead {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header {
+            overflow: hidden;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #03266c;
+        }
+
+        .header .logo {
+            float: left;
+            width: 100px;
+        }
+
+        .header .company-details {
+            float: right;
+            text-align: right;
+            font-size: 14px;
+            line-height: 1.5em;
+        }
+
+        .body-content {
+            margin: 40px 0;
+            font-size: 16px;
+            line-height: 2em;
+            position: relative;
+            z-index: 2;
+            clear: both;
+        }
+
+        .footer {
+            overflow: hidden;
+            padding: 15px;
+            background-color: #03266c; /* Blue color */
+            color: #fff;
+            border-radius: 0 0 10px 10px;
+            font-size: 14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer .footer-left {
+            float: left;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer .footer-left img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .footer .footer-right {
+            float: right;
+            text-align: right;
+        }
+
+        /* Watermark Style */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.05;
+            font-size: 100px; /* Adjusted watermark size */
+            font-weight: 700;
+            color: #0044cc; /* A shade of blue that aligns with your color scheme */
+            white-space: nowrap;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="letterhead">
+        <div class="header">
+            <div class="logo"><img src="../..{{ url_for('static', filename='pack/images/' + poststudy[3]) }}" alt="Company Logo" width="100px" style="margin: 20px;"></div>
+            <div class="company-details">
+                <p>Tullow Oil Ghana PLC.</p>
+                <p>70 George W. Bush Hwy, Accra, Ghana</p>
+                <p>+233 {{poststudy[1]}}</p>
+            </div>
+        </div>
+
+        <!-- Watermark -->
+
+        <div class="body-content">
+            <div>
+                UK Visa and Immigration <br>
+                Home Office <br><br>
+            </div>
+            <div class="date">
+                Date: {{dateprinted}}<br>
+            </div>
+            <div class="address">
+                <p>Dear Sir or Madam, <br></p>
+                <p>Name: <span style="text-transform: capitalize;">{{firstname}} {{lastname}}</span><br>
+                   Date of birth: {{dob}}<br>
+                   Nationality: {{nationality}}<br>
+                   Passport no: {{passportn}}<br></p>
+            </div>
+            <div class="content">
+            
+                I am writing to confirm that <span style="text-transform: capitalize;">{{firstname}} {{lastname}}</span> has been awarded financial sponsorship by <br>
+                {{poststudy[0]}} to study MSc Business and Management at Aston University, United Kingdom. <br>
+                This Sponsorship is from 23rd September, 2024 to 22nd September, 2025 and will cover £5,000 for tuition fees and £9,207 for <span style="text-transform: capitalize;">{{firstname}} {{lastname}}</span>’s living expenses in the UK.
+                
+                Please do not hesitate to contact us if any further information is required. <br>
+                
+                Yours Faithfully,
+            </div>
+            <div class="signature-area">
+                <div class="left">
+                    <p style="font-family: 'signature'; font-size: 30px; color: #0039a6;">Boakye</p>
+                    <p>Alfred Boakye</p>
+                    <p>Financial Director<br>
+                    {{poststudy[0]}}</p>
+                </div>
+
+                <div class="right" style="float: right; margin: -13% 23%;">
+                    <img src="../..{{ url_for('static', filename='pack/images/tullowstamp.png') }}" alt="Signature" width="250px">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-left">
+                <img src="https://img.icons8.com/material-rounded/24/ffffff/company.png" alt="Company Icon">
+                © 2024 {{poststudy[0]}}
+            </div>
+            <div class="footer-right">
+                <p>Email: {{poststudy[2]}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

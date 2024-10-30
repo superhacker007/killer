@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Letterhead</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sigstamp.css') }}">
+    <link rel="stylesheet" href="../../static/pack/css/sigstamp.css">
+    <style>
+        @font-face {
+            font-family: 'signature';
+            src: url("../..{{ url_for('static', filename='pack/fonts/Allison_Script.otf')}}") format('truetype');
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .letterhead {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header {
+            overflow: hidden;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #03266c;
+        }
+
+        .header .logo {
+            float: left;
+            width: 100px;
+        }
+
+        .header .company-details {
+            float: right;
+            text-align: right;
+            font-size: 14px;
+            line-height: 1.5em;
+        }
+
+        .body-content {
+            margin: 40px 0;
+            font-size: 16px;
+            line-height: 2em;
+            position: relative;
+            z-index: 2;
+            clear: both;
+        }
+
+        .footer {
+            overflow: hidden;
+            padding: 15px;
+            background-color: #03266c; /* Blue color */
+            color: #fff;
+            border-radius: 0 0 10px 10px;
+            font-size: 14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer .footer-left {
+            float: left;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer .footer-left img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .footer .footer-right {
+            float: right;
+            text-align: right;
+        }
+
+        /* Watermark Style */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.05;
+            font-size: 100px; /* Adjusted watermark size */
+            font-weight: 700;
+            color: #0044cc; /* A shade of blue that aligns with your color scheme */
+            white-space: nowrap;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="letterhead">
+        <div class="header">
+            <div class="logo"><img src="../..{{ url_for('static', filename='pack/images/' + poststudy[3]) }}" alt="Company Logo" width="100px" style="margin: 20px;"></div>
+            <div class="company-details">
+                <p>Tullow Oil Ghana PLC.</p>
+                <p>70 George W. Bush Hwy, Accra, Ghana</p>
+                <p>+233 {{poststudy[1]}}</p>
+            </div>
+        </div>
+
+        <!-- Watermark -->
+
+        <div class="body-content">
+            <div class="date">
+                Date: {{dateprinted}}
+            </div>
+            <div class="address">
+                <p>To,</p>
+                <p>{{firstname}} {{lastname}}<br>
+                   {{myaddress}}<br>
+                   {{mycity}}, 00233<br>
+                   Ghana</p>
+            </div>
+            <div class="content">
+                <h2 style="text-align: center; text-decoration: underline;">Employment Offer Letter</h2>
+            
+            <p>Dear {{firstname}} {{lastname}},</p>
+    
+            <p>We are pleased to offer you the position of Branch Manager at {{poststudy[0]}}, with a start date of 21st September, 2026. This position will be located at {{mycity}}.</p>
+    
+            <p>Your starting salary will be {{postsal}} GHS, paid on a Monthly basis by direct deposit to your bank account. As an employee, you will be eligible for the benefits described in the attached benefit package.</p>
+    
+            <p>Please confirm your acceptance of this offer by signing and returning this letter by {{sign_date}}.</p>
+    
+            <p>We are excited to have you join our team and look forward to your positive response.</p>
+            <div class="signature-area">
+                <div class="left">
+                    <p style="font-family: 'signature'; font-size: 30px; color: #0039a6; text-transform:lowercase;">{{lastname}}</p>
+                    <p>{{firstname}} {{lastname}}</p>
+                    <p>Employee<br></p>
+                </div>
+
+                <div class="right" style="float: right; margin: -13% 23%;">
+                    <img src="../..{{ url_for('static', filename='pack/images/tullowstamp.png') }}" alt="Signature" width="250px">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-left">
+                <img src="https://img.icons8.com/material-rounded/24/ffffff/company.png" alt="Company Icon">
+                © 2024 {{poststudy[0]}}
+            </div>
+            <div class="footer-right">
+                <p>Email: {{poststudy[2]}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+@font-face {
+    font-family: 'signature';
+    src: url("../..{{ url_for('static', filename='pack/fonts/Allison_Script.otf')}}") format('truetype');
+    font-weight: 100;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header, .address, .subject, .content, .signature {
+    margin-bottom: 20px;
+}
+
+header h1, .signature h1 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+header p, .signature p {
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.content p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.content .list {
+    margin-left: 20px;
+}
+
+.signature p {
+    margin-top: 5px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>{{fathername}}{{fatherlast}}</h1>
+        <p>{{myaddress}}</p>
+        <p>{{mycity}}</p>
+        <p>Ghana</p>
+        <p>Date: {{dateprinted}}</p>
+    </header>
+
+    <div class="address">
+        <p>The Canadian Consulate</p>
+        <p>High Commission of Canada in Ghana</p>
+        <p>42 Independence Ave, Accra, Ghana</p>
+    </div>
+
+    <div class="subject">
+        <h2 style="text-transform: uppercase; text-align: center; text-decoration: underline;">SPONSORSHIP LETTER FOR {{firstname}} {{lastname}}</h2>
+    </div>
+
+    <div class="content">
+        <p>Dear Sir/Madam,</p>
+        <p>I, {{fathername}}{{fatherlast}}, am writing to confirm that I will be sponsoring my child, {{firstname}} {{lastname}}, for {{his}} upcoming visit to Canada. {{firstname}} {{lastname}} is currently a student at the University of Ghana, and the purpose of this visit is to explore the city, learn more about the culture, and experience Canadian culture.</p>
+        <p>As {{firstname}}'s father, I am committed to covering all the expenses related to this trip, including travel, accommodation, meals, and any other incidental costs that may arise during their stay in Canada. I have already transfered the total funds he will be needing that is 16,000 Canadaian dollars (200,000 Ghanaian cedis). I understand the financial responsibilities involved and assure you that I have the necessary funds to support my child's visit.</p>
+        <p>I have attached copies of my bank statements and financial documents to demonstrate my ability to provide the required financial support. Below are the details of my financial status:</p>
+        <div class="list">
+            <p>Annual Income: {{anualsal}}</p>
+            <p>Occupation: {{role}}</p>
+            <p>Employer: {{employer}}</p>
+            <p>Contact Information: {{phonen}} / {{fatheremail}}</p>
+        </div>
+        <p>Additionally I own a Cocoa farm at {{farmcity}} which brings extra income, I have also attached my farm purchase agreement for this farm</p>
+
+        <p>I kindly request that you grant {{firstname}} {{lastname}} the necessary visa to facilitate {{his}} visit to Canada. I believe this experience will be invaluable to his personal development since he is an art student.</p>
+        <p>Should you require any further information or documentation, please do not hesitate to contact me.</p>
+        <p>Thank you for your consideration.</p>
+    </div>
+
+    <div class="signature">
+        <p>Yours sincerely,</p>
+        <p style="font-family: 'signature'; font-size: 50px; color: #284283;"><span style="text-decoration: underline;">{{fathersig}}</span></p>
+        <h1>{{fathername}}{{fatherlast}}</h1>
+        <p>{{myaddress}}</p>
+        <p>{{mycity}}</p>
+        <p>Ghana</p>
+        <p>{{phonen}}</p>
+    </div>
+</div>
+</body>
+</html>

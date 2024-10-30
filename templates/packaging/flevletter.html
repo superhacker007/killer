@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.cdnfonts.com/css/best-signature-font" rel="stylesheet">
+    <link rel="stylesheet" href="../../{{ url_for('static', filename='pack/css/style.css')}}">
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sealer.css') }}">
+<style>
+@import url('https://fonts.cdnfonts.com/css/best-signature-font');
+</style>
+    <style>
+        @font-face {
+            font-family: signa;
+            src: url(sign.ttf);
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header">
+        <div class="column">
+            <p>In case of reply the number and date on this letter should be quoted</p>
+            <h4>OUR CORE VALUES</h4>
+            <ul>
+                <li type="square">People-Centered  </li>
+                <li type="square">Professionalism</li>
+                <li type="square">Team work</li>
+                <li type="square">Innovation</li>
+                <li type="square">Dicipline</li>
+                <li type="square">Intergrity</li>
+            </ul>
+            <p>My Ref. No. GHS/HRD/GR/{{ourreflev}}/{{ourrefmonlev}} <br>
+                Your Ref. No ..........................</p>
+
+        </div>
+        <div class="column">
+            <img src="../..{{ url_for('static', filename='pack/images/ghsbg.jpg')}}">
+        </div>
+        <div class="column">
+            <h4 class="col3">GHANA HEALTH SERVICE <br>
+                PRIVATE MAIL BAG <br>
+                MINISTRIES <br>
+                ACCRA <br> GHANA <br><br>
+                TEL: 0302 662014 <br>
+                FAX: 0302 666808 <br>
+                E-mail: dg@ghsmail.org <br><br>
+
+                {{leaveletterdate}}
+            </h4>
+        </div>
+    </div>
+
+    <div class="body">
+        <h4 class="salute">{{mr}}. {{ firstname }} {{ lastname }} <br>
+             {{role}} <br><br>
+            THRO' &nbsp;&nbsp;&nbsp; THE REG. DIR. OF HEALTH SERVICE <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GREATER ACCRA REGION
+        </h4>
+        Dear {{mr}}. {{ lastname }}
+        <h3>APPROVAL OF ANNUAL LEAVE WITH PAY:2023/2024 FISCAL YEAR</h3>
+        <p class="letter">This is to inform you that the Ghana Health Service has granted you annual leave with pay with effect from {{start_date}}<br><br>
+            In line with the Annual Leave Policy salaries are paid by the Regional Director of Health in the regions where the institutions are situated. You are therefore, <br><br>
+            advised to liaise with the Regional Director of Health, Greater Accra Region to enable you complete IPPD Forms to facilitate your salary transfer. <br><br>
+
+            You are also expected to fill the monitoring and bond forms and forward them to the above address. <br><br>
+
+            By a copy of this letter, the Regional Director of Health, Greater Accra Region should please take note of the duration and pay the salary for the specified period <br>
+            only.
+
+            <table>
+                <tr>
+                    <th>NO.</th>
+                    <th>NAME</th>
+                    <th>REGD. <br>No.</th>
+                    <th>STAFF. <br>No.</th>
+                    <th>RANK</th>
+                    <th>SEX</th>
+                    <th>AGE</th>
+                    <th>YRS OF <br>SERVICE</th>
+                    <th>DISTRICT</th>
+                    <th>YR.OF <br>C'TION</th>
+                </tr>
+                <tr>
+                    <td>{{staffrand}}</td>
+                    <td>{{lastname}} <br>{{firstname}}</td>
+                    <td>{{staffrand}}/{{staffrandyear}}</td>
+                    <td>{{staffid}}</td>
+                    <td>{{role}}</td>
+                    <td>{{se}}</td>
+                    <td>{{age}}</td>
+                    <td>{{syear}}</td>
+                    <td>ELH</td>
+                    <td>{{current_year}}</td>
+                </tr>
+            </table>
+        </p>
+        <div>
+            <span class="sleft">
+                CC: The Director HRMD GHS HQ. M65, Accra <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Regional Director of Health, Ga/R <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The District Director.
+            </span>
+            <span class="sign">
+                Yours faithfully <br>
+                <p class="signature">Siaw</p>
+    YAW SIAW-MENSAH <br>
+    REGIONAL DIRECTOR(GA)
+            </span>
+        </div>
+    </div>
+
+    <div class="sealer">
+
+        {% if pobx > 40 %}
+        <div class="notary-seal" style="margin-top: 70px;">
+            <!-- <div class="notary-header">
+              Notary Republic of Ghana
+            </div> -->
+            <div class="notary-name">
+              {{named}}
+            </div>
+            <div class="notary-commission">
+              Commissioner For Oaths
+            </div>
+            <div class="notary-number">
+              P.O.Box AR {{pobx}}. ACCRA-GH
+            </div>
+          </div>
+        {% else %}
+        <div class="notary-seal" style="margin-top: 150px;">
+            <!-- <div class="notary-header">
+              Notary Republic of Ghana
+            </div> -->
+            <div class="notary-name">
+              {{named}}
+            </div>
+            <div class="notary-commission">
+              Commissioner For Oaths
+            </div>
+            <div class="notary-number">
+              P.O.Box AR {{pobx}}. ACCRA-GH
+            </div>
+          </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

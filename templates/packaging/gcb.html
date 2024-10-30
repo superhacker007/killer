@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .top-table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        .top-table td, .top-table th {
+            padding: 8px;
+            vertical-align: top;
+        }
+        .top-table .header {
+            width: 40%;
+        }
+        .top-table .summary {
+            width: 58%;
+        }
+        .top-table h3, .top-table p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        .summary table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .summary table, .summary th, .summary td {
+            border: 1px solid #ccc;
+            text-align: left;
+            padding: 8px;
+            font-weight: bold;
+        }
+        .summary th {
+            background-color: #f2f2f2;
+        }
+        .note {
+            font-size: 0.8em;
+            color: #555;
+        }
+        .timedetails {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .timedetails td {
+            text-align: left;
+            background-color: #c9c4c4ac;
+            color: #fff;
+        }
+        .totals {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .date {
+            margin-top: 20px;
+            text-align: right;
+            font-weight: bold;
+        }
+        .transactions {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .transactions th, .transactions td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        .transactions th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .transactions td {
+            font-weight: normal;
+        }
+        .page {
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .transactions tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        .transactions tr {
+            height: 69px;
+            font-size: 14px;
+        }
+        .statement {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 13px;
+            color: #555;
+            padding-top: 10px;
+        }
+        .statement .note {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+{% for page in chunks %}
+<body>
+    {% if loop.first %}
+    <div>
+        <img src="../..{{ url_for('static', filename='pack/images/gcb.jpeg')}}" alt="GCB Logo" width="100%">
+        <table class="timedetails" style="margin-top: -5px;">
+            <tr width="100%">
+                <td width="30%" style="text-align: center; background-color: #555; color: #fff; font-size:18px; padding:6px;">Statement Period</td>
+                <td width="21%" style="text-align: center; background-color: #b6b2b2; color: #fff; font-size:18px; padding:6px;">{{summary.first_transaction_date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td width="21%" style="text-align: center; background-color: #b6b2b2; color: #fff; font-size:18px; padding:6px;">{{summary.last_transaction_date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td width="21%" style="text-align: center; background-color: #b6b2b2; color: #fff; font-size:18px; padding:6px;">Report time: {{top_date}} 11:17 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+    <img src="../../static/pack/images/gcbstamp.png" alt="" style="width: 200px; margin: 150px 270px; position: absolute;">
+    {% endif %}
+    <div class="container">
+        
+        {% if loop.first %}
+        <table class="top-table">
+            <tr>
+                <td class="header">
+                    <h3>{{firstname}} {{lastname}}</h3>
+                    <p>{{myaddress}}<br>{{mycity}}</p>
+                    <br><br><br>
+                    <p>Customer No.: 012449143<br>Branch: {{branch}}<br>Product: SAVINGS ACCOUNT</p>
+                </td>
+                <td class="summary">
+                    <table>
+                        <tr>
+                            <th>Account Summary</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Account Number</td>
+                            <td style="text-align: right;">{{acc}}</td>
+                        </tr>
+                        <tr>
+                            <th>Currency</th>
+                            <th style="text-align: right;">GHS</th>
+                        </tr>
+                        <tr>
+                            <td>Opening Balance</td>
+                            <td style="text-align: right;">{{summary.opening_balance}}</td>
+                        </tr>
+                        <tr>
+                            <th>Closing Balance</th>
+                            <th style="text-align: right;">{{summary.closing_balance}}</th>
+                        </tr>
+                        <tr>
+                            <td>Uncleared Effects</td>
+                            <td style="text-align: right;">0.00</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <p class="note">*Closing balance includes funds earmarked for hold and uncleared.</p>
+                </td>
+            </tr>
+        </table>
+            <table class="totals" style="border: none; width: 100%;">
+                <tr style="height: 30px;">
+                    <td style="width: 45%;">Total Dr: {{summary.total_debits}}</td>
+                    <td style="width: 45%;">Total Cr: {{summary.total_credits}}</td>
+                    <th style="background-color: #fff; font-size: 14px; font-weight: normal; border: 1px solid #b6b2b2;">DATE:</th>
+                    <td style="background-color: #b6b2b2; color: #fff; font-size: 12px; font-weight: normal; padding: 2px;">{{top_date}}</td>
+                </tr>
+            </table>
+        {% endif %}
+        <table class="transactions">
+            <tr>
+                <th style="width: 12%;">Date</th>
+                <th style="width: 30%;" >Description</th>
+                <th style="width: 12%;">Ref/Chq No.</th>
+                <th style="width: 12%;">Value Date</th>
+                <th style="width: 10%;">Debit</th>
+                <th style="width: 10%;">Credit</th>
+                <th style="width: 10%;">Balance</th>
+            </tr>
+            {% for transaction in page %}
+            <tr>
+                <td>{{ transaction.transaction_date }}</td>
+                <td>{{ transaction.description }}</td>
+                <td>{{ transaction.transaction_id }}</td>
+                <td>{{ transaction.value_date }}</td>
+                <td>{{ transaction.debit }}</td>
+                <td>{{ transaction.credit }}</td>
+                <td>{{ transaction.balance }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="page">Page {{ loop.index }} of {{ chunks|length }}</div>
+        {% if loop.last %}
+        <div class="statement">
+            =========================================================================================================================================================================================
+            <p style="margin-left: 75%; width: 30%;">No. of DEBITS = {{summary.num_debit_transactions}}    No. of CREDITS = {{summary.num_credit_transactions}}</p>
+            <p class="note">
+                Please review your statement and draw the Manager's attention to any discrepancies/errors/omissions/unauthorized debits or credits immediately, otherwise the entries to this statement shall be deemed as correct and shall be binding on you.
+                Visit the nearest branch of GCB Bank Ltd to sign up for our establishment and ealert services.
+                Give our customer service center a call on 0800 422 422<br>
+                GCB, Your Bank for Life
+            </p>
+            =========================================================================================================================================================================================
+            <p>**** End of Statement ****</p>
+        </div>
+        <img src="../../static/pack/images/gcbstamp.png" alt="" style="width: 200px; margin: -150px 120px; position: absolute;">
+        {% endif %}
+    </div>
+    
+</body>
+{% endfor %}
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Passport</title>
+</head>
+<body>
+    <h2>Upload Passport</h2>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*,.pdf" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if details %}
+    <h2>Extracted Passport Details</h2>
+    <form>
+        <label for="passport_number">Passport Number:</label>
+        <input type="text" id="passport_number" name="passport_number" value="{{ details.passport_number }}"><br>
+
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" value="{{ details.surname }}"><br>
+
+        <label for="firstname">Given Name:</label>
+        <input type="text" id="firstname" name="firstname" value="{{ details.firstname }}"><br>
+
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" name="nationality" value="{{ details.nationality }}"><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="text" id="dob" name="dob" value="{{ details.dob }}"><br>
+
+        <label for="sex">Sex:</label>
+        <input type="text" id="sex" name="sex" value="{{ details.sex }}"><br>
+
+        <label for="place_of_birth">Place of Birth:</label>
+        <input type="text" id="place_of_birth" name="place_of_birth" value="{{ details.place_of_birth }}"><br>
+    </form>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Slip</title>
+    <link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/sealer.css') }}">
+    <style>
+        @page {
+            size: A4 landscape;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            font-size: 9pt;
+            line-height: 11px;
+            background-image: url("../../{{ url_for('static', filename='pack/images/0.jpg') }}");
+            background-repeat: no-repeat;
+            background-position: 350px 200px;
+            background-size: 30%;
+        }
+
+        .page {
+            width: 307mm;
+            height: 110mm;
+            box-sizing: border-box;
+        }
+
+        table.payslip {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        table.payslip th, table.payslip td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+
+        .logo-cell {
+            width: 10%;
+        }
+
+        .logo-cell img {
+            width: 80px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        .label-cell {
+            width: 12%;
+        }
+
+        .value-cell {
+            width: 30%;
+        }
+
+        .center-align {
+            text-align: center;
+        }
+
+        /* Remove top and bottom borders of the rows in the middle table */
+        .middle-table tr {
+            border-top: none;
+            border-bottom: none;
+        }
+
+        .middle-table th {
+            border: 1px solid black;
+            font-weight: normal;
+        }
+
+        .middle-table td {
+            border-top: none;
+            border-bottom: none;
+            border-left: 1px solid black;
+            font-size: 8pt;
+        }
+
+        table.middle-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            border-right: 1px solid black;
+            border-top: none;
+        }
+
+        table.middle-table th, table.middle-table td {
+            padding: 5px;
+            text-align: left;
+            border-top: none;
+        }
+
+        /* Last table specific styles */
+        .last-table td {
+            padding: 5px;
+            text-align: left;
+            font-size: 8pt;
+        }
+
+        .stcol {
+            width: 15.64%;
+        }
+
+        .ndcol {
+            width: 12%;
+        }
+
+        .rdcol {
+            width: 14.9%;
+        }
+
+        .thcol {
+            width: 8%;
+        }
+
+        .fthcol {
+            width: 17%;
+        }
+
+        .xthcol {
+            width: 17.6%;
+        }
+
+        .sthcol {
+            width: 9.418%;
+        }
+
+        .net-top {
+            border-bottom: none;
+        }
+
+        .net-bot {
+            border-top: none;
+            text-align: right;
+            align-content: right;
+        }
+
+        .cagd {
+            z-index: 100;
+            width: 90%;
+            border-top: 2px dashed black;
+            border-bottom: 2px dashed black;
+            text-align: center;
+            padding: 8px;
+            font-size: 10pt;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+
+        .cagd1 {
+            margin-top: -10%;
+        }
+
+        .cagd2 {
+            margin-top: -12%;
+        }
+
+        .controller {
+            font-weight: bold;
+            text-align: center;
+            font-size: 8pt;
+        }
+
+        .page1 {
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+            margin-top: 15%;
+        }
+
+        .with-border {
+            border-top: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- First Section -->
+        <table class="payslip">
+            <tbody>
+                <tr>
+                    <td rowspan="3" class="logo-cell">
+                        <img src="../../{{ url_for('static', filename='pack/images/1.jpg') }}" alt="Logo">
+                    </td>
+                    <td class="label-cell">DATE</td>
+                    <td class="value-cell">JANUARY 2024</td>
+                    <td class="label-cell">REGION</td>
+                    <td class="value-cell">{{region}}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">PERIOD</td>
+                    <td class="center-align">FROM &nbsp;&nbsp;&nbsp; 01-JAN-24 &nbsp;&nbsp;&nbsp; TO 30-JAN-24</td>
+                    <td class="label-cell">DISTRICT</td>
+                    <td class="value-cell">{{district}} Municipal Assembly</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">NAME</td>
+                    <td class="value-cell">{{mr}} {{firstname}} {{lastname}}</td>
+                    <td class="label-cell">AGENCY</td>
+                    <td class="value-cell">{{min}}</td>
+                </tr>
+                <tr>
+                    <td rowspan="3" class="center-align controller" style="text-align: center;">
+                        CONTROLLER AND ACCOUNTANT GENERAL'S DEPARTMENT
+                    </td>
+                    <td class="label-cell">STAFF ID</td>
+                    <td class="value-cell">{{staffid}}  XXXXXXXXX &nbsp; S.S.F. No {{ssn}}</td>
+                    <td class="label-cell">DEPT.</td>
+                    <td class="value-cell">{{dept}}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">GRADE</td>
+                    <td class="center-align">Principal.Supt Professional..{{dept}}</td>
+                    <td class="label-cell">UNIT</td>
+                    <td class="value-cell">0{{unitcode}} {{district}} {{cost}} COST CENTRE</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">LEVEL</td>
+                    <td class="value-cell"> SS.PSH19 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POINT 6 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCALE TYPE SS</td>
+                    <td class="label-cell"></td>
+                    <td class="value-cell"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Second Section (Middle Table) -->
+        <table class="middle-table">
+            <thead>
+                <tr>
+                    <th>MONTH/YEAR</th>
+                    <th>NATURE</th>
+                    <th>ITEM CODE</th>
+                    <th>DESCRIPTION</th>
+                    <th>HRS/ORIGINAL AMOUNT</th>
+                    <th>RATE(%) BALANCE</th>
+                    <th>PAYMENTS</th>
+                    <th>DEDUCTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><br><br></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>30-Jan-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Single Spine Monthly Salary</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{monsal}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>30-Jan-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>SS <span style="text-transform:capitalize;">{{retention}}</span> Retention Premium</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{premium}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>30-Jan-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Bonus</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{bonus}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>30-Jan-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Social Security Contribution Employee</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{sscemp}}</td>
+                </tr>
+                <tr>
+                    <td>30-Jan-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Income Tax</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{incometax}}</td>
+                </tr>
+                <tr>
+                    <td>30-Jan-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Coalition of Concerned Teachers Gh Dues</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{union1}}</td>
+                </tr>
+                <tr>
+                    <td>30-Jan-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Coalition of Concerned Teachers Fund Dues</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{union2}}</td>
+                </tr>
+                <tr>
+                    <td>30-Jan-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>S I C Life Policy Ded</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{siclife}}</td>
+                </tr>
+                <tr>
+                    <td>30-Jan-24</td>
+                    <td></td>
+                    <td></td>
+                    <td>Coalition of Concerned Teachers Fund Loan Ded.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{union3}}</td>
+                </tr>
+
+                <tr>
+                    <td><br><br><br><br><br><br><br><br><br><br><br><br></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="border-top: 1px solid black;">TOTALS {{total}}</td>
+                    <td style="border-top: 1px solid black; text-align: right;">{{tpayments}}</td>
+                    <td style="border-top: 1px solid black; text-align: right;">{{tdeduct}}</td>
+                </tr>
+                
+                <tr></tr>
+            </tbody>
+        </table>
+        <!-- Third Section -->
+        <table class="payslip last-table">
+            <tbody>
+                <tr>
+                    <td class="stcol">ANNUAL SALARY</td>
+                    <td class="ndcol">{{anualsal}}</td>
+                    <td class="rdcol">YTD SSF (WORKER)</td>
+                    <td class="thcol">{{ytdssfworker}}</td>
+                    <td class="fthcol">EMPLOYER S.S.F.</td>
+                    <td class="xthcol">PAYMENT MODE	</td>
+                    <td class="sthcol">NET SALARY</td>
+                </tr>
+                <tr>
+                    <td>YTD GROSS PAY</td>
+                    <td>{{ytdgrosspay}}</td>
+                    <td>YTD INCOME TAX</td>
+                    <td>{{ytdincometax}}</td>
+                    <td>MONTHLY <span style="float: right;">{{monthlyssf}}</span></td>
+                    <td style="border-bottom:none">{{bank}},</td>
+                    <td style="border-bottom:none"></td>
+                </tr>
+                <tr>
+                    <td>MONTHLY GROSS PAY</td>
+                    <td>{{mgross}}</td>
+                    <td>PAGE</td>
+                    <td>1</td>
+                    <td><span>YTD</span><span style="float: right;">{{ytdssf}}</span></td>
+                    <td  style="border-top:none">{{branch}}</td>
+                    <td  style="border-top:none; text-align: right;">{{salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="cagd cagd2">*** TIER 2 CONTRIBUTION 89.19 AND YTD CONTRIBUTION {{89.19*1}} ***</div>
+
+        <div class="cagd cagd1">** CAGD is not liable	for any financial loss resulting from disclosing your employee details including password to Third Parties **</div>
+        <br><br><br>
+        <div class="page1">Page 1/1</div>
+    </div>
+    
+</body>
+</html>

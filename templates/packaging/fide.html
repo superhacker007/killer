@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fidelity Bank Statement</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    font-size: 13px;
+}
+
+.container {
+    width: 210mm;
+    padding: 0 7mm;
+    background-color: #fff;
+    background-image: url('bgfide.png');
+    background-repeat: no-repeat;
+    background-size: 760px 100px;
+    background-position: 20px 600px;
+    box-sizing: border-box;
+}
+
+.header img {
+    width: 180mm;
+    height: 90px;
+    margin: 0 auto;
+}
+
+.statement-header {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.statement-header img {
+    width: 270px;
+    margin-left: 15px;
+    margin-bottom: -25px;
+}
+
+.account-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-holder {
+    border: 1px solid #e1dcdc;
+    padding: 10px 50px;
+    width: 33%;
+    margin-top: 40px;
+    border-radius: 20px;
+} 
+
+.account-info {
+    width: 60%;
+    margin-left: 110px;
+}
+
+.account-holder p {
+    margin: 0;
+    padding: 2px 0;
+    line-height: 2em;
+}
+
+.account-info td {
+    border: 1px solid #e1dcdc;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.account-info td:nth-child(odd) {
+    color: darkgrey;
+}
+
+.account-info tr {
+    border: 1px solid #e1dcdc;
+    padding: 5px;
+    border-collapse: separate;
+    height: 35px;
+}
+
+.maintab {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.maintab, th, td {
+    border: 2px solid black;
+    padding: 5px 2px;
+}
+
+.maintab td, .maintab th {
+    vertical-align: middle; text-align: center;
+}
+
+.maintab td:nth-child(2) {
+    text-align: left;
+    padding: 7px 2px 2px 3px;
+    line-height: 1.27em;
+}
+
+th {
+    background-color: #8f8d8d;
+}
+
+td {
+    vertical-align: top;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="topfide.png" alt="">
+        </div>
+        <div class="statement-header">
+            <img src="statefide.png" alt="">
+            <div class="account-details">
+                <div class="account-holder">
+                    <p>EMMANUEL AFRIYIE</p>
+                    <p>MAAKRO</p>
+                    <p>KUMASI</p>
+                </div>
+                <div class="account-info">
+                    <table>
+                        <tr>
+                            <td>Branch:</td>
+                            <td>MAAKRO</td>
+                        </tr>
+                        <tr>
+                            <td>Currency:</td>
+                            <td>GHS</td>
+                        </tr>
+                        <tr>
+                            <td>Account Number:</td>
+                            <td>1060740656914</td>
+                        </tr>
+                        <tr>
+                            <td>Statement Date:</td>
+                            <td>01-May-2023 To 16-Nov-2023</td>
+                        </tr>
+                        <tr>
+                            <td>Opening Balance:</td>
+                            <td>40,138.56</td>
+                        </tr>
+                        <tr>
+                            <td>Closing Balance:</td>
+                            <td>47,127.30</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <img src="signfide.png" style="position: absolute; margin: -100px 180px;" alt="">
+        </div>
+        <table class="maintab">
+            <thead>
+                <tr style="height: 45px;">
+                    <th style="width: 80px;">DATE</th>
+                    <th>DESCRIPTION</th>
+                    <th style="width: 85px;">VALUE DATE</th>
+                    <th style="width: 80px;">DEBIT</th>
+                    <th style="width: 80px;">CREDIT</th>
+                    <th style="width: 80px;">BALANCE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>02-May-2023</td>
+                    <td>MAAKRO BRANCH: ACCOUNT TO WALLET; FBGMA NSANO CREDIT FROM AC 1060740656914 TO MTN 0549839670; Afriyie</td>
+                    <td>02-May-2023</td>
+                    <td>400.00</td>
+                    <td></td>
+                    <td>39,738.56</td>
+                </tr>
+                <tr>
+                    <td>05-May-2023</td>
+                    <td>MAAKRO BRANCH: ACCOUNT TO WALLET; FBGMA NSANO CREDIT FROM AC 1060740656914 TO MTN 0549839670; Afriyie</td>
+                    <td>05-May-2023</td>
+                    <td>200.00</td>
+                    <td></td>
+                    <td>39,538.56</td>
+                </tr>
+                <tr>
+                    <td>09-May-2023</td>
+                    <td>MAAKRO BRANCH: CASH WITHDRAWAL CHQ# 00236 BY EMMANUEL AFRIYIE</td>
+                    <td>09-May-2023</td>
+                    <td>100.00</td>
+                    <td></td>
+                    <td>34,438.56</td>
+                </tr>
+                <tr>
+                    <td>12-May-2023</td>
+                    <td>MAAKRO BRANCH: ACCOUNT TO WALLET; FBGMA NSANO CREDIT FROM AC 1060740656914 TO MTN 0549839670; Afriyie</td>
+                    <td>12-May-2023</td>
+                    <td>200.00</td>
+                    <td></td>
+                    <td>39,238.56</td>
+                </tr>
+                <tr>
+                    <td>16-May-2023</td>
+                    <td>MAAKRO BRANCH: ACCOUNT TO WALLET; FBGMA NSANO CREDIT FROM AC 1060740656914 TO MTN 0549839670; Afriyie</td>
+                    <td>16-May-2023</td>
+                    <td>200.00</td>
+                    <td></td>
+                    <td>39,038.56</td>
+                </tr>
+                <tr>
+                    <td>19-May-2023</td>
+                    <td>MAAKRO BRANCH: ACCOUNT TO WALLET; FBGMA NSANO CREDIT FROM AC 1060740656914 TO MTN 0549839670; Afriyie</td>
+                    <td>19-May-2023</td>
+                    <td>20.00</td>
+                    <td></td>
+                    <td>39,018.56</td>
+                </tr>
+                <tr>
+                    <td>23-May-2023</td>
+                    <td>MAAKRO BRANCH: ACCOUNT TO WALLET; FBGMA NSANO CREDIT FROM AC 1060740656914 TO MTN 0549839670; Afriyie</td>
+                    <td>23-May-2023</td>
+                    <td>250.00</td>
+                    <td></td>
+                    <td>38,768.56</td>
+                </tr>
+                <tr>
+                    <td>26-May-2023</td>
+                    <td>HEAD OFFICE: SALARY PROCESSING; MAY 23 SAL PYMT BY CAG</td>
+                    <td>26-May-2023</td>
+                    <td></td>
+                    <td>3,468.65</td>
+                    <td>42,237.21</td>
+                </tr>
+                <tr>
+                    <td>30-May-2023</td>
+                    <td>MAAKRO BRANCH: CASH WITHDRAWAL CHQ# 00232 BY EMMANUEL AFRIYIE</td>
+                    <td>30-May-2023</td>
+                    <td>861.00</td>
+                    <td></td>
+                    <td>41,376.21</td>
+                </tr>
+                <tr>
+                    <td>31-May-2023</td>
+                    <td>MAAKRO BRANCH: ACCOUNT TO WALLET; FBGMA NSANO CREDIT FROM AC 1060740656914 TO MTN 0549839670; Afriyie</td>
+                    <td>31-May-2023</td>
+                    <td>100.00</td>
+                    <td></td>
+                    <td>41,276.21</td>
+                </tr>
+                <tr>
+                    <td>31-May-2023</td>
+                    <td>MAAKRO BRANCH: E-BANKING CHARGE; E-banking charges</td>
+                    <td>31-May-2023</td>
+                    <td>4.00</td>
+                    <td></td>
+                    <td>41,272.21</td>
+                </tr>
+                <tr>
+                    <td>31-May-2023</td>
+                    <td>MAAKRO BRANCH: INTEREST: CR INT RESERVE ACCOUNT</td>
+                    <td>31-May-2023</td>
+                    <td></td>
+                    <td>17.13</td>
+                    <td>41,289.34</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="text-align: center;">1</p>
+        <p><img src="checkfor.png" alt="" style="width: 700px; align-content: center;"></p>
+    </div>
+</body>
+</html>

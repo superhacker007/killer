@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cover Letter for Canada Tourist Visa Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.8em;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section p {
+            margin: 5px 0;
+        }
+        .section h4 {
+            margin: 10px 0 5px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <p>To</p>
+            <p>The Visa Officer<br>
+            Canada High Commission<br>
+            Accra, Ghana</p><br>
+            <h2 style="text-align: center;">COVER LETTER FOR CANADA VISIT VISA APPLICATION</h2>
+            <p>Dear Sir/Madam,</p><br>
+            <p>I am {{firstname}} {{lastname}} (Passport No {{passportn}}) and I am writing this letter to support my visa application for Canada Tourist Visa. I plan to visit the country from {{date1}} to {{date7}}. My purpose of the visit is for the conference ({{conferenced[0]}}) and the nature of the visit is hence business.</p>
+        </div>
+        
+        <div class="section">
+            <h4>Travel Plan for 1 week</h4>
+            <p>I plan to stay in Canada for a period of 1 week. This includes the day that I arrive at  <span style="text-transform:uppercase">{{city}}</span>,  <span style="text-transform:uppercase">{{reg}}</span> (INTERNATIONAL), TERMINAL M, till the day I board my flight back to Accra. I have prepared a clear cut travel itinerary for myself to explore the natural and popular tourist attractions boasted by Canada and then attend {{conferenced[0]}}.</p>
+            <ul>
+                <li>Day 1 ({{date1}}) – Arrival at  <span style="text-transform:uppercase">{{city}}</span>,  <span style="text-transform:uppercase">{{reg}}</span> (INTERNATIONAL), on FLIGHT KL 681 - KLM ROYAL DUTCH AIRLINES, 15:55. I plan to head directly to hotel {{thehotel}}</li>
+                
+                {% for ite in ites %}
+                <li>Day {{loop.index+1}} – Visit {{ite[0]}} <p>{{ite[1]}}</p></li>
+                {% endfor %}
+                <li>Day 5 ({{date5}}) – {{conferenced[0]}} <p>{{conferenced[5]}}</p> </li>
+                <li>Day 6 ({{date6}}) – {{conferenced[0]}} <p>{{conferenced[5]}}</p> </li>
+                <li>Day 7 ({{date7}}) – Go to  <span style="text-transform:uppercase">{{city}}</span>,  <span style="text-transform:uppercase">{{reg}}</span> (INTERNATIONAL) and board the flight (FLIGHT KL 682) to Accra scheduled at 17:50</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h4>Personal Information</h4>
+            <p>I was born on {{dob}} in {{mycity}}, Ghana. I hold an Ghanaian passport ({{passportn}}) and I am a proud citizen of Ghana. I was raised by {{fathername}} {{fatherlast}}, who is a {{fatherwork}} and my mother, {{nameoffmother}} who is a {{motherwork}}. I am the last born in my loving and supporting family.</p>
+            <p>With their blessings and inspiration, I am {{role}} with {{employer}}. </p>
+        </div>
+        <div class="section">
+            <h4>Travel History</h4>
+            <p>{{visited}}.</p>
+        
+        <div class="section">
+            <h4>Details of Close Friends or Family in <span style="text-transform:capitalize">{{destination}}</span></h4>
+            <p>I do not have any relatives or distant family members living in  <span style="text-transform:capitalize">{{destination}}</span>.</p>
+        </div>
+        
+        <div class="section">
+            <h4>Incentive to Return Home</h4>
+            <p>I do not plan to extend my stay beyond the aforementioned timeline of 1 week, as I have various commitments to attend to back in Ghana. As stated earlier, I am currently employed as a {{role}} with {{employer}}. I plan to return by {{joinback}}. Additionally, I have arranged for a temporary helper to assist my parents with household chores during my absence, but I am needed back on time.</p>
+            <p>My family {{spouse_name}} {{spouse_last}}, is also a significant reason for my prompt return.</p>
+            <p>Furthermore, I have an appointment scheduled for my father on {{appointment_date}} at the Korle Bu Teaching Hospital. I am the only one who takes him to his appointments, as my older siblings are occupied with their own families.</p>
+        </div>
+        
+        <div class="section">
+            <h4>Explanation of Financial Sufficiency</h4>
+            <p>I am humbled to say that I am sponsoring my visit to Canada. I work as a {{role}} with {{employer}}.</p>
+            <p>I hereby promise that I have no intentions in prolonging my stay more than a week in Canada. I am well aware and cognizant of the immigration regulations set for international tourists and I intend to abide by them.</p>
+        </div>
+        
+        <div class="section">
+            <p>I have attached my bank statements and all other supporting documents to my application</p>
+            <p>I have also attached his payslip, my introductory letter from my work place, hotel and flight reservations for this trip.</p>
+            <p>I hope that I have been able to furnish all the details pertaining to my tourist visa application. I am looking forward to hearing a positive response and being able to visit Canada.</p>
+            <p>Yours Sincerely,</p><br>
+            <p>{{firstname}} {{lastname}}</p>
+        </div>
+    </div>
+</body>
+</html>

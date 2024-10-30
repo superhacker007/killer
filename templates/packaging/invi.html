@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@page {
+    size: A4;
+    margin: 0;
+}
+
+html, body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.page {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    overflow: hidden;
+    background-image: url("../..{{ url_for('static', filename='pack/images/invibg.jpg') }}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure it is behind the content */
+}
+
+.content {
+    z-index: 1; /* Ensure it is above the background */
+    padding: 19mm; /* Add some padding to keep content away from edges */
+    padding-top: 45mm; /* Add padding-top to push content down */
+    font-family: Calibri, 'Trebuchet MS', sans-serif
+}
+
+.code {
+    color: #f4232e;
+    text-align: center;
+    font-size: 15pt;
+}
+
+.address {
+    font-size: 10.5pt;
+    line-height: 1.5em;
+}
+
+.head {
+    margin-left: 210px;
+    width: 100mm;
+    page-break-inside: avoid; /* Prevent page break inside the head */
+}
+.heading {
+    color: black;
+    border-bottom: 2px solid black; /* Adjust the thickness and color */
+    padding-left: 0;
+    padding-right: 0;
+    page-break-inside: avoid; /* Prevent page break inside the heading */
+    font-size: 14pt;
+    width: 83mm;
+}
+
+.letter {
+    line-height: 1.2em;
+    font-size: 11pt;
+}
+
+.sign {
+    margin-top: 45px;
+    font-size: 10.5pt;
+    float: left;
+    text-align: left;
+}
+
+a {
+    color: #1154CC;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.down {
+    margin-top: 38mm;
+}
+.here {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="content">
+        <h3 class="code">REGISTRATION NUMBER: {{code}}-{{mycode}}</h3>
+
+        <p class="address">
+            {{issuedate}}, 2024<br><br>
+            <b>{{firstname}} {{lastname}}</b><br>
+            DOB: {{mydob}}<br>
+            Passport No: {{passportn}}<br>
+            {{myaddress}},<br>
+            {{mycity}}, Ghana<br>
+            Tel: {{phonen}}<br>
+            E-mail: <a href="">{{email2}}</a> <br>
+        </p>
+
+        <div class="head">
+            <h3 class="heading">LETTER OF "LISTENER" INVITATION</h3>
+        </div>
+
+        <p class="letter">Dear <b>{{firstname}} {{lastname}},</b><br><br>
+            Thank you very much for registering to attend our upcoming conference titled "<b>{{name}}</b> " being held at <b>{{venue}}</b>, {{address}}. <br> <br>
+            The conference will be held on <b>{{heldon}}, 2024</b>. The detailed conference program schedule will be sent to
+            you on <b>{{senton}}, 2024</b>. <br><br>
+            Please make your own arrangements for accommodation, meals, and transportation during the conference.
+            We will only provide breakfast, coffee breaks, and lunch to the participants on the Conference Day. <br> <br>
+            Should you have any questions, please do not hesitate to contact us. We look forward to seeing you in
+            Vancouver, Canada! <br><br>
+            Kind regards,
+            Dr.</p>
+        <p class="sign">
+            <b>
+            Dr. Afzalur Rahman <br>
+            CEO and Conference Chair <br>
+            Global Conference Alliance Inc. <br>
+            </b>
+            (Proudly Canadian, Truly Global) <br><br>
+            <b>CC:</b> <i>High Commission of Canada in Ghana, in Accra</i> <br>
+            <b>Email:</b> <i>accra@international.gc.cc</i><br>
+        </p>
+        <br><br>
+        <div class="down">
+            <h4 class="here">To Verify Your Conference Invitation Letter Visit Here</h4>
+            <h4 class="here"><a href="https://verification.globalconference.cc" class="link">globalconference.cc/registration-verification</a></h4>
+        </div>
+
+    </div>
+    
+</div>
+
+</body>
+</html>

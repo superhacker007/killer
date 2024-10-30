@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employment Offer Letter</title>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+    .container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .header, .footer {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .header img {
+        width: 100px;
+        height: auto;
+    }
+    .content {
+        margin-bottom: 20px;
+    }
+
+    .signature-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+    .signature-section div {
+        width: 45%;
+        text-align: center;
+    }
+    .signature {
+        margin: 0;
+    }
+    .employee-signature {
+        float: left;
+    }
+    .employer-signature {
+        float: right;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="../..{{ url_for('static', filename='pack/images/' + poststudy[3]) }}" alt="Company Logo">
+        <h1>{{poststudy[0]}}</h1>
+    </div>
+
+    <div class="content">
+        <p>Date: {{last_transaction_date}}</p>
+        <p>To,</p>
+        <p>{{firstname}} {{lastname}}<br>
+           {{myaddress}}<br>
+           {{mycity}}, 00233<br>
+           Ghana</p>
+
+        <h2>Employment Offer Letter</h2>
+        <p>Dear {{firstname}} {{lastname}},</p>
+
+        <p>We are pleased to offer you the position of Branch Manager at {{poststudy[0]}}, with a start date of 21st September, 2026. This position will be located at {{mycity}}.</p>
+
+        <p>Your starting salary will be {{postsal}} GHS, paid on a Monthly basis by direct deposit to your bank account. As an employee, you will be eligible for the benefits described in the attached benefit package.</p>
+
+        <p>Please confirm your acceptance of this offer by signing and returning this letter by {{stamp_date}}.</p>
+
+        <p>We are excited to have you join our team and look forward to your positive response.</p>
+
+        <p>Sincerely,</p>
+        <p>{{poststudy[employername]}}<br>
+           Head of HR<br>
+           {{poststudy[0]}}</p>
+    </div>
+
+    <div class="signature-section" style="margin-top: -80px;">
+        <div class="employee-signature">
+            <div class="signature" style="color: blue; margin-left: 150px; ">/iyhS.</div>
+            <p>{{firstname}} {{lastname}}</p>
+            <p>Employee</p>
+        </div>
+
+        
+    </div>
+    <div class="employer-signature">
+        <div class="stamp down" style="position: absolute; margin: 220px 0 0 -250px;">
+            <div class="text">
+                <div class="line1">{{poststudy[0]}}</div>
+                <div class="line2"></div>
+                <div class="dotted-line"></div>
+                <div class="line3">AUTHORISED SIGNATORY</div>
+                <div class="signature" style="margin-top: 250px;">/yhfuS.</div>
+            </div>
+        </div>
+        <p style="position: absolute; margin: -60px -150px;">Employer</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer" style="margin-top: -20px;">
+    <p>{{poststudy[0]}} | +233 {{poststudy[1]}} | {{poststudy[2]}}</p>
+</div>
+</div>
+</body>
+</html>

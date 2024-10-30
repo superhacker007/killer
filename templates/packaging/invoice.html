@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - WAAP TRAVELS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .invoice-container {
+            width: 80%;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .header, .billing, .total {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .header img {
+            width: 150px;
+        }
+        .header h1 {
+            font-size: 24px;
+            color: #06468f;
+            text-align: right;
+        }
+        .company-details, .invoice-details {
+            margin: 20px 0;
+        }
+        .company-details h2, .invoice-details h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .company-details p, .invoice-details p {
+            margin: 5px 0;
+        }
+        .billing th, .billing td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        .billing .client, .billing .details {
+            width: 48%;
+        }
+        .billing h2 {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #e6e6e6;
+        }
+        th, td {
+            padding: 6px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #fff;
+            color: #06468f;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .total td {
+            padding: 10px 20px;
+            text-align: right;
+        }
+        .total td:last-child {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            border-top: 1px solid #e6e6e6;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="invoice-container">
+    <table class="header">
+        <tr>
+            <td><img src="../..{{ url_for('static', filename='pack/images/logo.png') }}" alt="WAAP TRAVELS Logo"></td>
+            <td><h1>Invoice</h1></td>
+        </tr>
+    </table>
+
+    <div class="company-details">
+        <h2>WAAP TRAVELS</h2>
+        <p>Headquarters: Atlantic Tower, Accra, Ghana</p>
+        <p>Email: info@waaptravels.com</p>
+        <p>Phone: +233 204 617 315</p>
+    </div>
+
+    <div class="invoice-details">
+        <h2>Invoice #89754</h2>
+        <p>Issue Date: 20th August 2024</p>
+        <p>Due Date: 30th August 2024</p>
+    </div>
+
+    <table class="billing">
+        <tr>
+            <th class="client">
+                <h2>Bill To:</h2>
+                <p>{{firstname}} {{lastname}}</p>
+                <p>{{address}}</p>
+                <p>Swedru, {{region}}</p>
+                <p>Email: {{email}}</p>
+            </th>
+            <th class="details">
+                <h2>Payment Details:</h2>
+                <p>Bank: STANBIC Bank</p>
+                <p>Full Name: WAAP TRADING</p>
+                <p>Account Number: 9040010825894</p>
+                <p>SWIFT Code: SBICGHAC XXX</p>
+            </th>
+        </tr>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Admission - UK</td>
+                <td>1</td>
+                <td>&#163;250.00</td>
+                <td>&#163;250.00</td>
+            </tr>
+            <tr>
+                <td>Student Loan - UK</td>
+                <td>1</td>
+                <td>&#163;1000.00</td>
+                <td>&#163;1000.00</td>
+            </tr>
+            <tr>
+                <td>Bank Statement+Health Care Subcharge+TB+Visa Fee</td>
+                <td>1</td>
+                <td>&#163;2,500.00</td>
+                <td>&#163;2,500.00</td>
+            </tr>
+            <tr>
+                <td>Service Fee(After Visa)</td>
+                <td>1</td>
+                <td>&#163;1,000.00</td>
+                <td>&#163;1,000.00</td>
+            </tr>
+            <tr>
+                <td>Airticket</td>
+                <td>1</td>
+                <td>&#163;250.00</td>
+                <td>&#163;250.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="total">
+        <tr>
+            <td>Subtotal:</td>
+            <td>&#163;5,000.00</td>
+        </tr>
+        <tr>
+            <td>Total:</td>
+            <td>&#163;5,000.00</td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        <p>Thank you for choosing WAAP TRAVELS. We wish you a safe and enjoyable journey!</p>
+        <p>For any inquiries, please contact us at info@waaptravels.com</p>
+    </div>
+</div>
+
+</body>
+</html>

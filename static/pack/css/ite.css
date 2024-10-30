@@ -1,0 +1,129 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0 auto;
+    padding: 0;
+    background: #fff;
+    width: 794px;
+}
+
+.itinerary-header {
+    text-align: center;
+    background: #f2f2f2;
+    padding: 20px;
+    height: 200px;
+    background-image: url("../images/vanc.jpg");
+    background-repeat: no-repeat;
+    background-size: 794px 250px;
+    color: white;
+}
+
+.cont {
+    background-color: #f15a24;
+}
+
+.ite {
+    width: 90%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 35px;
+}
+
+.ite p {
+    padding: 20px;
+}
+
+.itinerary-header h1, .itinerary-header h2, .itinerary-header p {
+    margin: 5px 0;
+}
+
+.itinerary-day {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.day-info {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.day-head {
+    background: linear-gradient(to right, #f15a24, #f5826e); /* Adjust the colors to match your design */
+    border-radius: 20px; /* Adjust as needed for desired roundness */
+    padding: 10px 20px; /* Adjust as needed for desired spacing */
+    color: white; /* Text color */
+    display: flex;
+    justify-content: space-between; /* This separates the day-range and location */
+    align-items: center; /* Centers items vertically */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
+    margin: 10px 0; /* Adjust as needed for spacing around the element */
+    font-family: Arial, sans-serif; /* Your desired font */
+}
+
+.day-range {
+    background: #ffffff; /* Background for the day range part */
+    border-radius: 50px; /* Rounded corners for the pill shape */
+    padding: 5px 15px; /* Adjust as needed for desired spacing */
+    margin-right: 10px; /* Spacing between the day-range and the location */
+    font-weight: bold; /* Makes the font bold */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
+    color: #000;
+}
+
+.location {
+    flex-grow: 1; /* Allows the location to grow and fill the space */
+    text-align: right; /* Aligns the text to the right */
+    padding-right: 20px; /* Adjust as needed for spacing */
+}
+
+.time-head {
+    padding: 1px 20px; /* Adjust as needed for desired spacing */
+    color: white; /* Text color */
+    display: flex;
+    justify-content: space-between; /* This separates the day-range and location */
+    align-items: center; /* Centers items vertically */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
+    margin: 1px 0; /* Adjust as needed for spacing around the element */
+    font-family: Arial, sans-serif; /* Your desired font */
+}
+
+.time-range {
+    padding: 1px 2px; /* Adjust as needed for desired spacing */
+    font-weight: bold; /* Makes the font bold */
+    color: #f15a24;
+    font-size: 12px;
+}
+
+.activity {
+    color: #000;
+    flex-grow: 1; /* Allows the location to grow and fill the space */
+    text-align: right; /* Aligns the text to the right */
+    padding: 5px 20px; /* Adjust as needed for spacing */
+    font-size: 12px;
+}
+
+
+.day-image {
+    width: 150px; /* Adjust the size as needed, but keep width and height the same */
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.day-image img {
+    width: 100%;
+    height: auto;
+}
+
+.name {
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Add more styling as needed */

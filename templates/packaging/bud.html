@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../..{{ url_for('static', filename='pack/css/budstyle.css')}}">
+<title>{{ destination }} {{city}} Tour Budget Sheet</title>
+</head>
+<body>
+  <div class="budget-sheet">
+    <header>
+      <h1>{{ destination }} TOUR BUDGET SHEET</h1>
+      <h2>{{ firstname }} {{ lastname }}</h2>
+    </header>
+    
+    <div class="info">
+      <label for="destination">DESTINATION:</label>
+      <input style="text-transform: uppercase;" type="text" id="destination" value="{{ destination }} {{city}}, {{ firstname }} {{ lastname }}" disabled>
+
+      <label for="travel-dates">TRAVEL DATES:</label>
+      <input type="text" id="travel-dates" value="FROM {{startdate}} TO {{enddate}}  ( {{nights}} NIGHTS/ {{days}} DAYS)" disabled>
+    </div>
+    
+    <div class="checklist">
+      <label><input type="checkbox" checked disabled> VISA</label>
+      <label><input type="checkbox" checked disabled> INSURANCE</label>
+      <label><input type="checkbox" checked disabled> VACCINES</label>
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>DETAIL</th>
+          <th>BUDGET</th>
+          <th>ACTUAL</th>
+          <th>NOTES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Visa Fee</td>
+          <td>USD 200</td>
+          <td>USD 185</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Insurance</td>
+          <td>USD 100</td>
+          <td>USD 72</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Airfare</td>
+          <td>USD 5,000</td>
+          <td>USD 3,725</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Hotel</td>
+          <td>USD 1,300</td>
+          <td>USD 1,042</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Train Tickets</td>
+          <td>USD 300</td>
+          <td>---</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Bus Tickets</td>
+          <td>USD 300</td>
+          <td>---</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Entrance Fees</td>
+          <td>USD 800</td>
+          <td>---</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Food/Snacks</td>
+          <td>USD 1,000</td>
+          <td>---</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3X Custom Shirts</td>
+          <td>USD 130</td>
+          <td>USD 80</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Tour Sites</td>
+          <td>USD 1,200</td>
+          <td>USD 980</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Charity/Donations & Tips</td>
+          <td>USD 200</td>
+          <td>---</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Extras</td>
+          <td>USD 500</td>
+          <td>---</td>
+          <td></td>
+        </tr>
+
+        <!-- More rows will follow with similar structure -->
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

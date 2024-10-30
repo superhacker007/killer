@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Credit Profile Report</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin: 0;
+            background-color: #fff;
+            font-size: 8pt;
+        }
+
+        a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0px;
+            line-height: 1em;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+        }
+
+        .logo {
+            max-width: 190px;
+            margin-right: 20px;
+            margin-bottom: -50px;
+        }
+
+        .header-text {
+            text-align: center;
+            flex: 1;
+            line-height: 1.5em;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .header-text p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .section-title {
+            color: rgb(50, 180, 56);
+            border-top: 1px solid #f2f2f2;
+            border-right: 1px solid #f2f2f2;
+            width: 370px;
+            padding-top: 10px;
+            font-size: 16pt;
+        }
+
+        .section-description {
+            font-style: italic;
+            color: rgb(50, 180, 56);
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #f2f2f2;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+        }
+
+        footer {
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+
+        .disclaimer {
+            margin: 0;
+            font-size: 7pt;
+            font-weight: bold;
+        }
+
+        .page-number {
+            text-align: right;
+            margin: 10px 0 0 0;
+        }
+        .faketab {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            margin-top: -15px;
+        }
+        .faketab td {
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="../..{{ url_for('static', filename='pack/images/xds.png') }}" alt="XDS Data Ghana" class="logo">
+            <div class="header-text">
+                <h1>Detailed Credit Profile Report</h1> <br>
+                <p style="font-weight: bold;">
+                    No. 26 Bobo St. Tesano - Accra, Ghana<br>
+                    P.O Box YK 895 Kanda<br>
+                    Digital Address: GA-206-1314<br>
+                    website: <a href="http://www.xdsdata.com">www.xdsdata.com</a><br>
+                    Email: <a href="mailto:dispute@xdsdata.com">dispute@xdsdata.com</a>
+                </p>
+            </div>
+        </header>
+        <section>
+            <h2 class="section-title">Enquiry Input Details</h2>
+            <table class="faketab">
+                <tr>
+                    <td><p class="section-description">This section includes the user's search input details and matching rate. </p></td>
+                    <td></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>Enquiry Date</th>
+                    <td>{{dateprinted}} {{hour}}:{{minute}}</td>
+                </tr>
+                <tr>
+                    <th>Enquiry Type</th>
+                    <td>Consumer Detailed Credit</td>
+                </tr>
+                <tr>
+                    <th>Subscriber Name</th>
+                    <td>XDS DATA OPERATIONS</td>
+                </tr>
+                <tr>
+                    <th>Subscriber User Name</th>
+                    <td>Rita Esi Agyensam</td>
+                </tr>
+                <tr>
+                    <th>Enquiry Input</th>
+                    <td>{{firstname}}</td>
+                </tr>
+                <tr>
+                    <th>Enquiry Reason</th>
+                    <td>Paid Credit Report</td>
+                </tr>
+                <tr>
+                    <th>Matching Rate</th>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <th>Is Disputed</th>
+                    <td></td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h2 class="section-title">No Data Found</h2>
+            <table class="faketab">
+                <tr>
+                    <td><p class="section-description">This section includes the consumer's demographic information. </p></td>
+                    <td></td>
+                </tr>
+            </table>
+            <p class="section-description"></p>
+            <table>
+                <tr>
+                    <th>Consumer Name</th>
+                    <td>{{firstname}} {{lastname}}</td>
+                </tr>
+                <tr>
+                    <th>ID Type Number</th>
+                    <td>{{ssn}}</td>
+                </tr>
+                <tr>
+                    <th>Date Of Birth</th>
+                    <td>{{dob}}</td>
+                </tr>
+            </table>
+        </section>
+        <footer>
+            <p class="disclaimer">
+                Disclaimer:<br>
+                This information contained in this report has been compiled on the data provided by the subscribers of XDS Data Ghana and does not represent the opinion of XDS Data Ghana on the creditworthiness or appropriateness of the subject(s) for any credit facility. Such Data usually is not the product of an independent investigation prompted by each subscriber's inquiry but is updated and revised on a periodic basis.<br>
+                XDS Data Ghana does not, and cannot guarantee or give any warranty (in so far as such warranties may be excluded under any relevant law) in respect of the correctness, completeness, accuracy of the information for any particular purpose. XDS Data Ghana shall not be accountable, and hereby denies liability, for any losses or damage that may result from use of this report as a consequence of any inaccuracies in, or any omissions from, the information which it may contain.<br>
+                The information contained in this report is supplied on a strictly confidential basis to you and shall not be disclosed to any other person. The information contained in this report shall be used only for the permissible purpose as defined from time to time by the Central Bank of Ghana or any other government agency authorized in that regard.
+            </p>
+            <p class="page-number">Page 1 of 1 pages</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Form</title>
+</head>
+<body>
+    <form action="/visit" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*,.pdf" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if details %}
+    <form action="/create_visitor" method="post" enctype="multipart/form-data">
+        <input type="text" name="firstname" placeholder="firstname" value="{{ details.firstname }}">
+        <input type="text" name="lastname" placeholder="lastname">
+        M<input type="radio" name="sex" id="1" value="Mr">
+        <input type="radio" name="sex" id="1" value="Ms"> F
+        <input type="text" name="destination" placeholder="destination">
+        <input type="text" name="city" placeholder="city">
+        Trip Start<input type="date" name="trip_start" id="" placeholder="trip start">
+        Trip End<input type="date" name="trip_end" id="" placeholder="trip end">
+        <input type="text" name="employer" placeholder="employer">
+        <input type="text" name="role" placeholder="role">
+        <input type="text" name="rol" placeholder="work location">
+        <input type="text" name="ssn" placeholder="SNIT Number">
+        <input type="text" name="passportn" placeholder="G2266556">
+        Birth Day<input type="date" id="birthday" name="dob">
+        <input type="text" name="addresss" placeholder="No 8 West End University Rd.">
+        <input type="text" name="mycity" placeholder="Accra" value="Accra">
+        <input type="text" name="phonen" placeholder="0242797114">
+        <select name="region" id="">
+            <option value="Greater Accra">Greater Accra</option>
+            <option value="Ashanti">Ashanti Region</option>
+            <option value="Central">Central</option>
+            <option value="Northern">Northern Region</option>
+            <option value="Volta">Volta Region</option>
+            <option value="Brong Ahafo">Brong Ahafo</option>
+            <option value="Upper West">Upper West</option>
+            <option value="Upper East">Upper East</option>
+            <option value="Eastern">Eastern Region</option>
+            <option value="Western Region">Western Region</option>
+        </select>
+        <select name="bn" id="">
+            <option value="OmniBsic">OmniBsic</option>
+            <option value="gcb">GCB</option>
+            <option value="st">Stanbic</option>
+            <option value="NIB Ltd">NIB</option>
+            <option value="zn">Zenith</option>
+        </select>
+        <input type="text" name="acc" placeholder="003287867567654">
+        <input type="text" name="branch" placeholder="Airport">
+        <input type="text" name="sal" placeholder="0.00">
+        <input type="text" name="pobirth" placeholder="Place of Birth" value="Accra">
+        <input type="text" name="father" placeholder="Name of Father">
+        <input type="text" name="fatherwork" placeholder="Father work">
+        <input type="text" name="motherwork" placeholder="Mother work">
+        <input type="text" name="mother" placeholder="Mother Work">
+        <input type="text" name="iam" placeholder="I am a husband and father">
+        <input type="text" name="bachelor" placeholder="Bachelor in " value="Bachelor in ">
+        <input type="text" name="school" placeholder="school">
+        <input type="text" name="myfamily" placeholder="My wife and 2 kids">
+        <input type="file" name="passport">
+        <input type="submit" value="Create Visitor">
+    </form>
+    {% endif %}
+</body>
+</html>
